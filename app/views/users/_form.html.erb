@@ -1,0 +1,210 @@
+<%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
+
+    <% if @user.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+<div class="col-md-6">
+
+  <div class="control-group row">
+    <%= f.label :id, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-3">
+      <%= f.text_field :id, :class => 'form-control', readonly: true  %>
+    </div>
+    <%= error_span(@user[:id]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :salutation, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-3">
+      <%= f.text_field :salutation, :class => 'form-control input-small' %>
+    </div>
+    <%= error_span(@user[:salutation]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :title, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-3">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:title]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :firstname, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-9">
+      <%= f.text_field :firstname, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:firstname]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :lastname, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-9">
+      <%= f.text_field :lastname, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:lastname]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :function, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-9">
+      <%= f.text_field :function, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:function]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :company, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-9">
+      <%= f.text_field :company, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:company]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :appendix, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-9">
+      <%= f.text_field :appendix, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:appendix]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :street, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-9">
+      <%= f.text_field :street, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:street]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :city, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-9">
+      <%= f.text_field :city, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:city]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :zip, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-4">
+      <%= f.text_field :zip, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:zip]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :country, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-9">
+      <%= f.text_field :country, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:country]) %>
+  </div>
+</div>
+
+
+<div class="col-md-6">
+  <div class="control-group row">
+    <%= f.label :fax, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :fax, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:fax]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :phone, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :phone, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:phone]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :phone2, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :phone2, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:phone2]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :email, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :email, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:email]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :email2, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :email2, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:email2]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :gender, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :gender, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:gender]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :initials, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :initials, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:initials]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :language, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :language, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:language]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :memo, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :memo, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:memo]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :prio, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :prio, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:prio]) %>
+  </div>
+  <!--div class="control-group">
+    <%= f.label :mailgroups, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :mailgroups, :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:mailgroups]) %>
+  </div-->
+  <div class="control-group row">
+    <%= f.label :created_by, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :created_by, :class => 'form-control', readonly: true  %>
+    </div>
+    <%= error_span(@user[:created_by]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :updated_by, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :updated_by, :class => 'form-control', readonly: true  %>
+    </div>
+    <%= error_span(@user[:updated_by]) %>
+  </div>
+</div>
+
+
+  <%= f.submit nil, class: 'btn btn-primary spacer-medium' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            users_path, :class => 'btn btn-default spacer-medium' %>
+
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              :back,
+              :class => 'btn btn-default  spacer-medium' %>
+
+<% end %>

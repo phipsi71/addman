@@ -1,0 +1,64 @@
+@import "twitter/bootstrap/bootstrap";
+//@import "twitter/bootstrap/variables";
+// Font Awesome
+@import "fontawesome/font-awesome";
+// Glyphicons
+@import "twitter/bootstrap/glyphicons.less";
+// Font import
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
+
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @link-color: #ff0000;
+
+
+// @font-face {
+//   font-family: 'Glyphicons Halflings';
+//   src: url('/assets/glyphicons-halflings-regular.eot');
+//   src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+//         url('/assets/glyphicons-halflings-regular.woff') format('woff'), 
+//         url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), 
+//         url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+// }
+
+@font-family-sans-serif:  Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
+@font-family-header:	    'Open Sans';
+
+@font-size-base: 12px;
+@font-color-base: #222;
+
+
+// Variables
+@link-color:         darken(@font-color-base,10%);
+@link-color-hover:   lighten(@link-color, 30%);
+@link-color-visited: @font-color-base;
+
+.page-header {
+	font-family: @font-family-header;
+}
+
+h1 {
+	font-weight: 300;
+}

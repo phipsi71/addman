@@ -1,0 +1,73 @@
+<%= form_for @mailgroup, :html => { :class => "form-horizontal mailgroup" } do |f| %>
+
+    <% if @mailgroup.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@mailgroup.errors.count, "error") %> prohibited this mailgroup from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @mailgroup.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group row">
+    <%= f.label :id, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :id, :class => 'form-control', readonly: true %>
+    </div>
+    <%= error_span(@mailgroup[:id]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :name, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@mailgroup[:name]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :memo, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :memo, :class => 'form-control' %>
+    </div>
+    <%= error_span(@mailgroup[:memo]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :trialcode, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :trialcode, :class => 'form-control' %>
+    </div>
+    <%= error_span(@mailgroup[:trialcode]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :importance, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :importance, :class => 'form-control' %>
+    </div>
+    <%= error_span(@mailgroup[:importance]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :created_by, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :created_by, :class => 'form-control', readonly: true  %>
+    </div>
+    <%= error_span(@mailgroup[:created_by]) %>
+  </div>
+  <div class="control-group row">
+    <%= f.label :updated_by, :class => 'control-label col-lg-3' %>
+    <div class="controls col-lg-6">
+      <%= f.text_field :updated_by, :class => 'form-control', readonly: true %>
+    </div>
+    <%= error_span(@mailgroup[:updated_by]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            mailgroups_path, :class => 'btn btn-default' %>
+
+<% end %>

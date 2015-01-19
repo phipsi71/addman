@@ -1,0 +1,84 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:userid) %></th>
+      <th><%= model_class.human_attribute_name(:salutation) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:firstname) %></th>
+      <th><%= model_class.human_attribute_name(:lastname) %></th>
+      <th><%= model_class.human_attribute_name(:function) %></th>
+      <th><%= model_class.human_attribute_name(:company) %></th>
+      <th><%= model_class.human_attribute_name(:appendix) %></th>
+      <th><%= model_class.human_attribute_name(:street) %></th>
+      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:zip) %></th>
+      <th><%= model_class.human_attribute_name(:country) %></th>
+      <th><%= model_class.human_attribute_name(:fax) %></th>
+      <th><%= model_class.human_attribute_name(:phone) %></th>
+      <th><%= model_class.human_attribute_name(:phone2) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:email2) %></th>
+      <th><%= model_class.human_attribute_name(:gender) %></th>
+      <th><%= model_class.human_attribute_name(:initials) %></th>
+      <th><%= model_class.human_attribute_name(:language) %></th>
+      <th><%= model_class.human_attribute_name(:memo) %></th>
+      <th><%= model_class.human_attribute_name(:prio) %></th>
+      <th><%= model_class.human_attribute_name(:data) %></th>
+      <th><%= model_class.human_attribute_name(:created_by) %></th>
+      <th><%= model_class.human_attribute_name(:updated_by) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.id, user_path(user) %></td>
+        <td><%= user.userid %></td>
+        <td><%= user.salutation %></td>
+        <td><%= user.title %></td>
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.function %></td>
+        <td><%= user.company %></td>
+        <td><%= user.appendix %></td>
+        <td><%= user.street %></td>
+        <td><%= user.city %></td>
+        <td><%= user.zip %></td>
+        <td><%= user.country %></td>
+        <td><%= user.fax %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.phone2 %></td>
+        <td><%= user.email %></td>
+        <td><%= user.email2 %></td>
+        <td><%= user.gender %></td>
+        <td><%= user.initials %></td>
+        <td><%= user.language %></td>
+        <td><%= user.memo %></td>
+        <td><%= user.prio %></td>
+        <td><%= user.data %></td>
+        <td><%= user.created_by %></td>
+        <td><%= user.updated_by %></td>
+        <td><%=l user.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_user_path(user), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      user_path(user),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_user_path,
+            :class => 'btn btn-primary' %>

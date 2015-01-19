@@ -1,0 +1,44 @@
+<%- model_class = Mailgroup -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped fadeactions">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mailgroups.each do |mailgroup| %>
+      <tr>
+        <td><%= link_to mailgroup.id, mailgroup_path(mailgroup) %></td>
+        <td><%= mailgroup.name %></td>
+
+        <td class="fadeactions col-md-2">
+          <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'),  edit_mailgroup_path(mailgroup)) %>
+          <%= link_to(content_tag(:i, nil, class: 'fa fa-plus-square-o'),
+                mailgroup_append_path(mailgroup, @userid),
+                method: :patch
+            )%>      
+        </td>
+
+        <!--td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_mailgroup_path(mailgroup), :class => 'btn btn-default btn-xs' %>
+        </td>
+        <td>
+          <%= link_to t('.append', :default => t("helpers.links.append")),
+                mailgroup_append_path(mailgroup, @userid),
+                method: :patch,
+                :class => 'btn btn-default btn-xs' %>
+        </td-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_mailgroup_path,
+            :class => 'btn btn-primary' %>

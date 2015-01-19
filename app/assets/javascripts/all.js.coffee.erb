@@ -1,0 +1,11 @@
+jQuery ->
+
+  # $('tr#fadeactions').hover(
+  #   -> $('td.fadeactions').fadeIn(400)
+  #   -> $('td.fadeactions').fadeOut(200)
+
+  $('.fadeactions tr').hover(
+      $(this).addClass('hover');
+      $(this).removeClass('hover');
+  )
+
