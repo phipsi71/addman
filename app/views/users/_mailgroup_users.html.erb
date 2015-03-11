@@ -1,0 +1,33 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h2>Associated users<!--%=t '.title', :default => model_class.model_name.human.titleize %--></h2>
+</div>
+
+
+<table class="table table-striped fadeactions users">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:lastname) %></th>
+      <th><%= model_class.human_attribute_name(:firstname) %></th>
+      <th><%= model_class.human_attribute_name(:company) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: '/users/user_append', collection: @mailgroup.users, as: :user %>
+  </tbody>
+</table>
+
+<%= form_tag append_mailgroup_users_path(@mailgroup), method: :patch, remote: true do %>
+  <div class="input-group append col-md-6">
+
+    <%= text_field_tag 'autousers', '', size: 50, class: 'form-control' %>
+    <%= hidden_field_tag 'user_id', 'dummy' %>
+
+    <span class="input-group-btn append">
+        <button class="btn btn-default" type="submit">Append</button>
+    </span>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+
+
+<%= content_tag_for(:tr, user) do %>
+  <td class="dim"><%= user.id %></td>
+  <td><%= user.lastname %></td>
+  <td><%= user.firstname %></td>
+  <td><%= user.company %></td>
+  <td><%= user.email %></td>
+  <td class="fadeactions col-md-2">
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-minus-square-o'),
+        remove_mailgroup_user_path(@mailgroup, user),
+          :method => :delete, remote: true,
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+            toggle: "tooltip", title: "Remove user", placement: 'top'
+          }
+        )
+     %>
+  </td>
+<% end %>

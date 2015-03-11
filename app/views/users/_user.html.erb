@@ -1,0 +1,28 @@
+<!-- No loop is needed when rendering this partial -->
+
+<%= content_tag_for(:tr, user) do %>
+  <td class="dim"><%= user.id %></td>
+  <td><%= user.firstname %></td>
+  <td><%= user.lastname %></td>
+  <td><%= user.function %></td>
+  <td><%= user.company %></td>
+  <td><%= user.city %></td> 
+  <td class="fadeactions col-md-2">
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_user_path(user),
+          data: {toggle: "tooltip", title: "Edit user", placement: 'top'})
+     %>
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-group' ), user_path(user),
+          data: {toggle: "tooltip", title: "Add group", placement: 'top'})
+     %>
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-print'), print_user_path(user),
+          data: {toggle: "tooltip", title: "Print label", placement: 'top'})
+     %>    
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
+      user_path(user),
+      method: :delete, remote: true,
+      data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+               toggle: "tooltip", title: "Delete user", placement: 'top'
+        })
+    %> 
+  </td>
+<% end %>

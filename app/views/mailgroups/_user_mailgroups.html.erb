@@ -1,0 +1,36 @@
+<%- model_class = Mailgroup -%>
+<div class="page-header">
+  <!--h2><%=t '.title', :default => model_class.model_name.human.titleize %></h2-->
+  <h2>Associated mailgroups</h2>
+</div>
+
+<table class="table table-striped fadeactions mailgroups">
+  <thead>
+    <tr>
+      <th class="dim"><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:trialcode) %></th>
+      <th><%= model_class.human_attribute_name(:importance) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <%= render partial: 'mailgroups/mailgroup_append', collection: @user.mailgroups, as: :mailgroup %>
+
+  </tbody>
+</table>
+
+
+<!-- append  a MAILGROUP to the user -->
+<%= form_tag append_user_mailgroups_path(@user), method: :patch, remote: true do %>
+  <div class="input-group append">
+
+    <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
+    <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
+
+    <span class="input-group-btn append">
+        <button class="btn btn-default" type="submit">Append</button>
+    </span>
+  </div>
+<% end %>

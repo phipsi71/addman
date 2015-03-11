@@ -2,33 +2,42 @@ Rails.application.routes.draw do
 
   root to: 'users#index'  
 
-  get '/users/search_for', to: 'users#search_for', as: 'users_search'
+  #resources :lists
 
   resources :users do
-    patch 'append_to/:mailgroup_id',   to: 'users#append_to', as: 'append'
-      resources :mailgroups do
+
+    collection do
+      get   'search_for', to: 'users#search_for',  as: 'search'
+    end
+
+    get   'print', to: 'users#print', as: 'print', on: :member  # member is for passing :id instead of :user_id
+
+    resources :mailgroups do      
+      patch 'append',  to: 'users#append',  on: :collection    # append a MAILGROUP to a user
       member do
-        put 'delete'
+        delete 'remove',    to: 'mailgroups#remove'
       end
     end
+
   end
 
 
 
-  resources :mailgroups do  
-    patch 'append_to/:user_id',   to: 'mailgroups#append_to', as: 'append'
+  resources :mailgroups do
+
+    #collection do
+      #patch 'append_to/:user_id',   to: 'mailgroups#append_to', as: 'append'   # FUNKTIONIERT!!!!
+      #get   'search', to: 'mailgroups#search',  as: 'search'
+    #end
+
     resources :users do
+      patch 'append',  to: 'mailgroups#append', on: :collection   # append a USER to a mailgroup
       member do
-        put 'delete'
+        delete 'remove',    to: 'users#remove'
       end
     end
+
   end
-
- 
-  get 'mailgroups/choose/:user_id', to: 'mailgroups#choose', as: 'mailgroups_choose'
-
-  get 'users/choose/:mailgroup_id', to: 'users#choose', as: 'users_choose'
-  
 
 
   # The priority is based upon order of creation: first created -> highest priority.

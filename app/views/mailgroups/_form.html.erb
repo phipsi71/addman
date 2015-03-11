@@ -16,7 +16,7 @@
   <% end %>
 
   <div class="control-group row">
-    <%= f.label :id, :class => 'control-label col-lg-3' %>
+    <%= f.label :id, :class => 'control-label col-lg-3 dim' %>
     <div class="controls col-lg-6">
       <%= f.text_field :id, :class => 'form-control', readonly: true %>
     </div>
@@ -66,8 +66,8 @@
   </div>
 
 
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= f.submit nil, :class => 'btn btn-primary spacer-medium' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            mailgroups_path, :class => 'btn btn-default' %>
+            mailgroups_path, :class => 'btn btn-default spacer-medium' %>
 
 <% end %>

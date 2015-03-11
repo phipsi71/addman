@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206094323) do
+ActiveRecord::Schema.define(version: 20150128153002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
+
+  create_table "lists", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mailgroups", force: true do |t|
     t.string   "name"
@@ -28,6 +35,11 @@ ActiveRecord::Schema.define(version: 20141206094323) do
   end
 
   add_index "mailgroups", ["id"], name: "index_mailgroups_on_groupid", using: :btree
+
+  create_table "mailgroups_lists", force: true do |t|
+    t.integer "mailgroup_id"
+    t.integer "list_id"
+  end
 
   create_table "mailgroups_users", id: false, force: true do |t|
     t.integer "user_id"

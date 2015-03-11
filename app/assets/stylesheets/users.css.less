@@ -6,19 +6,25 @@
 
 table.fadeactions tr > td.fadeactions {
   visibility: hidden;
-  font-size: 24px;
+  font-size: 20px;
   line-height: .66em;
-  letter-spacing: 6px;
-}
-
-.fa:hover {
-  color: #9f332a;
+  letter-spacing: 0px;
 }
 
 table.fadeactions tr:hover > td.fadeactions {
   visibility: visible;
 
 }
+
+
+.fa {
+  color: grey;
+  &:hover {
+    color: #9f332a;
+  }
+}
+
+
 
 //@link-color:         darken(@font-color-base,10%);
 
@@ -45,4 +51,8 @@ table.fadeactions tr:hover > td.fadeactions {
   right: 40%;
   top: 10px;
   width: 20%;
+}
+
+.row {
+  margin-bottom: .6em;
 }

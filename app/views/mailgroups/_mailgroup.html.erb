@@ -1,0 +1,24 @@
+<!-- No loop is needed when rendering this partial -->
+
+<%= content_tag_for(:tr, mailgroup) do %>
+  <td class="dim"><%= mailgroup.id %></td>
+  <td><%= mailgroup.name %></td>
+  <!-- td><%= mailgroup.memo %></td -->
+  <td><%= mailgroup.trialcode %></td>
+  <td><%= mailgroup.importance %></td>
+  <td class="fadeactions col-md-2">
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_mailgroup_path(mailgroup),
+          data: {toggle: "tooltip", title: "Edit mailgroup", placement: 'top'})
+     %>
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-group' ), mailgroup_path(mailgroup),
+          data: {toggle: "tooltip", title: "Add user", placement: 'top'})
+     %>
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
+      mailgroup_path(mailgroup),
+      method: :delete, remote: true,
+      data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+               toggle: "tooltip", title: "Delete mailgroup", placement: 'top'
+        })
+    %> 
+  </td>
+<% end %>
