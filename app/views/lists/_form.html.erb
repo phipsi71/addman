@@ -18,14 +18,14 @@
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'form-control' %>
+      <%= f.text_field :name, :class => 'form-control spacer-small' %>
     </div>
     <%= error_span(@list[:name]) %>
   </div>
 
 
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= f.submit nil, :class => 'btn btn-primary spacer-medium' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            lists_path, :class => 'btn btn-default' %>
+            lists_path, :class => 'btn btn-default spacer-medium' %>
 
 <% end %>

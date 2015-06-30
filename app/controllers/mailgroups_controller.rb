@@ -91,7 +91,7 @@ class MailgroupsController < ApplicationController
 
     respond_to do |format|
       if @user.mailgroups.append(@mailgroup) # append: CollectionProxy method --> http://api.rubyonrails.org/classes/ActiveRecord/Associations/CollectionProxy.html#method-i-append
-        format.html { redirect_to @mailgroup, notice: 'Mailgroup was successfully added.' }
+        format.html { redirect_to @mailgroup, notice: 'Mailgroup was successfully added to user.' }
         format.json { render :show, status: :created, location: @mailgroup }
         format.js
       else
@@ -100,6 +100,8 @@ class MailgroupsController < ApplicationController
       end
     end
   end
+
+
 
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -116,6 +118,24 @@ class MailgroupsController < ApplicationController
       format.js
     end
   end
+
+
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  def remove_list
+    # remove a mailgroup from list
+    # lets get the parameters from the url. we get them from the hash 'params'
+    @list      = List.find(params[:list_id])
+    @mailgroup = Mailgroup.find(params[:id])
+
+    @list.mailgroups.delete(@mailgroup)
+
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Mailgroup was successfully removed from list.' }  #reload this page after deletion
+      format.json { head :no_content }
+      format.js
+    end
+  end
+
 
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 

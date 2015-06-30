@@ -33,28 +33,28 @@
   </div>
   <div class="control-group row">
     <%= f.label :title, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-3">
+    <div class="controls col-lg-4">
       <%= f.text_field :title, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:title]) %>
   </div>
   <div class="control-group row">
     <%= f.label :firstname, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-9">
+    <div class="controls col-lg-6">
       <%= f.text_field :firstname, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:firstname]) %>
   </div>
   <div class="control-group row">
     <%= f.label :lastname, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-9">
+    <div class="controls col-lg-6">
       <%= f.text_field :lastname, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:lastname]) %>
   </div>
   <div class="control-group row">
     <%= f.label :function, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-9">
+    <div class="controls col-lg-6">
       <%= f.text_field :function, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:function]) %>
@@ -68,21 +68,21 @@
   </div>
   <div class="control-group row">
     <%= f.label :appendix, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-9">
+    <div class="controls col-lg-6">
       <%= f.text_field :appendix, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:appendix]) %>
   </div>
   <div class="control-group row">
     <%= f.label :street, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-9">
+    <div class="controls col-lg-6">
       <%= f.text_field :street, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:street]) %>
   </div>
   <div class="control-group row">
     <%= f.label :city, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-9">
+    <div class="controls col-lg-6">
       <%= f.text_field :city, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:city]) %>
@@ -96,7 +96,7 @@
   </div>
   <div class="control-group row">
     <%= f.label :country, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-9">
+    <div class="controls col-lg-6">
       <%= f.text_field :country, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:country]) %>
@@ -142,29 +142,29 @@
   </div>
   <div class="control-group row">
     <%= f.label :gender, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-6">
+    <div class="controls col-lg-3">
       <%= f.text_field :gender, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:gender]) %>
   </div>
   <div class="control-group row">
     <%= f.label :initials, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-6">
+    <div class="controls col-lg-3">
       <%= f.text_field :initials, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:initials]) %>
   </div>
   <div class="control-group row">
     <%= f.label :language, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-6">
+    <div class="controls col-lg-3">
       <%= f.text_field :language, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:language]) %>
   </div>
   <div class="control-group row">
     <%= f.label :memo, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-6">
-      <%= f.text_field :memo, :class => 'form-control' %>
+    <div class="controls col-lg-9">
+      <%= f.text_area :memo, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:memo]) %>
   </div>
@@ -199,12 +199,12 @@
 </div>
 
 
-  <%= f.submit nil, class: 'btn btn-primary spacer-medium' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            users_path, :class => 'btn btn-default spacer-medium' %>
+  <%= f.submit '<i class="glyphicon glyphicon-chevron-left"></i> Update', class: 'btn btn-primary spacer-medium' %>
 
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              :back,
-              :class => 'btn btn-default  spacer-medium' %>
+  <%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Back'.html_safe,
+      users_path, :class => 'btn btn-default spacer-medium' %>
+
+  <%= link_to '<i class="glyphicon glyphicon-remove-circle"></i> Cancel'.html_safe,  
+              :back,    :class => 'btn btn-default  spacer-medium' %>
 
 <% end %>

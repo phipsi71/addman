@@ -2,8 +2,8 @@
 
 <%= content_tag_for(:tr, user) do %>
   <td class="dim"><%= user.id %></td>
-  <td><%= user.firstname %></td>
   <td><%= user.lastname %></td>
+  <td><%= user.firstname %></td>
   <td><%= user.function %></td>
   <td><%= user.company %></td>
   <td><%= user.city %></td> 
@@ -12,7 +12,7 @@
           data: {toggle: "tooltip", title: "Edit user", placement: 'top'})
      %>
     <%= link_to(content_tag(:i, nil, class: 'fa fa-group' ), user_path(user),
-          data: {toggle: "tooltip", title: "Add group", placement: 'top'})
+          data: {toggle: "tooltip", title: "Groups", placement: 'top'})
      %>
     <%= link_to(content_tag(:i, nil, class: 'fa fa-print'), print_user_path(user),
           data: {toggle: "tooltip", title: "Print label", placement: 'top'})

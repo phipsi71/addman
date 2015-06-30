@@ -59,6 +59,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
@@ -66,6 +67,24 @@ class ListsController < ApplicationController
     @userid = params[:user_id]
     @lists = List.all
   end
+
+
+  # append a MAILGROUP to a LIST
+  def append
+    @mailgroup = Mailgroup.find(params[:mailgroup_id])  # this param comes from hidden tag, not from url!
+    @list = List.find(params[:list_id])
+    respond_to do |format|
+      if @mailgroup.lists.append(@list)   # this is a collection-proxy method  ::  http://api.rubyonrails.org/classes/ActiveRecord/Associations/CollectionProxy.html#method-i-append
+        format.html { redirect_to @list, notice: 'Mailgroup was successfully added.' }
+        format.json { render :show, status: :created, location: @list }
+        format.js
+      else
+        format.html { render :new }
+        format.json { render json: @list.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
 
 

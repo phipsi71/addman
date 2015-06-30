@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       @users = User.where("lastname ILIKE ? or company ILIKE ?", 
                           "#{params[:term]}%", "#{params[:term]}%").first(10)  #.map{ |i| i.lastname+' '+i.firstname }
     else
-      @users = User.order(:id).paginate(page: params[:page])
+      @users = User.order(:lastname).paginate(page: params[:page])
     end
 
     respond_to do |format|

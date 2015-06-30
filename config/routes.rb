@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   root to: 'users#index'  
 
-  #resources :lists
 
   resources :users do
 
@@ -33,11 +32,25 @@ Rails.application.routes.draw do
     resources :users do
       patch 'append',  to: 'mailgroups#append', on: :collection   # append a USER to a mailgroup
       member do
-        delete 'remove',    to: 'users#remove'
+        delete 'remove',    to: 'users#remove'    # remove USER from a mailgroup
       end
     end
 
   end
+
+  resources :lists do
+
+    resources :mailgroups do      
+      patch 'append',  to: 'lists#append',  on: :collection    # append a MAILGROUP to a user
+      member do
+        delete 'remove',    to: 'mailgroups#remove_list'
+      end
+    end
+
+  end
+
+
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
