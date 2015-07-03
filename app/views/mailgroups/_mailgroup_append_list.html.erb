@@ -1,0 +1,17 @@
+
+<%= content_tag_for(:tr, mailgroup) do %>
+  <td class="dim"><%= mailgroup.id %></td>
+  <td><%= mailgroup.name %></td>
+  <td><%= mailgroup.trialcode %></td>
+  <td><%= mailgroup.importance %></td>
+  <td class="fadeactions col-md-2">
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-minus-square-o'),
+        remove_list_mailgroup_path(@list, mailgroup),
+          :method => :delete,
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+            toggle: "tooltip", title: "Remove mailgroup", placement: 'top'
+          }
+        )
+     %>
+  </td>
+<% end %>

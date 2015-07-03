@@ -1,0 +1,23 @@
+
+<!-- No loop is needed when rendering this partial -->
+
+<%= content_tag_for(:tr, list) do %>
+  <td class="dim"><%= list.id %></td>
+  <td><%= list.name %></td>
+  <td><%= list.updated_at %></td>
+  <td class="fadeactions col-md-2">
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_list_path(list),
+          data: {toggle: "tooltip", title: "Edit list", placement: 'top'})
+     %>
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-group' ), list_path(list),
+          data: {toggle: "tooltip", title: "Groups", placement: 'top'})
+     %>
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
+      list_path(list),
+      method: :delete, remote: true,
+      data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+               toggle: "tooltip", title: "Delete list", placement: 'top'
+        })
+    %> 
+  </td>
+<% end %>
