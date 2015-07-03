@@ -199,7 +199,9 @@
 </div>
 
 
-  <%= f.submit '<i class="glyphicon glyphicon-chevron-left"></i> Update', class: 'btn btn-primary spacer-medium' %>
+  <%= f.button 'Update', class: 'btn btn-primary spacer-medium' do %>
+    <i class="glyphicon glyphicon-ok"></i> Save
+  <% end %>    
 
   <%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Back'.html_safe,
       users_path, :class => 'btn btn-default spacer-medium' %>
@@ -208,3 +210,5 @@
               :back,    :class => 'btn btn-default  spacer-medium' %>
 
 <% end %>
+
+<p class='iv'><%= "#{__FILE__}" %></p>

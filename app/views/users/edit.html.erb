@@ -2,6 +2,8 @@
 <div class="page-header">
   <!-- h1><%= t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'] , :model => model_class.model_name.human.titleize %></h1 -->
   <!--h1><%= "Edit #{@user.firstname} #{@user.lastname}" %></h1-->
-  <h1><%= content_tag(:i, nil, class: 'fa fa-pencil fa-lg') %><%= " #{@user.firstname} #{@user.lastname}" %></h1>
+  <h1><%= content_tag(:i, nil, class: 'fa fa-pencil') %><%= " #{@user.firstname} #{@user.lastname}" %></h1>
 </div>
 <%= render :partial => 'form' %>
+
+<p class='iv'><%= "#{__FILE__}" %></p>

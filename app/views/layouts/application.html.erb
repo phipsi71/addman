@@ -29,13 +29,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span-->
         </button>
-        <%= content_tag(:a, 'Addman', :class => "navbar-brand")  %>
+        <%= content_tag(:a, nil, class: "navbar-brand")  %>
 
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Users", "/users" %></li>
-            <li><%= link_to "Groups", "/mailgroups" %></li>
-            <li><%= link_to "Lists", "/lists" %></li>
+
+            <li><%= link_to '<i class="fa fa-chevron-right"></i> Users'.html_safe,  users_path %></li>
+            <li><%= link_to '<i class="fa fa-chevron-right"></i> Groups'.html_safe, mailgroups_path %></li>
+            <li><%= link_to '<i class="fa fa-chevron-right"></i> Lists'.html_safe,  lists_path %></li>
 
           </ul>
 
@@ -50,20 +51,20 @@
           <%= yield %>
         </div>
         <div class="col-lg-3">
-          <!--div class="well sidebar-nav">
-            <h3>Sidebar</h3>
+          <div class="well sidebar-nav">
+            <!-- h3>Sidebar</h3 -->
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li class="nav-header">Sidemenu</li>
+                <li><%= link_to '<i class="fa fa-chevron-right"></i> Users'.html_safe,  users_path %></li>
+                <li><%= link_to '<i class="fa fa-chevron-right"></i> Groups'.html_safe, mailgroups_path %></li>
+                <li><%= link_to '<i class="fa fa-chevron-right"></i> Lists'.html_safe,  lists_path %></li>
             </ul>
-          </div><  - - /.well -->
+          </div><!-- /.well -->
         </div><!--/span-->
       </div><!--/row-->
 
       <footer class="spacer-large">
-        <p>&copy; SAKK 2014</p>
+        <p>&copy; SAKK <%= Date.today.year %></p>
       </footer>
 
     </div> <!-- /container -->

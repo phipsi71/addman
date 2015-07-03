@@ -10,11 +10,11 @@
 @iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
 
 
-@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
-@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
-@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
-@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
-@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
+@fontAwesomeEotPath: font-url("/assets/fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: font-url("/assets/fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: font-url("/assets/fontawesome-webfont.woff");
+@fontAwesomeTtfPath: font-url("/assets/fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: font-url("/assets/fontawesome-webfont.svg#fontawesomeregular");
 
 
 
@@ -31,12 +31,12 @@
 
 @font-face {
     font-family: 'francois_oneregular';
-    src: url('francoisone-webfont.eot');
-    src: url('francoisone-webfont.eot?#iefix') format('embedded-opentype'),
-         url('francoisone-webfont.woff2') format('woff2'),
-         url('francoisone-webfont.woff') format('woff'),
-         url('francoisone-webfont.ttf') format('truetype'),
-         url('francoisone-webfont.svg#francois_oneregular') format('svg');
+    src: url('/assets/francoisone-webfont.eot');
+    src: url('/assets/francoisone-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/francoisone-webfont.woff2') format('woff2'),
+         url('/assets/francoisone-webfont.woff') format('woff'),
+         url('/assets/francoisone-webfont.ttf') format('truetype'),
+         url('/assets/francoisone-webfont.svg#francois_oneregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -46,12 +46,12 @@
 
 @font-face {
     font-family: 'clinica_pro_rgregular';
-    src: url('clinicapro-regular-webfont.eot');
-    src: url('clinicapro-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('clinicapro-regular-webfont.woff2') format('woff2'),
-         url('clinicapro-regular-webfont.woff') format('woff'),
-         url('clinicapro-regular-webfont.ttf') format('truetype'),
-         url('clinicapro-regular-webfont.svg#clinica_pro_rgregular') format('svg');
+    src: url('/assets/clinicapro-regular-webfont.eot');
+    src: url('/assets/clinicapro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/clinicapro-regular-webfont.woff2') format('woff2'),
+         url('/assets/clinicapro-regular-webfont.woff') format('woff'),
+         url('/assets/clinicapro-regular-webfont.ttf') format('truetype'),
+         url('/assets/clinicapro-regular-webfont.svg#clinica_pro_rgregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -66,7 +66,7 @@
 @font-family-serif:       'Times New Roman', Times, serif;
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
-@font-family-header:     'clinica_pro_rgregular';
+@font-family-header:     'clinica_pro_rgregular', Consolas;
 
 @font-size-base: 18px;
 @font-color-base: #222;
@@ -86,7 +86,7 @@
 }
 
 
-@font-size-base: 12px;
+@font-size-base:  12px;
 @font-color-base: #222;
 
 
@@ -95,11 +95,30 @@
 @link-color-hover:   lighten(@link-color, 30%);
 @link-color-visited: @font-color-base;
 
-.page-header {
-	font-family: @font-family-header;
+.page-header h1 {
+  font-family: @font-family-header;
 }
 
-h1 {
-	//font-weight: 300;
+.navbar-nav > li {
   font-family: @font-family-header;
+  font-size: 12pt;
+  //float: right;
+}
+
+.navbar-brand {
+    background-image: url('/assets/logo.png');
+    width:  213px;
+    height:  50px;
+    background-repeat: no-repeat;
+    float: right;
+}
+
+.well.sidebar-nav {
+  position: fixed;
+  font-family: @font-family-header;
+  font-size: 10pt;
+}
+
+.iv {
+  color: #eee;
 }
