@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
+;
 jQuery ->
 
  $('#autousers').autocomplete
@@ -26,3 +26,4 @@ jQuery ->
     select: (event, ui) ->
       #log "Now chosen: " + ui.item.label + " / " + ui.item.id
       $("#user_id").val(ui.item.id)  # set the css id 'user_id' with id of user
+;

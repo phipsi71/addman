@@ -6,9 +6,9 @@
   #   $('<div>').text(message).prependTo '#log'
   #   $('#log').scrollTop 0
   #   return
-
-#jQuery ->
-$( document ).ready( ->
+;
+jQuery ->
+#$( document ).ready( ->
 
  $('#autogroups').autocomplete
     minLength: 3
@@ -27,4 +27,4 @@ $( document ).ready( ->
     select: (event, ui) ->
       #log "Now chosen: " + ui.item.label + " / " + ui.item.id
       $("#mailgroup_id").val(ui.item.id)  # set the css id 'user_id' with id of user in hidden_field in html
-)
+;

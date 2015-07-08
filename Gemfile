@@ -50,5 +50,5 @@ gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
 
 gem 'font-awesome-rails'
-gem 'byebug' group: :development
+gem 'byebug', group: :development
 #gem 'rails4-autocomplete'

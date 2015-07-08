@@ -21,11 +21,11 @@ module Addman4
     # config.i18n.default_locale = :de
     
     # config.assets.prefix='/addman'   <<<<   NO GOOD, css and js are not delivered at all!
+    
+    config.relative_url_root='/addman'
+    config.action_controller.relative_url_root = '/addman'
 
-    #config.relative_url_root='/addman'
-    #config.action_controller.relative_url_root = '/addman'
-
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.precompile += %w(.svg .eot .woff .ttf .otf)
 
     
