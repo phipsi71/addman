@@ -79,4 +79,12 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+    
+  config.relative_url_root = '/addman'
+  config.action_controller.relative_url_root = '/addman'
+
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')  # /app/assets/fonts/francois_one
+  config.assets.paths << Rails.root.join('app', 'views')            # /app/views/append.js.coffee
+
 end

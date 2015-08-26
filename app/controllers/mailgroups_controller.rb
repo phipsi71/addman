@@ -12,7 +12,8 @@ class MailgroupsController < ApplicationController
       @mailgroups = Mailgroup.where("name ILIKE ?", "%#{params[:term]}%").first(10)
       #@users = SearchIndex.search_for(params[:term])
     else
-      @mailgroups = Mailgroup.order(:id)
+      @mailgroups = Mailgroup.order(:id).paginate(page: params[:page])
+      #@users = User.order(:lastname).paginate(page: params[:page])
     end
 
     respond_to do |format|
@@ -20,6 +21,13 @@ class MailgroupsController < ApplicationController
         format.json { render json: @mailgroups}
         format.js   # will call index.js.coffee
     end    
+  end
+
+
+  def search_for
+    term = params[:term]
+    logger.debug("url parameters: #{term}")
+    @mailgroups = Mailgroup.where("name ILIKE ?", "%#{params[:term]}%").paginate(:page => params[:page])
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 

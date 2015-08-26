@@ -1,6 +1,6 @@
 <%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
 
-    <% if @user.errors.any? %>
+  <% if @user.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
         <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
@@ -208,6 +208,10 @@
 
   <%= link_to '<i class="glyphicon glyphicon-remove-circle"></i> Cancel'.html_safe,  
               :back,    :class => 'btn btn-default  spacer-medium' %>
+
+  <%= link_to '<i class="fa fa-users"></i> Groups'.html_safe,  
+               user_path(@user), :class => 'btn btn-default  spacer-medium' %>
+
 
 <% end %>
 

@@ -3,11 +3,10 @@
   <!-- h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1 -->
   <h1><%= "#{@mailgroup.name}" %>
 </div>
-<div class="panel panel-default">
-  <div class="panel-body">
+<div class="panel panel-default panel-body col-lg-6">
     <dl class="dl-horizontal">
-      <dt><strong><%= model_class.human_attribute_name(:id) %>:</strong></dt>
-      <dd><%= @mailgroup.id %></dd>
+      <dt class="dim"><strong><%= model_class.human_attribute_name(:id) %>:</strong></dt>
+      <dd class="dim"><%= @mailgroup.id %></dd>
       <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
       <dd><%= @mailgroup.name %></dd>
       <dt><strong><%= model_class.human_attribute_name(:memo) %>:</strong></dt>
@@ -22,6 +21,7 @@
       <dd><%= @mailgroup.updated_by %></dd>
     </dl>
 
+    <div class='panel-btn-group'>
     <%= link_to t('.back', :default => t("helpers.links.back")),
                   mailgroups_path, :class => 'btn btn-default'  %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -32,11 +32,13 @@
                   :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                   :class => 'btn btn-danger' %>
     </div>
-  </div>
-<div>
-<p>
-  <%= render partial: "users/mailgroup_users" %>
-</p>
 </div>
 
-<p class='iv'><%= "#{__FILE__}" %></p>
+
+<div class="row col-lg-9 flash">
+  <%= bootstrap_flash %>
+  <span class='iv'><%= "#{__FILE__}" %></span>
+</div>
+
+
+<%= render partial: "users/mailgroup_users" %>

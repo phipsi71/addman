@@ -1,11 +1,11 @@
 <%- model_class = User -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-  <!-- Number of records : < %= link_to 'click', users_path, remote: true, id: "numbo" % -->
+  <!-- <p>Number of records : <%= link_to 'click', users_path, remote: true, id: "numbo" %></p>  -->
 </div>
 
 <%= form_tag(search_users_path, method: "get")  do %>
-  <div class="input-group search">
+  <div class="input-group search col-lg-7">
     <input type="text" class="form-control" placeholder="Search..." name="term">
     <span class="input-group-btn">
       <button class="btn btn-default" type="submit">Find</button>

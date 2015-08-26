@@ -29,6 +29,11 @@ Rails.application.routes.draw do
       #get   'search', to: 'mailgroups#search',  as: 'search'
     #end
 
+    collection do
+      get   'search_for', to: 'mailgroups#search_for',  as: 'search'
+    end
+
+
     resources :users do
       patch 'append',  to: 'mailgroups#append', on: :collection   # append a USER to a mailgroup
       member do

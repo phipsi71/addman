@@ -1,5 +1,5 @@
 <%- model_class = User -%>
-<div class="page-header">
+<div class="page-header col-lg-12 row">
   <h2>Associated users<!--%=t '.title', :default => model_class.model_name.human.titleize %--></h2>
 </div>
 
@@ -7,16 +7,16 @@
 <table class="table table-striped fadeactions users">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:lastname) %></th>
-      <th><%= model_class.human_attribute_name(:firstname) %></th>
-      <th><%= model_class.human_attribute_name(:company) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <td class="dim"><%= model_class.human_attribute_name(:id) %></td>
+      <td><%= model_class.human_attribute_name(:lastname) %></td>
+      <td><%= model_class.human_attribute_name(:firstname) %></td>
+      <td><%= model_class.human_attribute_name(:company) %></td>
+      <td><%= model_class.human_attribute_name(:email) %></td>
+      <td><%=t '.actions', :default => t("helpers.actions") %></td>
     </tr>
   </thead>
   <tbody>
-    <%= render partial: '/users/user_append', collection: @mailgroup.users, as: :user %>
+    <%= render partial: 'users/user_append', collection: @mailgroup.users, as: :user %>
   </tbody>
 </table>
 

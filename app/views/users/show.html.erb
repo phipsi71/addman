@@ -1,21 +1,20 @@
 <%- model_class = User -%>
-<div class="page-header">
+<div class="page-header col-lg-12 row">
   <!-- h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1 -->
-  <h1><%= unless @user.lastname.nil?
+  <h1><span class="dim"></span><%= unless @user.lastname.nil?
             "#{@user.lastname} #{@user.firstname}"
           else
             "#{@user.company}"
-          end 
+          end
        %> 
   </h1>
 </div>
 
-
-
-
-    <dl class="dl-horizontal col-md-6">
-      <dt><strong><%= model_class.human_attribute_name(:id) %>:</strong></dt>
-      <dd><%= @user.id %></dd>
+  <div class="panel panel-default panel-body col-lg-9">
+    <div class="row">
+    <dl class="dl-horizontal col-lg-5">
+      <dt class="dim"><strong ><%= model_class.human_attribute_name(:id) %>:</strong></dt>
+      <dd class="dim"><%= @user.id %></dd>
       <dt><strong><%= model_class.human_attribute_name(:salutation) %>:</strong></dt>
       <dd><%= @user.salutation %></dd>
       <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
@@ -39,7 +38,7 @@
       <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
       <dd><%= @user.country %></dd>
     </dl>
-    <dl class="dl-horizontal col-md-6">
+    <dl class="dl-horizontal col-lg-5">
       <dt><strong><%= model_class.human_attribute_name(:fax) %>:</strong></dt>
       <dd><%= @user.fax %></dd>
       <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
@@ -47,9 +46,9 @@
       <dt><strong><%= model_class.human_attribute_name(:phone2) %>:</strong></dt>
       <dd><%= @user.phone2 %></dd>
       <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-      <dd><%= @user.email %></dd>
+      <dd><%= mail_to(@user.email) %></dd>
       <dt><strong><%= model_class.human_attribute_name(:email2) %>:</strong></dt>
-      <dd><%= @user.email2 %></dd>
+      <dd><%= mail_to(@user.email2) %></dd>
       <dt><strong><%= model_class.human_attribute_name(:gender) %>:</strong></dt>
       <dd><%= @user.gender %></dd>
       <dt><strong><%= model_class.human_attribute_name(:initials) %>:</strong></dt>
@@ -68,8 +67,9 @@
       <dd><%= @user.updated_by %></dd>
     </dl>
 
-    
-    
+  </div>
+    <div class='panel-btn-group row'>
+   
     <%= link_to t('.back', :default => t("helpers.links.back")),
                   :back, :class => 'btn btn-default'  %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -79,11 +79,15 @@
                   :method => 'delete',
                   :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                   :class => 'btn btn-danger' %>
+    </div>
 
-                  
-                  
-<div>
-  <%= render partial: "mailgroups/user_mailgroups" %>
+  </div>
+
+  
+<div class="row col-lg-9 flash">
+  <%= bootstrap_flash %>
+  <span class='iv'><%= "#{__FILE__}" %></span>
 </div>
 
-<p class='iv'><%= "#{__FILE__}" %></p>
+
+<%= render partial: "mailgroups/user_mailgroups" %>

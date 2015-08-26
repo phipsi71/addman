@@ -14,7 +14,7 @@ class SearchIndex < ActiveRecord::Base
     # now make an activerecord relation for the object 'User' (and not SearchIndex as above)
     # and return the ActiveRecord::Relation
     # this is equal to select * from users where id in i.   :: i is an Array
-    User.where(id: i)
+    User.where(id: i).order(:lastname, :firstname)
   end
 
 end

@@ -16,5 +16,10 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require turbolinks
+//= require users
+//= require mailgroups
+//= require lists
 //= require_self
 //= require_tree .
+
+

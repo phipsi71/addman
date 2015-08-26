@@ -1,0 +1,39 @@
+<!-- partial _mailgrouplist.html.erb -->
+<%- model_class = Mailgroup -%>
+
+
+<div>
+  <%= will_paginate @mailgroup, renderer: BootstrapPagination::Rails %>
+</div>
+
+<table class="table table-striped fadeactions">
+  <thead>
+    <tr>
+      <th class="dim"><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:trialcode) %></th>
+      <th><%= model_class.human_attribute_name(:importance) %></th>
+      <th class="dim"><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+
+      <%= render @mailgroups, layout: false %>  <!--  loop is created with content_tag_for in partial -->
+
+  </tbody>
+</table>
+
+<div>
+  <%= will_paginate @mailgroup, renderer: BootstrapPagination::Rails %>
+</div>
+
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_mailgroup_path,
+            :class => 'btn btn-primary' %>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+            :back,
+            :class => 'btn btn-default' %>
+
+<p class='iv'><%= "#{__FILE__}" %></p>

@@ -1,5 +1,5 @@
 <%- model_class = Mailgroup -%>
-<div class="page-header">
+<div class="page-header col-lg-12 row">
   <!--h2><%=t '.title', :default => model_class.model_name.human.titleize %></h2-->
   <h2>Associated mailgroups</h2>
 </div>
@@ -7,11 +7,11 @@
 <table class="table table-striped fadeactions mailgroups">
   <thead>
     <tr>
-      <th class="dim"><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:trialcode) %></th>
-      <th><%= model_class.human_attribute_name(:importance) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <td class="dim"><%= model_class.human_attribute_name(:id) %></td>
+      <td><%= model_class.human_attribute_name(:name) %></td>
+      <td><%= model_class.human_attribute_name(:trialcode) %></td>
+      <td><%= model_class.human_attribute_name(:importance) %></td>
+      <td><%=t '.actions', :default => t("helpers.actions") %></td>
     </tr>
   </thead>
   <tbody>
@@ -24,7 +24,7 @@
 
 <!-- append  a MAILGROUP to the user -->
 <%= form_tag append_user_mailgroups_path(@user), method: :patch, remote: true do %>
-  <div class="input-group append">
+  <div class="input-group append  col-lg-6">
 
     <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
     <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
@@ -36,3 +36,4 @@
 <% end %>
 
 <p class='iv'><%= "#{__FILE__}" %></p>
+<!-- <%= javascript_include_tag params[:controller] %>  -->

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   #include UsersHelper
   before_action :set_user, only: [:show, :edit, :update, :destroy, :print, :remove]
+  before_action :authenticate, only: [:new, :edit, :create]
 
 
 
@@ -25,22 +26,22 @@ class UsersController < ApplicationController
   end
 
 
-  def print
-    @uattr = @user.attributes
-    logger.debug("in print : before file open")
-    File.open('/home/philippb/tmp/addman/label.txt','w') do |f1|
-      f1.puts @uattr['salutation'].to_s + ' ' + @uattr['title'].to_s
-      f1.puts @uattr['firstname'].to_s + ' ' + @uattr['lastname'].to_s
-      f1.puts @uattr['company'].to_s
-      f1.puts @uattr['appendix'].to_s
-      f1.puts @uattr['street'].to_s
-      f1.puts @uattr['zip'].to_s + ' ' + @uattr['city'].to_s
-      f1.print "\f"  # form feed
-      f1.close
-    end
+  # def print
+  #   @uattr = @user.attributes
+  #   logger.debug("in print : before file open")
+  #   File.open('/home/philippb/tmp/addman/label.txt','w') do |f1|
+  #     f1.puts @uattr['salutation'].to_s + ' ' + @uattr['title'].to_s
+  #     f1.puts @uattr['firstname'].to_s + ' ' + @uattr['lastname'].to_s
+  #     f1.puts @uattr['company'].to_s
+  #     f1.puts @uattr['appendix'].to_s
+  #     f1.puts @uattr['street'].to_s
+  #     f1.puts @uattr['zip'].to_s + ' ' + @uattr['city'].to_s
+  #     f1.print "\f"  # form feed
+  #     f1.close
+  #   end
 
-    #system("smbclient //sakkdc2008r2/BW-Color-2 -c 'print label.test'")
-  end
+  #   #system("smbclient //sakkdc2008r2/BW-Color-2 -c 'print label.test'")
+  # end
 
 
   def search_for

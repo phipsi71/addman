@@ -22,7 +22,7 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
+    <div class="navbar navbar-default navbar-static-top col-lg-12">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <!--span class="icon-bar"></span>
@@ -45,23 +45,21 @@
     </div>
 
     <div class="container">
-      <div class="row">
-        <div class="col-lg-9">
-          <%= bootstrap_flash %>
+
+        <!--div class="col-lg-9"-->
           <%= yield %>
-        </div>
+        <!--/div-->
         <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <!-- h3>Sidebar</h3 -->
+          <!-- div class="well sidebar-nav">
+            <h3>Manage</h3>
             <ul class="nav nav-list">
-              <li class="nav-header">Sidemenu</li>
                 <li><%= link_to '<i class="fa fa-chevron-right"></i> Users'.html_safe,  users_path %></li>
                 <li><%= link_to '<i class="fa fa-chevron-right"></i> Groups'.html_safe, mailgroups_path %></li>
                 <li><%= link_to '<i class="fa fa-chevron-right"></i> Lists'.html_safe,  lists_path %></li>
             </ul>
-          </div><!-- /.well -->
+          </div /.well -->
         </div><!--/span-->
-      </div><!--/row-->
+  
 
       <footer class="spacer-large">
         <p>&copy; SAKK <%= Date.today.year %></p>

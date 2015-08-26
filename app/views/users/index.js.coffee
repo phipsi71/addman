@@ -1,2 +1,2 @@
-$('#numbo').html('<%= @users.count %>')
-
+$('#numbo').html('<%= @users.count %>');
+ 
