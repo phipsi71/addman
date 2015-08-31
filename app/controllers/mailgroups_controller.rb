@@ -1,7 +1,8 @@
 class MailgroupsController < ApplicationController
-  #include MailgroupsHelper
+  before_action :authenticate, only: [:new, :edit, :create, :update, :destroy, :append, :remove, :remove_list]
   before_action :set_mailgroup, only: [:show, :edit, :update, :destroy]
 
+  #include MailgroupsHelper
 
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -40,11 +41,15 @@ class MailgroupsController < ApplicationController
   # GET /mailgroups/new
   def new
     @mailgroup = Mailgroup.new
+    @mailgroup.created_by = current_user.login
+    @mailgroup.created_at = Time.now    
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # GET /mailgroups/1/edit
   def edit
+    @mailgroup.created_by = current_user.login
+    @mailgroup.created_at = Time.now    
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -52,7 +57,8 @@ class MailgroupsController < ApplicationController
   # POST /mailgroups.json
   def create
     @mailgroup = Mailgroup.new(mailgroup_params)
-
+    @mailgroup.created_by = current_user.login
+    @mailgroup.created_at = Time.now    
     respond_to do |format|
       if @mailgroup.save
         format.html { redirect_to @mailgroup, notice: 'Mailgroup was successfully created.' }
@@ -68,6 +74,8 @@ class MailgroupsController < ApplicationController
   # PATCH/PUT /mailgroups/1
   # PATCH/PUT /mailgroups/1.json
   def update
+    @mailgroup.updated_by = current_user.login
+    @mailgroup.updated_at = Time.now        
     respond_to do |format|
       if @mailgroup.update(mailgroup_params)
         format.html { redirect_to @mailgroup, notice: 'Mailgroup was successfully updated.' }
@@ -85,7 +93,7 @@ class MailgroupsController < ApplicationController
   def destroy
     @mailgroup.destroy
     respond_to do |format|
-      format.html { redirect_to mailgroups_url, notice: 'Mailgroup was successfully destroyed.' }
+      #format.html { redirect_to mailgroups_url, notice: 'Mailgroup was successfully destroyed.' }
       format.json { head :no_content }
       format.js
     end
@@ -96,7 +104,6 @@ class MailgroupsController < ApplicationController
   def append
     @user      = User.find(params[:user_id])
     @mailgroup = Mailgroup.find(params[:mailgroup_id])
-
     respond_to do |format|
       if @user.mailgroups.append(@mailgroup) # append: CollectionProxy method --> http://api.rubyonrails.org/classes/ActiveRecord/Associations/CollectionProxy.html#method-i-append
         format.html { redirect_to @mailgroup, notice: 'Mailgroup was successfully added to user.' }
@@ -107,7 +114,7 @@ class MailgroupsController < ApplicationController
         format.json { render json: @mailgroup.errors, status: :unprocessable_entity }
       end
     end
-  end
+  end 
 
 
 

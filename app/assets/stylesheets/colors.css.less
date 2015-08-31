@@ -1,0 +1,39 @@
+
+
+@import "twitter/bootstrap/mixins";
+
+
+@link-color:         darken(@font-color-base,10%);
+@link-color-hover:   lighten(@link-color, 30%);
+@link-color-visited: darken(@link-color, 30%);
+@font-color-base:    #222;
+
+@dimcolor: lighten(@font-color-base, 50%);
+
+.dim {
+  color: @dimcolor;
+  //.debug(@dimcolor);
+}
+
+
+
+.btn-primary {
+  .button-variant(#fff, lighten(@brand-primary,20%), lighten(@brand-primary, 10%));
+ }
+
+ .btn-danger {
+  .button-variant(#fff, lighten(@brand-danger,20%), lighten(@brand-danger, 18%));
+ }
+
+//lighten(@button-primary-orig,33%), lighten(@button-primary-orig,33%)
+
+.pagination > .active > span {
+	color: #FFF;
+	background-color: #ccc;
+	border-color: #bbb;
+}
+
+thead {
+  background-color: #B6CAD5;
+  color: #fff;
+}

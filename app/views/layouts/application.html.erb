@@ -37,32 +37,40 @@
             <li><%= link_to '<i class="fa fa-chevron-right"></i> Users'.html_safe,  users_path %></li>
             <li><%= link_to '<i class="fa fa-chevron-right"></i> Groups'.html_safe, mailgroups_path %></li>
             <li><%= link_to '<i class="fa fa-chevron-right"></i> Lists'.html_safe,  lists_path %></li>
-
+          </ul>
+          <ul class="userInfo nav navbar-nav">
+            <% if user_signed_in? %>
+              <li><%= content_tag(:a, current_user.login) %></li>
+              <li><%= link_to '<i class="fa fa-chevron-left"></i> Sign out'.html_safe, destroy_user_session_path, method: :delete %></li>
+            <% end %>
           </ul>
 
         </div>
       </div>
     </div>
 
-    <div class="container">
-
-        <!--div class="col-lg-9"-->
-          <%= yield %>
-        <!--/div-->
-        <div class="col-lg-3">
-          <!-- div class="well sidebar-nav">
-            <h3>Manage</h3>
-            <ul class="nav nav-list">
-                <li><%= link_to '<i class="fa fa-chevron-right"></i> Users'.html_safe,  users_path %></li>
-                <li><%= link_to '<i class="fa fa-chevron-right"></i> Groups'.html_safe, mailgroups_path %></li>
-                <li><%= link_to '<i class="fa fa-chevron-right"></i> Lists'.html_safe,  lists_path %></li>
-            </ul>
-          </div /.well -->
-        </div><!--/span-->
+    <div class="container-main">
+      <div class="row">
+        <div id="flash col-lg-4"><%= bootstrap_flash %></div>
+        <div class="col-lg-8"></div>
+      </div>
+      <!--div class="col-lg-9"-->
+        <%= yield %>
+      <!--/div-->
+      <div class="col-lg-3">
+        <!-- div class="well sidebar-nav">
+          <h3>Manage</h3>
+          <ul class="nav nav-list">
+              <li><%= link_to '<i class="fa fa-chevron-right"></i> Users'.html_safe,  users_path %></li>
+              <li><%= link_to '<i class="fa fa-chevron-right"></i> Groups'.html_safe, mailgroups_path %></li>
+              <li><%= link_to '<i class="fa fa-chevron-right"></i> Lists'.html_safe,  lists_path %></li>
+          </ul>
+        </div /.well -->
+      </div><!--/span-->
   
 
-      <footer class="spacer-large">
-        <p>&copy; SAKK <%= Date.today.year %></p>
+      <footer class="spacer-large col-lg-12">
+        <p>&copy; SAKK <%= Date.today.year%> | <%= APP_VERSION %></p>
       </footer>
 
     </div> <!-- /container -->

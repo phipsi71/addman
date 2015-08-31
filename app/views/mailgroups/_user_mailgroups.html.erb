@@ -1,7 +1,9 @@
 <%- model_class = Mailgroup -%>
-<div class="page-header col-lg-12 row">
-  <!--h2><%=t '.title', :default => model_class.model_name.human.titleize %></h2-->
-  <h2>Associated mailgroups</h2>
+
+
+<div class="page-header col-lg-12">
+  <span class="dim"></span><h2><%= content_tag(:i, nil, class: 'fa fa-users') %>
+  Assigned mailgroups</h2>
 </div>
 
 <table class="table table-striped fadeactions mailgroups">
@@ -20,11 +22,9 @@
 
   </tbody>
 </table>
-
-
 <!-- append  a MAILGROUP to the user -->
 <%= form_tag append_user_mailgroups_path(@user), method: :patch, remote: true do %>
-  <div class="input-group append  col-lg-6">
+  <div class="input-group append col-lg-6">
 
     <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
     <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
@@ -34,6 +34,9 @@
     </span>
   </div>
 <% end %>
+
+
+
 
 <p class='iv'><%= "#{__FILE__}" %></p>
 <!-- <%= javascript_include_tag params[:controller] %>  -->

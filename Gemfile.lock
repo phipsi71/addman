@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.7)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -43,6 +44,15 @@ GEM
     columnize (0.9.0)
     commonjs (0.2.7)
     debugger-linecache (1.2.0)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    devise_ldap_authenticatable (0.8.1)
+      devise (>= 3.0)
+      net-ldap (>= 0.3.1, < 0.6.0)
     erubis (2.7.0)
     execjs (2.2.2)
     font-awesome-rails (4.2.0.0)
@@ -72,12 +82,16 @@ GEM
       less-rails (>= 2.1.7)
       railties (>= 3.1.1)
     libv8 (3.16.14.3)
+    local_time (1.0.2)
+      coffee-rails
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (5.4.2)
     multi_json (1.10.1)
+    net-ldap (0.5.1)
+    orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.5)
     rack (1.5.2)
@@ -144,6 +158,8 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     will_paginate (3.0.4)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
@@ -154,6 +170,8 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.0.0)
+  devise
+  devise_ldap_authenticatable
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
@@ -162,6 +180,7 @@ DEPENDENCIES
   less-rails
   less-rails-bootstrap
   less-rails-fontawesome
+  local_time
   pg
   rails (= 4.1.5)
   sass-rails (~> 4.0.3)

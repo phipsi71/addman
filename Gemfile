@@ -53,4 +53,7 @@ gem 'font-awesome-rails'
 gem 'byebug', group: :development
 gem 'sprockets-rails'
 #gem 'rails4-autocomplete'
+gem 'devise'
+gem 'devise_ldap_authenticatable'
 
+gem 'local_time'

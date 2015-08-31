@@ -1,4 +1,4 @@
-<%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
+<%= form_for @user, html: { class: "form-horizontal user" } do |f| %>
 
   <% if @user.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -68,21 +68,21 @@
   </div>
   <div class="control-group row">
     <%= f.label :appendix, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-6">
+    <div class="controls col-lg-9">
       <%= f.text_field :appendix, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:appendix]) %>
   </div>
   <div class="control-group row">
     <%= f.label :street, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-6">
+    <div class="controls col-lg-9">
       <%= f.text_field :street, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:street]) %>
   </div>
   <div class="control-group row">
     <%= f.label :city, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-6">
+    <div class="controls col-lg-9">
       <%= f.text_field :city, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:city]) %>
@@ -147,13 +147,13 @@
     </div>
     <%= error_span(@user[:gender]) %>
   </div>
-  <div class="control-group row">
+  <!--<div class="control-group row">
     <%= f.label :initials, :class => 'control-label col-lg-3' %>
     <div class="controls col-lg-3">
       <%= f.text_field :initials, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:initials]) %>
-  </div>
+  </div> -->
   <div class="control-group row">
     <%= f.label :language, :class => 'control-label col-lg-3' %>
     <div class="controls col-lg-3">
@@ -192,27 +192,27 @@
   <div class="control-group row">
     <%= f.label :updated_by, :class => 'control-label col-lg-3' %>
     <div class="controls col-lg-6">
-      <%= f.text_field :updated_by, :class => 'form-control', readonly: true  %>
+      <%= f.text_field :updated_by, :class => 'form-control', readonly: true   %>
     </div>
     <%= error_span(@user[:updated_by]) %>
   </div>
 </div>
 
-
+<div class="panel-btn-group">
   <%= f.button 'Update', class: 'btn btn-primary spacer-medium' do %>
     <i class="glyphicon glyphicon-ok"></i> Save
-  <% end %>    
+  <% end %>
 
-  <%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Back'.html_safe,
+  <%= link_to '<i class="fa fa-user"></i> Users'.html_safe,
       users_path, :class => 'btn btn-default spacer-medium' %>
 
-  <%= link_to '<i class="glyphicon glyphicon-remove-circle"></i> Cancel'.html_safe,  
-              :back,    :class => 'btn btn-default  spacer-medium' %>
+ 
+  <%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Back'.html_safe,
+      :back, :class => 'btn btn-default  spacer-medium' %>
 
-  <%= link_to '<i class="fa fa-users"></i> Groups'.html_safe,  
-               user_path(@user), :class => 'btn btn-default  spacer-medium' %>
-
-
+</div>
 <% end %>
 
+<div class="col-lg-12">
 <p class='iv'><%= "#{__FILE__}" %></p>
+</div>

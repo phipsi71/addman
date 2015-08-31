@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   #include UsersHelper
+  before_action :authenticate, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :print, :remove]
-  before_action :authenticate, only: [:new, :edit, :create]
 
 
 
@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   def index
     #@users = User.all
     #@users = User.first(50)
-
     if params[:term]
       @users = User.where("lastname ILIKE ? or company ILIKE ?", 
                           "#{params[:term]}%", "#{params[:term]}%").first(10)  #.map{ |i| i.lastname+' '+i.firstname }
@@ -24,24 +23,6 @@ class UsersController < ApplicationController
         format.js   # will call index.js.coffee
     end
   end
-
-
-  # def print
-  #   @uattr = @user.attributes
-  #   logger.debug("in print : before file open")
-  #   File.open('/home/philippb/tmp/addman/label.txt','w') do |f1|
-  #     f1.puts @uattr['salutation'].to_s + ' ' + @uattr['title'].to_s
-  #     f1.puts @uattr['firstname'].to_s + ' ' + @uattr['lastname'].to_s
-  #     f1.puts @uattr['company'].to_s
-  #     f1.puts @uattr['appendix'].to_s
-  #     f1.puts @uattr['street'].to_s
-  #     f1.puts @uattr['zip'].to_s + ' ' + @uattr['city'].to_s
-  #     f1.print "\f"  # form feed
-  #     f1.close
-  #   end
-
-  #   #system("smbclient //sakkdc2008r2/BW-Color-2 -c 'print label.test'")
-  # end
 
 
   def search_for
@@ -63,10 +44,15 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.created_by = current_user.login
+    @user.created_at = Time.now    
   end
 
   # GET /users/1/edit
   def edit
+    #params.require(:user).permit(:updated_by, :updated_at)
+    # @user.updated_by = current_user.login
+    # @user.updated_at = Time.now  
   end
 
   # POST /users
@@ -88,6 +74,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    # params.require(:user).permit(:salutation, :title, :firstname,
+    #     :lastname, :function, :company, :appendix, :street, :city, :zip,
+    #     :country, :fax, :phone, :phone2, :email, :email2, :gender, :initials, :language, :memo, :prio,
+    #     :updated_by, :updated_at)
+    @user.updated_by = current_user.login
+    @user.updated_at = Time.now
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -162,3 +154,25 @@ class UsersController < ApplicationController
       #params.require(:user).permit(:Firstname)
     end
 end
+
+
+
+
+  # TODO
+  #
+  # def print
+  #   @uattr = @user.attributes
+  #   logger.debug("in print : before file open")
+  #   File.open('/home/philippb/tmp/addman/label.txt','w') do |f1|
+  #     f1.puts @uattr['salutation'].to_s + ' ' + @uattr['title'].to_s
+  #     f1.puts @uattr['firstname'].to_s + ' ' + @uattr['lastname'].to_s
+  #     f1.puts @uattr['company'].to_s
+  #     f1.puts @uattr['appendix'].to_s
+  #     f1.puts @uattr['street'].to_s
+  #     f1.puts @uattr['zip'].to_s + ' ' + @uattr['city'].to_s
+  #     f1.print "\f"  # form feed
+  #     f1.close
+  #   end
+
+  #   #system("smbclient //sakkdc2008r2/BW-Color-2 -c 'print label.test'")
+  # end

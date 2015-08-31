@@ -1,11 +1,12 @@
 <!-- partial _userlist.html.erb -->
 <%- model_class = User -%>
 
-
-<div>
-  <%= will_paginate @user, renderer: BootstrapPagination::Rails %>
+<div class="col-lg-8">
+<%= will_paginate @user, renderer: BootstrapPagination::Rails %>
 </div>
 
+
+<div class="col-lg-12">
 <table class="table table-striped fadeactions">
   <thead>
     <tr>
@@ -25,12 +26,15 @@
 
   </tbody>
 </table>
-
-<div>
-  <%= will_paginate @user, renderer: BootstrapPagination::Rails %>
 </div>
 
 
+<div class="col-lg-8">
+<%= will_paginate @user, renderer: BootstrapPagination::Rails %>
+</div>
+<div class="col-lg-4"></div>
+
+<div class="col-lg-12 row">
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_user_path,
             :class => 'btn btn-primary' %>
@@ -39,4 +43,8 @@
             :back,
             :class => 'btn btn-default' %>
 
+
+
 <p class='iv'><%= "#{__FILE__}" %></p>
+
+</div>

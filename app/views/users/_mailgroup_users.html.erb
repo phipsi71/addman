@@ -1,8 +1,8 @@
 <%- model_class = User -%>
-<div class="page-header col-lg-12 row">
-  <h2>Associated users<!--%=t '.title', :default => model_class.model_name.human.titleize %--></h2>
+<div class="page-header col-lg-12">
+  <span class="dim"></span><h2><%= content_tag(:i, nil, class: 'fa fa-user') %>
+  Assigned users</h2>
 </div>
-
 
 <table class="table table-striped fadeactions users">
   <thead>

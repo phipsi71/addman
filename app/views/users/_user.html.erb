@@ -23,7 +23,7 @@
     <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
       user_path(user),
       method: :delete, remote: true,
-      data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+      data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Sure? -- #{user.lastname}')),
                toggle: "tooltip", title: "Delete user", placement: 'top'
         })
     %>

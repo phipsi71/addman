@@ -1,6 +1,15 @@
-@import "bootstrap_and_overrides.css.less";
 
-@dimcolor: lighten(@font-color-base, 50%);
+@import "twitter/bootstrap/variables";
+@import "twitter/bootstrap/mixins";
+
+
+@font-family-sans-serif:  Arial, 'sans-serif', Helvetica, sans-serif;
+@font-family-serif:       'Times New Roman', Times, serif;
+@font-family-monospace:   Consolas, 'Courier New', monospace;
+@font-family-base:        @font-family-sans-serif;
+@font-family-header:      'francois_oneregular', Trebuchet, Arial;
+
+@font-size-base:          12px;
 
 
 table.fadeactions tr > td.fadeactions {
@@ -18,16 +27,9 @@ table.fadeactions tr:hover > td.fadeactions {
 .fa, .glyphicon {
   color: dimgrey;
   &:hover {
-    color: #9f332a;
+    color: @brand-primary;
   }
 }
-
-
-.dim {
-  color: @dimcolor;
-  //.debug(@dimcolor);
-}
-
 
 .debug(@var) {
   &:after {
@@ -46,23 +48,39 @@ table.fadeactions tr:hover > td.fadeactions {
   margin-bottom: .5em;
 }
 
-.container {
-  padding-top: 8px;
-  //background-color: #f5f5f5;
-  //font-family: @font-family-sans-serif;
-  //font-size: @font-size-base;
-  //color: @font-color-base;
+//.container { padding-top: 4px; }
+
+.container-main {
+  .container; 
+  padding-top: 80px;
+  //padding-left: 0px;
+  //margin-left: 0px;
+
 }
 
-.page-header:nth-child(1) {
-  font-family: @font-family-header;
-  margin: 80px 0px 16px;
+
+
+.row {
+  margin: 0px;
+  padding: 0px;
 }
+
 
 .page-header {
-  font-family: @font-family-header;
-  margin: 20px 0px 16px;
+  margin: 10px 15px;
+  border-bottom: none; //1px solid #ccc;
+  h1, h2 {
+    font-family: @font-family-header;
+  }
+  .btn {
+    margin-top: 20px;
+    margin-bottom: 10px;    
+  }
 }
+
+
+
+
 
 .navbar-static-top {
   position: fixed;
@@ -96,14 +114,6 @@ li.ui-menu-item {
   font-size: 9pt;
 }
 
-/*
-.search {
-  position: absolute;
-  right: 40%;
-  top: 10px;
-  width: 20%;
-}
-*/
 
 .panel {
     margin-bottom: 10px;
@@ -115,20 +125,43 @@ li.ui-menu-item {
 }
 
 .panel-btn-group {
-    margin-left: 6px;
+    float: right;
+    margin-right: 6px;
 }
 
-
-
-#flash { margin-bottom: 10px; margin-top: 6px; }
-
-
-// .panel-default {
-//   border-color: #AAA;
-// }
 
 .iv { // font-color of filenames at bottom of views
   color: #eee;
-  margin: 0px;
-  padding: 0px;
+  // margin: 0px;
+  // padding: 0px;
 }
+
+
+.userInfo {
+  float: right;
+  margin-right: 20px;
+}
+
+.left {
+  float: left;
+}
+
+
+.btn > i {
+  padding-right: 3px;
+}
+
+#flash {
+  position: absolute;
+  top: 50px;
+}
+
+// design flash message with wildcards
+div[class^="alert-"], div[class*="alert-"] {
+    margin-left: 0px;
+    padding: 6px 15px;
+    //background-color: #fff;
+    //border: none;
+    //float: left;
+}
+

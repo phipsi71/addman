@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128153002) do
+ActiveRecord::Schema.define(version: 20150826081850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 20150128153002) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "lists_mailgroups", id: false, force: true do |t|
+    t.integer "mailgroup_id"
+    t.integer "list_id"
   end
 
   create_table "mailgroups", force: true do |t|
@@ -36,15 +41,12 @@ ActiveRecord::Schema.define(version: 20150128153002) do
 
   add_index "mailgroups", ["id"], name: "index_mailgroups_on_groupid", using: :btree
 
-  create_table "mailgroups_lists", force: true do |t|
-    t.integer "mailgroup_id"
-    t.integer "list_id"
-  end
-
   create_table "mailgroups_users", id: false, force: true do |t|
     t.integer "user_id"
     t.integer "mailgroup_id"
   end
+
+  add_index "mailgroups_users", ["user_id", "mailgroup_id"], name: "m_u", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "salutation"
@@ -68,11 +70,19 @@ ActiveRecord::Schema.define(version: 20150128153002) do
     t.string   "language"
     t.text     "memo"
     t.string   "prio"
-    t.string   "groupsbefore"
+    t.string   "groupsbefore",        limit: 512
     t.string   "created_by"
     t.string   "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "login",                           default: "", null: false
+    t.string   "encrypted_password",              default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   add_index "users", ["id"], name: "index_users_on_userid", using: :btree
