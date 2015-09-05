@@ -7,7 +7,7 @@
 </div>
 
 <table class="table table-striped fadeactions mailgroups">
-  <thead>
+  <thead class="grad">
     <tr>
       <td class="dim"><%= model_class.human_attribute_name(:id) %></td>
       <td><%= model_class.human_attribute_name(:name) %></td>
@@ -19,22 +19,25 @@
   <tbody>
 
     <%= render partial: 'mailgroups/mailgroup_append', collection: @user.mailgroups, as: :mailgroup %>
+    <div class="col-lg-12 iv"><%= "mailgroups/mailgroup_append" %></div>
 
   </tbody>
 </table>
-<!-- append  a MAILGROUP to the user -->
-<%= form_tag append_user_mailgroups_path(@user), method: :patch, remote: true do %>
-  <div class="input-group append col-lg-6">
 
-    <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
-    <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
+<% if current_user %>
+  <!-- append  a MAILGROUP to the user -->
+  <%= form_tag append_user_mailgroups_path(@user), method: :patch, remote: true do %>
+    <div class="input-group append col-lg-6">
 
-    <span class="input-group-btn append">
-        <button class="btn btn-default" type="submit">Append</button>
-    </span>
-  </div>
+      <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
+      <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
+
+      <span class="input-group-btn append">
+          <button class="btn btn-default" type="submit">Append</button>
+      </span>
+    </div>
+  <% end %>
 <% end %>
-
 
 
 

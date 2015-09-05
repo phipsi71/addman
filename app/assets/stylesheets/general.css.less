@@ -31,6 +31,7 @@ table.fadeactions tr:hover > td.fadeactions {
   }
 }
 
+
 .debug(@var) {
   &:after {
     content: "@{var}";
@@ -69,7 +70,7 @@ table.fadeactions tr:hover > td.fadeactions {
 .page-header {
   margin: 10px 15px;
   border-bottom: none; //1px solid #ccc;
-  h1, h2 {
+  h1, h2, h3, h4 {
     font-family: @font-family-header;
   }
   .btn {
@@ -84,6 +85,7 @@ table.fadeactions tr:hover > td.fadeactions {
 
 .navbar-static-top {
   position: fixed;
+  padding-top: 3px;
 }
 
 .navbar-nav li {
@@ -146,6 +148,9 @@ li.ui-menu-item {
   float: left;
 }
 
+.right {
+  float: right;
+}
 
 .btn > i {
   padding-right: 3px;
@@ -153,10 +158,15 @@ li.ui-menu-item {
 
 #flash {
   position: absolute;
-  top: 50px;
+  top: 70px;
 }
 
-// design flash message with wildcards
+#flashbottom {
+  position: absolute;
+  bottom: 15px; 
+}
+
+// design flash message with wildcards (alert-warning, alert-error, ...)
 div[class^="alert-"], div[class*="alert-"] {
     margin-left: 0px;
     padding: 6px 15px;
@@ -165,3 +175,16 @@ div[class^="alert-"], div[class*="alert-"] {
     //float: left;
 }
 
+.modal-title {
+  font-family: @font-family-header;
+}
+
+
+a.btn.btn-primary.wide {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+i.fa.fa-trash-o:hover {
+    color: #dd1000;
+}

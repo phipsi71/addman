@@ -4,33 +4,29 @@
 </div>
 
 <div class="panel panel-default panel-body col-lg-6">
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-
-  <div class="control-group row">
-    <%= f.label :login, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-3">
-      <%= f.text_field :login, autofocus: true, :class => 'form-control' %>
+    <div class="control-group row">
+      <%= f.label :login, :class => 'control-label col-lg-3' %>
+      <div class="controls col-lg-3">
+        <%= f.text_field :login, autofocus: true, :class => 'form-control' %>
+      </div>
+      <%= error_span(@user[:login]) %>
     </div>
-    <%= error_span(@user[:login]) %>
-  </div>
 
-  <div class="control-group row">
-    <%= f.label :password, :class => 'control-label col-lg-3' %>
-    <div class="controls col-lg-3">
-      <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
+    <div class="control-group row">
+      <%= f.label :password, :class => 'control-label col-lg-3' %>
+      <div class="controls col-lg-3">
+        <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
+      </div>
+      <%= error_span(@user[:password]) %>
     </div>
-    <%= error_span(@user[:password]) %>
-  </div>
 
 
-    <% if devise_mapping.rememberable? -%>
-      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-    <% end -%>
-
-  <%= f.button 'Update', class: 'btn btn-primary spacer-medium' do %>
-    <i class="glyphicon glyphicon-ok"></i> Sign in
-  <% end %>   
+    <%= f.button 'Signin', class: 'btn btn-primary spacer-small right' do %>
+      <i class="glyphicon glyphicon-ok"></i> Sign in
+    <% end %>   
 
   <% end %>
 

@@ -1,9 +1,10 @@
 class MailgroupsController < ApplicationController
-  before_action :authenticate, only: [:new, :edit, :create, :update, :destroy, :append, :remove, :remove_list]
-  before_action :set_mailgroup, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate, except: [:index, :search_for, :show, :search]
+  before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy]
 
   #include MailgroupsHelper
 
+  respond_to :html, :json, :js
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # GET /mailgroups
@@ -17,11 +18,12 @@ class MailgroupsController < ApplicationController
       #@users = User.order(:lastname).paginate(page: params[:page])
     end
 
-    respond_to do |format|
-        format.html # will call index.html.erb
-        format.json { render json: @mailgroups}
-        format.js   # will call index.js.coffee
-    end    
+    # respond_to do |format|
+    #     format.html # will call index.html.erb
+    #     format.json { render json: @mailgroups}
+    #     format.js   # will call index.js.coffee
+    # end   
+    respond_with (@mailgroups)
   end
 
 
@@ -93,7 +95,7 @@ class MailgroupsController < ApplicationController
   def destroy
     @mailgroup.destroy
     respond_to do |format|
-      #format.html { redirect_to mailgroups_url, notice: 'Mailgroup was successfully destroyed.' }
+      format.html { redirect_to mailgroups_url, notice: 'Mailgroup was successfully destroyed.' }
       format.json { head :no_content }
       format.js
     end
@@ -122,6 +124,7 @@ class MailgroupsController < ApplicationController
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   def remove
     # lets get the parameters from the url. we get them from the hash 'params'
+
     @user      = User.find(params[:user_id])
     @mailgroup = Mailgroup.find(params[:id])
 
@@ -132,6 +135,8 @@ class MailgroupsController < ApplicationController
       format.json { head :no_content }
       format.js
     end
+
+
   end
 
 

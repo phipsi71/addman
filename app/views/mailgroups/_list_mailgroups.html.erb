@@ -21,17 +21,18 @@
   </tbody>
 </table>
 
-<!-- append  a MAILGROUP to the list -->
-<%= form_tag append_list_mailgroups_path(@list), method: :patch, remote: true do %>
-  <div class="input-group append">
+<% if current_user %>
+  <!-- append  a MAILGROUP to the list -->
+  <%= form_tag append_list_mailgroups_path(@list), method: :patch, remote: true do %>
+    <div class="input-group append">
 
-    <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
-    <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
+      <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
+      <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
 
-    <span class="input-group-btn append">
-        <button class="btn btn-default" type="submit">Append</button>
-    </span>
-  </div>
+      <span class="input-group-btn append">
+          <button class="btn btn-default" type="submit">Append</button>
+      </span>
+    </div>
+  <% end %>
 <% end %>
-
 <p class='iv'><%= "#{__FILE__}" %></p>

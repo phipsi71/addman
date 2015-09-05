@@ -45,12 +45,14 @@ development:
 #   ssl: simple_tls
   # <<: *AUTHORIZATIONS
 
-# production:
-#   host: localhost
-#   port: 636
-#   attribute: cn
-#   base: ou=people,dc=test,dc=com
-#   admin_user: cn=admin,dc=test,dc=com
-#   admin_password: admin_password
-#   ssl: start_tls
+production:
+  host: ad.siak.ch
+  port: 389
+  attribute: sAMAccountName
+  base: OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
+#  admin_user: CN=ldaprails,OU=02_Services,OU=04_Administrative,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
+#  admin_password: DcSH1nymelke6ZFobGFK
+  admin_user: CN=LDAPQuery,OU=02_Services,OU=04_Administrative,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
+  admin_password: Service4SAKK
+  ssl: false
   # <<: *AUTHORIZATIONS

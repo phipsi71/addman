@@ -20,16 +20,17 @@
   </tbody>
 </table>
 
-<%= form_tag append_mailgroup_users_path(@mailgroup), method: :patch, remote: true do %>
-  <div class="input-group append col-md-6">
+<% if current_user %>
+  <%= form_tag append_mailgroup_users_path(@mailgroup), method: :patch, remote: true do %>
+    <div class="input-group append col-md-6">
 
-    <%= text_field_tag 'autousers', '', size: 50, class: 'form-control' %>
-    <%= hidden_field_tag 'user_id', 'dummy' %>
+      <%= text_field_tag 'autousers', '', size: 50, class: 'form-control' %>
+      <%= hidden_field_tag 'user_id', 'dummy' %>
 
-    <span class="input-group-btn append">
-        <button class="btn btn-default" type="submit">Append</button>
-    </span>
-  </div>
+      <span class="input-group-btn append">
+          <button class="btn btn-default" type="submit">Append</button>
+      </span>
+    </div>
+  <% end %>
 <% end %>
-
 <p class='iv'><%= "#{__FILE__}" %></p>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #include UsersHelper
-  before_action :authenticate, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate, except: [:index, :search_for, :show]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :print, :remove]
 
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
 
   def search_for
-    term = params[:term]
+    term = "#{params[:term]}:*"
     logger.debug("url parameters: #{term}")
     @users = SearchIndex.search_for(term).paginate(:page => params[:page])
   end

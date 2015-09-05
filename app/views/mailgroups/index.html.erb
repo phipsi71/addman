@@ -11,7 +11,7 @@
       <button class="btn btn-default" type="submit">Find</button>
     </span>
   </div>
-<% end %>
+<% end %> 
 
 <div>
   <%= will_paginate @mailgroup, renderer: BootstrapPagination::Rails %>
@@ -37,6 +37,6 @@
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_mailgroup_path,
-            :class => 'btn btn-primary spacer-medium' %>
-
+            :class => 'btn btn-primary spacer-medium' if current_user 
+%> 
 <p class='iv'><%= "#{__FILE__}" %></p>

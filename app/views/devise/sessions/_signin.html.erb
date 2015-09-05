@@ -1,0 +1,42 @@
+<div id="signin"  class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h2 class="modal-title"><i class="glyphicon glyphicon-log-in"></i>&nbsp ADDMAN Sign in</h2>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="modal-body">
+ 
+          <div class="control-group row">
+            <%= f.label :login, :class => 'control-label col-lg-3' %>
+            <div class="controls col-lg-3">
+              <%= f.text_field :login, autofocus: true, :class => 'form-control' %>
+            </div>
+          </div>
+
+          <div class="control-group row">
+            <%= f.label :password, :class => 'control-label col-lg-3' %>
+            <div class="controls col-lg-3">
+              <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
+            </div>
+          </div>
+
+      
+        </div>     
+        <div class="modal-footer">
+          <%= f.button 'Signin', class: 'btn btn-primary' do %>
+            <i class="glyphicon glyphicon-ok"></i> Sign in
+          <% end %>
+
+        </div>     
+
+      <% end %>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
