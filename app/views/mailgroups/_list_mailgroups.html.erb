@@ -1,7 +1,8 @@
 <%- model_class = Mailgroup -%>
-<div class="page-header">
-  <!--h2><%=t '.title', :default => model_class.model_name.human.titleize %></h2-->
-  <h2>Associated mailgroups</h2>
+
+<div class="page-header col-lg-12">
+  <span class="dim"></span><h2><%= content_tag(:i, nil, class: 'fa fa-users') %>
+  Assigned groups</h2>
 </div>
 
 <table class="table table-striped fadeactions mailgroups">

@@ -7,7 +7,7 @@
   <td><%= list.updated_at %></td>
   <td class="fadeactions col-md-2">
     <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_list_path(list),
-          data: {toggle: "tooltip", title: "Edit list", placement: 'top'})
+          data: {toggle: "tooltip", title: "Edit list", placement: 'top'}) if current_user
      %>
     <%= link_to(content_tag(:i, nil, class: 'fa fa-group' ), list_path(list),
           data: {toggle: "tooltip", title: "Groups", placement: 'top'})
@@ -17,7 +17,7 @@
       method: :delete, remote: true,
       data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
                toggle: "tooltip", title: "Delete list", placement: 'top'
-        })
+        })  if current_user
     %> 
   </td>
 <% end %>

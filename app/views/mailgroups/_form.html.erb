@@ -67,9 +67,9 @@
 
 
   <%= f.submit nil, :class => 'btn btn-primary spacer-medium' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            mailgroups_path, :class => 'btn btn-default spacer-medium' %>
+  <%= link_to t('.back', :default => t("helpers.links.cancel")),
+            :back, :class => 'btn btn-default spacer-medium' %>
 
 <% end %>
 
-<p class='iv'><%= "#{__FILE__}" %></p>
+<p class='iv'><%= "#{__FILE__}" %></p> 

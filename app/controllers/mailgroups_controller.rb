@@ -50,8 +50,8 @@ class MailgroupsController < ApplicationController
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # GET /mailgroups/1/edit
   def edit
-    @mailgroup.created_by = current_user.login
-    @mailgroup.created_at = Time.now    
+    # @mailgroup.created_by = current_user.login
+    # @mailgroup.created_at = Time.now    
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
