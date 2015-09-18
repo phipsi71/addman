@@ -51,22 +51,23 @@
   from api doc: link_to_if(condition, name, options = {}, html_options = {}, &block)
 -->
       <%= link_to_if( @mailgroup.users.count > 50, 
-                content_tag(:i, '', class: "fa fa-envelope-o") + " Group email", 
-                mailto_mailgroup_path(@mailgroup),
-                remote: true,
-                class: "btn btn-default",
-                data: {toggle: "tooltip", title: "Mailgroup has more than 50 users", placement: 'top' }) do 
-                  mail_to (if current_user.nil? then "Please add email address" else current_user.login end), 
-                  content_tag(:i, '', class: "fa fa-envelope-o") + " Group email",
-                  { bcc: @mailgroup.users.where('email is not null').map(&:email).join(", "), class: "btn btn-default" }
-                end
+                  content_tag(:i, '', class: "fa fa-envelope-o") + " Group email", 
+                  mailto_mailgroup_path(@mailgroup.id),
+                  remote: true,
+                  class: "btn btn-default",
+                  data: {toggle: "tooltip", title: "Mailgroup has more than 50 users", placement: 'top' }) do 
+                    mail_to (if current_user.nil? then "Please add email address" else current_user.login end), 
+                    content_tag(:i, '', class: "fa fa-envelope-o") + " Group email", 
+                    { bcc: @mailgroup.users.where('email is not null').map(&:email).join(", "), class: "btn btn-default close-modal" }
+                  end
        %> 
 
 
       <%= link_to content_tag(:i, '', class: "fa fa-print") + "Print",
-          print_mailgroup_path(@mailgroup),
-          target: "_blank",
-          class: "btn btn-default"
+                  print_mailgroup_path(@mailgroup),
+                  target: "_blank",
+                  class: "btn btn-default"
+
       %>
 
 

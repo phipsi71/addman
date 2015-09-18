@@ -66,7 +66,12 @@
   </div>
 
 
-  <%= f.submit nil, class: 'btn btn-primary spacer-medium' %>
+  <!-- %= f.submit '', class: 'btn btn-primary spacer-medium' % -->
+  <%= f.button 'Update', class: 'btn btn-primary spacer-medium' do %>
+    <i class="glyphicon glyphicon-ok"></i> Save
+  <% end %> 
+
+
   <%= link_to t('.back', default: t("helpers.links.cancel")),
             :back, class: 'btn btn-default spacer-medium' %>
 
