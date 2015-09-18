@@ -7,28 +7,52 @@ class SessionsController < Devise::SessionsController
 
   respond_to :js
 
+
+  def index
+    record_history
+  end  
+
   def new
+    logger.debug "SessionsController.new , before super"
     super
+    logger.debug "SessionsController.new , after  super"
   end
 
   def create
+    logger.debug "SessionsController.create , before super"
     super
+    logger.debug "SessionsController.create , after  super"
   end
 
   def destroy
+    logger.debug "SessionsController.destroy , before super"
     super
+    logger.debug "SessionsController.destroy , after  super"
   end
 
   def failure
-    logger.debug "failure devise, philipp!"
+    logger.debug "failure in SessionsController"
   end
 
 
-  # protected
+protected
+
+
+  def record_history
+    session[:history] ||= []
+    session[:history].push request.url
+    session[:history] = session[:history].last(20) # limit the size to 10
+  end
+
+  def back
+    session[:history].pop
+  end
+
 
   # def set_csrf_header
   #    response.headers['X-CSRF-Token'] = form_authenticity_token
   # end
+
 
 
 end

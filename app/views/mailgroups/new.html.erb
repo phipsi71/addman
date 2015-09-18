@@ -1,7 +1,7 @@
 <%- model_class = Mailgroup -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+  <h1><%=t '.title', default: [:'helpers.titles.new', 'New %{model}'], model: model_class.model_name.human.titleize %></h1>
 </div>
-<%= render :partial => 'form' %>
+<%= render partial: 'form' %>
 
-<p class='iv'><%= "#{__FILE__}" %></p>
+<%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

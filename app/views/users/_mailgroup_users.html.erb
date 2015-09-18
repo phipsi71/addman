@@ -1,6 +1,6 @@
 <%- model_class = User -%>
 <div class="page-header col-lg-12">
-  <span class="dim"></span><h2><%= content_tag(:i, nil, class: 'fa fa-user') %>
+  <span class="dim"></span><h2><%= content_tag(:i, nil, class: 'fa fa-user') + "  #{@mailgroup.users.count}"  %>
   Assigned users</h2>
 </div>
 
@@ -10,13 +10,14 @@
       <td class="dim"><%= model_class.human_attribute_name(:id) %></td>
       <td><%= model_class.human_attribute_name(:lastname) %></td>
       <td><%= model_class.human_attribute_name(:firstname) %></td>
+      <td><%= model_class.human_attribute_name(:function) %></td>
       <td><%= model_class.human_attribute_name(:company) %></td>
       <td><%= model_class.human_attribute_name(:email) %></td>
       <td><%=t '.actions', :default => t("helpers.actions") %></td>
     </tr>
   </thead>
   <tbody>
-    <%= render partial: 'users/user_append', collection: @mailgroup.users, as: :user %>
+      <%= render partial: 'users/user', collection: @mailgroup.users.order(:lastname, :firstname, :company), as: :user %> 
   </tbody>
 </table>
 
@@ -33,4 +34,5 @@
     </div>
   <% end %>
 <% end %>
-<p class='iv'><%= "#{__FILE__}" %></p>
+
+<%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

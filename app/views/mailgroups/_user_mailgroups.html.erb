@@ -1,9 +1,8 @@
 <%- model_class = Mailgroup -%>
-
-
 <div class="page-header col-lg-12">
-  <span class="dim"></span><h2><%= content_tag(:i, nil, class: 'fa fa-users') %>
-  Assigned groups</h2>
+  <span class="dim"></span>
+  <h2><%= content_tag(:i, nil, class: 'fa fa-users') + " #{@user.mailgroups.count}" %>
+          assigned groups</h2>
 </div>
 
 <table class="table table-striped fadeactions mailgroups">
@@ -12,14 +11,13 @@
       <td class="dim"><%= model_class.human_attribute_name(:id) %></td>
       <td><%= model_class.human_attribute_name(:name) %></td>
       <td><%= model_class.human_attribute_name(:trialcode) %></td>
-      <td><%= model_class.human_attribute_name(:importance) %></td>
-      <td><%=t '.actions', :default => t("helpers.actions") %></td>
+      <td># Users</td>
+      <td><%=t '.actions', default: t("helpers.actions") %></td>
     </tr>
   </thead>
   <tbody>
 
-    <%= render partial: 'mailgroups/mailgroup_append', collection: @user.mailgroups, as: :mailgroup %>
-    <div class="col-lg-12 iv"><%= "mailgroups/mailgroup_append" %></div>
+    <%= render partial: "mailgroups/mailgroup", collection: @user.mailgroups.order(:name), as: :mailgroup %>
 
   </tbody>
 </table>
@@ -39,7 +37,5 @@
   <% end %>
 <% end %>
 
-
-
-<p class='iv'><%= "#{__FILE__}" %></p>
-<!-- <%= javascript_include_tag params[:controller] %>  -->
+<%= content_tag(:div, "partial mailgroups/mailgroup" , class: 'iv col-lg-12') %>
+<%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

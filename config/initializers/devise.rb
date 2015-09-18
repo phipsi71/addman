@@ -1,7 +1,9 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  # ==> LDAP Configuration 
+  # ==> LDAP Configuration
+
+
   # config.ldap_logger = true
   # config.ldap_create_user = false
   # config.ldap_update_password = true
@@ -10,6 +12,7 @@ Devise.setup do |config|
   # config.ldap_check_attributes = false
   # config.ldap_use_admin_to_bind = false
   # config.ldap_ad_group_check = false
+  # config.ldap_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{login}" }
   
   # ==> LDAP Configuration 
   # config.ldap_logger = true

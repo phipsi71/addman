@@ -1,27 +1,29 @@
 <%- model_class = List -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <table class="table table-striped fadeactions">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th># Groups</th>
+      <th># Users</th>
+      <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
 
-    <%= render @lists %>
-    <p class='iv'>_list.html.erb</p>
+  <%= content_tag(:div, 'render @lists (_list.html.erb)' , class: 'iv col-lg-12') %>
+  <%= render @lists %>
+
 
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', default: t("helpers.links.new")),
             new_list_path,
-            :class => 'btn btn-primary spacer-medium' %>
+            class: 'btn btn-primary spacer-medium' if current_user %>
 
 
-<p class='iv'><%= "#{__FILE__}" %></p>
+<%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

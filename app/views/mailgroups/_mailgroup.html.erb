@@ -4,28 +4,42 @@
   <td class="dim"><%= mailgroup.id %></td>
   <td><%= mailgroup.name %></td>
   <!-- td><%= mailgroup.memo %></td -->
-  <td><%= mailgroup.trialcode %></td>
-  <td><%= mailgroup.importance %></td>
+  <td><%= mailgroup.trialcode %></users>
+  <td><%= mailgroup.users.count %></td>
   <td class="fadeactions col-md-2">
+
+
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-group' ), mailgroup_path(mailgroup),
+          data: {toggle: "tooltip", title: "Group details and members", placement: 'top'})
+     %>
+
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-tag'), 
+          "http://sakkreports/reportserver?%2fSERVICES%2fADDRESSES%2fR+Mailgroup+Labels&rs:Command=Render&rs:Format=PDF&rc%3ALinkTarget=_blank&GroupId=#{mailgroup.id}",
+          data: {toggle: "tooltip", title: "Print badges for group members", placement: 'top'},
+          target: '_blank' 
+        )
+     %>
+
+
     <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_mailgroup_path(mailgroup),
           data: {toggle: "tooltip", title: "Edit mailgroup", placement: 'top'}) if current_user
      %>
-    <%= link_to(content_tag(:i, nil, class: 'fa fa-group' ), mailgroup_path(mailgroup),
-          data: {toggle: "tooltip", title: "Users", placement: 'top'})
+
+    <%= link_to content_tag(:i, nil, class: 'fa fa-minus-square-o'),
+                remove_user_mailgroup_path(@user, mailgroup),
+                method: :delete, remote: true,
+                data: { confirm: "Sure to remove #{mailgroup.name} from #{@user.firstname} #{@user.lastname}?",
+                          title: "Please confirm",
+                         toggle: "tooltip", title: "Remove user from mailgroup", placement: 'top'
+                      } if defined? @user and current_user
      %>
-   <%= link_to(
-          content_tag(:i, nil, class: 'fa fa-print'), 
-          "http://sakkreports/reportserver?%2fSERVICES%2fADDRESSES%2fR+Mailgroup+Labels&rs:Command=Render&rs:Format=PDF&rc%3ALinkTarget=_blank&GroupId=#{mailgroup.id}",
-          data: {toggle: "tooltip", title: "Print labels", placement: 'top'},
-          :target => '_blank' 
-        )
-     %>
+
     <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
           mailgroup_path(mailgroup),
           method: :delete, remote: true,
-          data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Sure? -- #{mailgroup.name}')),
+          data: { confirm: "Sure to delete #{mailgroup.name}?'",
                    toggle: "tooltip", title: "Delete mailgroup", placement: 'top'
-        }) if current_user
-    %> 
+        }) if !defined? @user and current_user
+    %>
   </td>
 <% end %>

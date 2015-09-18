@@ -1,6 +1,6 @@
 class MailgroupsController < ApplicationController
-  before_action :authenticate, except: [:index, :search_for, :show, :search]
-  before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy]
+  before_action :authenticate, except: [:index, :search_for, :show, :search, :mailto, :print]
+  before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove]
 
   #include MailgroupsHelper
 
@@ -14,7 +14,7 @@ class MailgroupsController < ApplicationController
       @mailgroups = Mailgroup.where("name ILIKE ?", "%#{params[:term]}%").first(10)
       #@users = SearchIndex.search_for(params[:term])
     else
-      @mailgroups = Mailgroup.order(:id).paginate(page: params[:page])
+      @mailgroups = Mailgroup.order(:name).paginate(page: params[:page])
       #@users = User.order(:lastname).paginate(page: params[:page])
     end
 
@@ -126,8 +126,6 @@ class MailgroupsController < ApplicationController
     # lets get the parameters from the url. we get them from the hash 'params'
 
     @user      = User.find(params[:user_id])
-    @mailgroup = Mailgroup.find(params[:id])
-
     @user.mailgroups.delete(@mailgroup)
 
     respond_to do |format|
@@ -144,9 +142,7 @@ class MailgroupsController < ApplicationController
   def remove_list
     # remove a mailgroup from list
     # lets get the parameters from the url. we get them from the hash 'params'
-    @list      = List.find(params[:list_id])
-    @mailgroup = Mailgroup.find(params[:id])
-
+    @list = List.find(params[:list_id])
     @list.mailgroups.delete(@mailgroup)
 
     respond_to do |format|
@@ -168,6 +164,20 @@ class MailgroupsController < ApplicationController
     end
   end
 
+
+  def mailto
+    respond_to do |format|
+        format.js
+    end
+  end
+
+
+  def print
+    respond_to do |format|
+        format.html
+        format.js
+    end    
+  end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 

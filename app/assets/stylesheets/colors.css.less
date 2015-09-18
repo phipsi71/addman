@@ -18,12 +18,15 @@
 
 
 .btn-primary {
-  .button-variant(#fff, lighten(@brand-primary,20%), lighten(@brand-primary, 10%));
+  .button-variant(#fff, lighten(@brand-primary, 20%), lighten(@brand-primary, 10%));
  }
 
- .btn-danger {
-  .button-variant(#fff, lighten(@brand-danger,20%), lighten(@brand-danger, 18%));
- }
+.btn-danger {
+  .button-variant(#333, #fff, lighten(@brand-danger, 18%));
+  &:hover{
+    background-color: lighten(@brand-danger, 30%);
+  }
+}
 
 //lighten(@button-primary-orig,33%), lighten(@button-primary-orig,33%)
 
@@ -41,3 +44,4 @@ thead {
   }
 }
 
+ 

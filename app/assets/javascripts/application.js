@@ -9,16 +9,20 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//	
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require turbolinks
+//
+//
+//= require twitter/bootstrap/rails/confirm
 //= require users
 //= require mailgroups
 //= require lists
 //= require_self
 //= require_tree .
 
+ 

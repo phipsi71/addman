@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #include UsersHelper
-  before_action :authenticate, except: [:index, :search_for, :show]
+  before_action :authenticate, except: [:index, :search_for, :show, :sample]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :print, :remove]
 
 
@@ -101,6 +101,15 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
       format.js
+    end
+  end
+
+  def sample
+    allids = User.pluck(:id)
+    @user  = User.find(allids.sample)
+    respond_to do |format|
+      format.html { render :show } 
+      format.json { render json: @user }
     end
   end
 

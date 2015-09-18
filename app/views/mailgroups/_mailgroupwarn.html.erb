@@ -1,0 +1,34 @@
+<div id="mailgroupwarn"  class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h2 class="modal-title"><i class="glyphicon glyphicon-log-in"></i>&nbsp Please note</h2>
+      </div>
+
+        <div class="modal-body">
+ 
+          This group contains more than 50 users, which is not convenient for several reasons to send via bcc in Outlook.
+          You can now close the dialog or open a ticket. <br/>
+          If opening a ticket, please indicate the <strong>groupname(s)</strong> you wish to include in the mailing list. You'll get notified when it's ready. The list will then appear under the menu 'Lists'.
+      
+        </div>     
+        <div class="modal-footer">
+
+          <%= link_to content_tag(:i, '', class: "fa fa-ticket") + "Open ticket",
+                      "https://ticketing.sakk.ch/otrs/customer.pl",
+                      target: '_blank',
+                      class: 'btn btn-default' 
+          %>
+          <%= link_to content_tag(:i, '', class: "fa fa-close") + "Close",
+                      "",
+                      class: 'btn btn-default',
+                      data: { dismiss: 'modal'}
+          %>
+
+        </div><!-- /.modal-footer -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

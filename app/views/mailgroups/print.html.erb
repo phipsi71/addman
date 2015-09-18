@@ -1,0 +1,37 @@
+<%- model_class = Mailgroup -%>
+
+<div class="page-header col-lg-12">
+  <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
+  <h1><%= content_tag(:i, nil, class: 'fa print') %>
+    <span class="dim"></span><%= "#{@mailgroup.name}" %> 
+  </h1>
+</div>
+
+
+<ul class="print-options">
+	<li>
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-tag') + "Print badges", 
+          "http://sakkreports.siak.ch/ReportServer?%2fSERVICES%2fADDRESSES%2fR+Mailgroup+Badge&rs:Command=Render&rc%3ALinkTarget=_blank&GroupId=#{@mailgroup.id}",
+          data: {toggle: "tooltip", title: "Print badges for group members", placement: 'right'},
+          target: '_blank',
+          class: 'btn btn-default fixed-width'
+        )
+     %>
+  </li>
+  <li>
+    <%= link_to content_tag(:i, nil, class: 'fa fa-print') + "Print labels",
+    						"http://sakkreports/reportserver?%2fSERVICES%2fADDRESSES%2fR+User+Labels_All&GroupId=#{@mailgroup.id}&rs:Command=Render&rs:Format=PDF",
+          			data: {toggle: "tooltip", title: "Print labels for group members", placement: 'right'},
+          			class: 'btn btn-default fixed-width'
+     %>
+  </li>
+  <li>
+    <%= link_to content_tag(:i, nil, class: 'fa fa-check-circle-o') + "Attendance list",
+          "http://sakkreports.siak.ch/ReportServer/SERVICES%2fADDRESSES%2fWord+Attendance+List&rs:Command=Render&rs:Format=PDF",
+          data: {toggle: "tooltip", title: "Print labels for group members", placement: 'right'},
+          class: 'btn btn-default fixed-width'
+     %>
+
+
+  </li>
+</ul>

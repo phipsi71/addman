@@ -11,8 +11,8 @@
       <th class="dim"><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:trialcode) %></th>
-      <th><%= model_class.human_attribute_name(:importance) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th># Users </th>
+      <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -27,7 +27,7 @@
   <%= form_tag append_list_mailgroups_path(@list), method: :patch, remote: true do %>
     <div class="input-group append col-lg-6">
 
-      <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
+      <%= text_field_tag   'autogroups',   '', size: 75, class: 'form-control' %>
       <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
 
       <span class="input-group-btn append">
@@ -36,4 +36,5 @@
     </div>
   <% end %>
 <% end %>
-<p class='iv'><%= "#{__FILE__}" %></p>
+
+<%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

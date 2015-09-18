@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   #     :sessions => "sessions"
   # }
 
+  get 'sample_user', to: 'users#sample'     # it's not in resources since we don't have an id when selecting
 
   resources :users do
 
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
           get   'search_for', to: 'users#search_for',  as: 'search'
         end
 
-        get   'print', to: 'users#print', as: 'print', on: :member  # member is for passing :id instead of :user_id
+        get   'print',  to: 'users#print',  as: 'print',  on: :member  # member is for passing :id instead of :user_id
 
         resources :mailgroups do      
           patch 'append',  to: 'users#append',  on: :collection    # append a MAILGROUP to a user
@@ -32,33 +33,37 @@ Rails.application.routes.draw do
 
   resources :mailgroups do
 
-        #collection do
-          #patch 'append_to/:user_id',   to: 'mailgroups#append_to', as: 'append'   # FUNKTIONIERT!!!!
-          #get   'search', to: 'mailgroups#search',  as: 'search'
-        #end
+    member do
+      get 'mailto'
+      get 'print'
+    end
 
-        collection do
-          get   'search_for', to: 'mailgroups#search_for',  as: 'search'
-        end
+    collection do
+      get   'search_for', to: 'mailgroups#search_for',  as: 'search'
+    end
 
 
-        resources :users do
-          patch 'append',  to: 'mailgroups#append', on: :collection   # append a USER to a mailgroup
-          member do
-            delete 'remove',    to: 'users#remove'    # remove USER from a mailgroup
-          end
-        end
 
+    resources :users do
+      patch 'append',  to: 'mailgroups#append', on: :collection   # append a USER to a mailgroup
+      member do
+        delete 'remove',    to: 'users#remove'    # remove USER from a mailgroup
       end
+    end
 
-      resources :lists do
+  end
 
-        resources :mailgroups do      
-          patch 'append',  to: 'lists#append',  on: :collection    # append a MAILGROUP to a user
-          member do
-            delete 'remove',    to: 'mailgroups#remove_list'
-          end
-        end
+
+
+
+  resources :lists do
+
+    resources :mailgroups do      
+      patch 'append',  to: 'lists#append',  on: :collection    # append a MAILGROUP to a user
+      member do
+        delete 'remove',  to: 'mailgroups#remove_list'
+      end
+    end
 
   end
 

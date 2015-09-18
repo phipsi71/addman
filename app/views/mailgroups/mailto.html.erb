@@ -1,0 +1,13 @@
+<%- model_class = Mailgroup -%>
+
+<div class="page-header col-lg-12">
+  <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
+  <h1><%= content_tag(:i, nil, class: 'fa fa-users') %>
+    <span class="dim"></span><%= "#{@mailgroup.name}" %> 
+  </h1>
+
+</div>
+
+
+Email
+<%= @mailgroup.users.where('email is not null').map(&:email).join(", ") %>

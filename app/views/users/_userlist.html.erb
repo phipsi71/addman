@@ -1,12 +1,16 @@
-<!-- partial _userlist.html.erb -->
+<!-- partial _userlist.html.erb 
+
+    used ALSO to present SEARCH RESULTS  -->
+
 <%- model_class = User -%>
 
-<div class="col-lg-8">
+
+<div class="row col-lg-8">
 <%= will_paginate @user, renderer: BootstrapPagination::Rails %>
 </div>
 
 
-<div class="col-lg-12">
+<div class="row col-lg-12">
 <table class="table table-striped fadeactions">
   <thead class="grad">
     <tr>
@@ -17,34 +21,34 @@
       <th><%= model_class.human_attribute_name(:company) %></th>
       <th><%= model_class.human_attribute_name(:city) %></th>
 
-      <th class="dim"><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th class="dim"><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-
-      <%= render @users, layout: false %>  <!--  loop is created with content_tag_for in partial -->
+    
+      <!--  loop is created with content_tag_for in partial -->
+      <%= render @users.order(:lastname, :firstname), layout: false %>  
 
   </tbody>
 </table>
 </div>
 
 
-<div class="col-lg-8">
+<div class="row col-lg-8">
 <%= will_paginate @user, renderer: BootstrapPagination::Rails %>
 </div>
-<div class="col-lg-4"></div>
+<!-- <div class="col-lg-3"></div> -->
 
-<div class="col-lg-12 row">
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<div class="row col-lg-12">
+<%= link_to t('.new', default: t("helpers.links.new")),
             new_user_path,
-            :class => 'btn btn-primary' if current_user %>
+            class: 'btn btn-primary' if current_user %>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
+<%= link_to t('.back', default: t("helpers.links.back")),
             :back,
-            :class => 'btn btn-default' %>
-
-
-
-<p class='iv'><%= "#{__FILE__}" %></p>
+            class: 'btn btn-default' %>
 
 </div>
+
+
+<%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>
