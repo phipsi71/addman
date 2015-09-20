@@ -1,1 +1,0 @@
-json.extract! @user, :id, :UserId, :Title, :Firstname, :Lastname
