@@ -32,16 +32,6 @@
 
 </div>
 
-<div class="row col-lg-12">
-<%= link_to t('.new', default: t("helpers.links.new")),
-            new_mailgroup_path,
-            class: 'btn btn-primary' if current_user %>
-
-<%= link_to t('.back', default: t("helpers.links.back")),
-            :back,
-            class: 'btn btn-default' %>
-
-</div>
 
 <div class="row col-lg-8">
 <%= will_paginate @mailgroup, renderer: BootstrapPagination::Rails %>

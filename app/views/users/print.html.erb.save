@@ -1,0 +1,25 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.print', 'Print label'], 
+  									 :model => model_class.model_name.human.titleize %>
+  </h1>
+</div>
+
+<!-- to_s (to string) is needed because of nil objects -->
+<%= content_tag(:p, @uattr['salutation'].to_s + ' ' + @uattr['title'].to_s) %>
+<%= content_tag(:p, @uattr['firstname'].to_s + ' ' + @uattr['lastname'].to_s) %>
+<%= content_tag(:p, @uattr['company'].to_s ) %>
+<%= content_tag(:p, @uattr['appendix'].to_s) %>
+<%= content_tag(:p, @uattr['street'].to_s) %>
+<%= content_tag(:p, @uattr['zip'].to_s + ' ' + @uattr['city'].to_s) %>
+
+
+<%= link_to t('.print', :default => t("helpers.links.print")),
+            print_user_path,
+            :class => 'btn btn-primary', remote: true %>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+            :back,
+            :class => 'btn btn-default' %>
+
+<p class='iv'><%= "#{__FILE__}" %></p>

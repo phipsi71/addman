@@ -22,7 +22,8 @@
 //= require users
 //= require mailgroups
 //= require lists
+//= require ../../../vendor/assets/javascripts/oLoader
+//
 //= require_self
 //= require_tree .
 
- 

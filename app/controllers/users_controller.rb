@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #include UsersHelper
-  before_action :authenticate, except: [:index, :search_for, :show, :sample]
+  before_action :authenticate, except: [:index, :search_for, :show, :sample, :print]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :print, :remove]
 
 

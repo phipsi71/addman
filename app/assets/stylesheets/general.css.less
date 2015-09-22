@@ -12,26 +12,6 @@
 @font-size-base:          12px;
 
 
-table.fadeactions tr > td.fadeactions {
-  visibility: hidden;
-  font-size: 20px;
-  line-height: .66em;
-  letter-spacing: 0px;
-}
-
-table.fadeactions tr:hover > td.fadeactions {
-  visibility: visible;
-}
-
-
-.fa, .glyphicon {
-  color: dimgrey;
-  &:hover {
-    color: @brand-primary; 
-  }
-}
-
-
 .control-group.row {
   margin-bottom: .5em;
 }
@@ -46,13 +26,10 @@ table.fadeactions tr:hover > td.fadeactions {
 
 }
 
-
-
 .row {
   margin: 0px;
   padding: 0px;
 }
-
 
 .page-header {
   margin: 10px 15px;
@@ -65,10 +42,6 @@ table.fadeactions tr:hover > td.fadeactions {
     margin-bottom: 10px;    
   }
 }
-
-
-
-
 
 .navbar-static-top {
   position: fixed;
@@ -97,7 +70,6 @@ table.fadeactions tr:hover > td.fadeactions {
 }
 
 
-
 li.ui-menu-item {
   font-family: @font-family-base;
   font-size: 9pt;
@@ -119,12 +91,32 @@ li.ui-menu-item {
 }
 
 
+table.fadeactions tr > td.fadeactions {
+  visibility: hidden;
+  font-size: 20px;
+  line-height: .66em;
+  letter-spacing: 0px;
+}
+
+table.fadeactions tr:hover > td.fadeactions {
+  visibility: visible;
+}
+
+
+.fa, .glyphicon {
+  color: dimgrey;
+  &:hover {
+    color: @brand-primary; 
+  }
+}
+
+
+
 .iv { // font-color of filenames at bottom of views
   color: #eee;
   // margin: 0px;
   // padding: 0px;
 }
-
 
 .userInfo {
   float: right;
@@ -176,8 +168,6 @@ a.btn.btn-primary.wide {
 i.fa.fa-trash-o:hover {
     color: #dd1000;
 }
-
-
 
 .debug(@var) {
   &:after {

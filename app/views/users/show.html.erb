@@ -11,9 +11,9 @@
   </h1>
 </div>
 
-<div class="panel panel-default panel-body col-lg-9">
+<div class="panel panel-default panel-body col-lg-12">
   <div class="row">
-    <dl class="dl-horizontal col-lg-5">
+    <dl class="dl-horizontal col-lg-6">
     <dt class="dim"><strong ><%= model_class.human_attribute_name(:id) %>:</strong></dt>
     <dd class="dim"><%= @user.id %></dd>
     <dt><strong><%= model_class.human_attribute_name(:salutation) %>:</strong></dt>
@@ -39,7 +39,7 @@
     <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
     <dd><%= @user.country %></dd>
     </dl>
-    <dl class="dl-horizontal col-lg-5">
+    <dl class="dl-horizontal col-lg-6">
     <dt><strong><%= model_class.human_attribute_name(:fax) %>:</strong></dt>
     <dd><%= @user.fax %></dd>
     <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
