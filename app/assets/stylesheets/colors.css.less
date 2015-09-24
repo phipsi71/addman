@@ -23,7 +23,7 @@
 
 .btn-danger {
   .button-variant(#333, #fff, lighten(@brand-danger, 18%));
-  &:hover{
+  &:hover {
     background-color: lighten(@brand-danger, 30%);
   }
 }
@@ -44,4 +44,17 @@ thead {
   }
 }
 
- 
+
+.navbar-default .navbar-nav .active {
+  background-color: #fff;
+  border-top: 5px solid #e3002b;
+  border-bottom: 5px solid #fff;
+  z-index: 50;
+  color: #000;
+  .fa {
+      color: #e3002b;
+  }
+  &:hover{
+    background-color: #fff;
+  }
+}

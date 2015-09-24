@@ -46,14 +46,14 @@ development:
 #   ssl: simple_tls
   # <<: *AUTHORIZATIONS
 
-# production:
-#   host: 192.9.200.29   #ad.siak.ch  =  switches between sakkadds01 and sakkdc2008r2
-#   port: 389
-#   attribute: sAMAccountName
-#   base: OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
-# #  admin_user: CN=ldaprails,OU=02_Services,OU=04_Administrative,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
-# #  admin_password: DcSH1nymelke6ZFobGFK
-#   admin_user: CN=LDAPQuery,OU=02_Services,OU=04_Administrative,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
-#   admin_password: Service4SAKK
-#   ssl: false
-#   # <<: *AUTHORIZATIONS
+production:
+  host: 192.9.200.29   #ad.siak.ch  =  switches between sakkadds01 and sakkdc2008r2
+  port: 389
+  attribute: sAMAccountName
+  base: OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
+#  admin_user: CN=ldaprails,OU=02_Services,OU=04_Administrative,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
+#  admin_password: DcSH1nymelke6ZFobGFK
+  admin_user: CN=LDAPQuery,OU=02_Services,OU=04_Administrative,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
+  admin_password: Service4SAKK
+  ssl: false
+  # <<: *AUTHORIZATIONS
