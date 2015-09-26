@@ -37,5 +37,6 @@ end
 
 
 def active_page(path)
-  "active" if current_page?(path)
+  path[0]=''  # cut first char
+  "active" if request.fullpath.split(%r{[?/]})[1] == path
 end
