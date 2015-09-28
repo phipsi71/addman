@@ -36,11 +36,11 @@ end
 
 
 
-def active_page(path)
-  path[0]=''  # cut first char¨of received path variable
-  if request.fullpath.split(%r{[?/]})[1] == path 
-    "active" 
-  else
-    "inactive"
-  end
-end
+# def active_page(path)
+#   path[0]=''  # cut first char¨of received path variable
+#   if request.fullpath.split(%r{[?/]})[1] == path 
+#     "active" 
+#   else
+#     "inactive"
+#   end
+# end
