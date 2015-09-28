@@ -1,7 +1,10 @@
 <%- model_class = List -%>
 <div class="page-header col-lg-12">
   <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
-  <h1><%= content_tag(:i, nil, class: 'glyphicon glyphicon-list') %><%= " #{@list.name}" %></h1>
+  <h1><%= content_tag(:i, nil, class: 'glyphicon glyphicon-list') %>
+    <span class="dim"></span><%= "#{@list.name}" %> 
+  </h1>
+
 </div>
 
 <!-- dl class="dl-horizontal">
@@ -9,7 +12,7 @@
   <dd><%= @list.name %></dd>
 </dl -->
 
- <div class="panel panel-default panel-body col-lg-5">
+ <div class="panel panel-default panel-body col-lg-6">
     <dl class="dl-horizontal">
       <dt class="dim"><strong ><%= model_class.human_attribute_name(:id) %>:</strong></dt>
       <dd class="dim"><%= @list.id %></dd>
@@ -37,17 +40,7 @@
 
   </div>
 
-<div class="col-lg-7"></div>
 
-<div class="row">
-<div class="col-lg-9">
-  <span class='iv'><%= "#{__FILE__}" %></span>
-</div>
-<div class="col-lg-3"></div>
-</div>
-
-<div class="row col-lg-12">
-  <%= render partial: "mailgroups/list_mailgroups" %>
-</div>
+<%= render partial: "mailgroups/list_mailgroups" %>
 
 <%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

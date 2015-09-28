@@ -1,0 +1,40 @@
+<%- model_class = List -%>
+
+<div class="row page-header col-lg-3">
+  <h1>Lists</h1>
+</div>
+
+
+<div class="col-lg-3 spacer-button">
+</div>
+
+<div class="col-lg-4 spacer-button">
+</div>
+
+<div class="col-lg-12 row">
+</div>
+
+<table class="table table-striped fadeactions">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th># Groups</th>
+      <th># Users</th>
+      <th><%=t '.actions', default: t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- %= content_tag(:div, 'render @lists (_list.html.erb)' , class: 'iv col-lg-12') %  -->
+    <%= render @lists %>
+
+  </tbody>
+</table>
+
+<%= link_to t('.new', default: t("helpers.links.new")),
+            new_list_path,
+            class: 'btn btn-primary spacer-medium' if current_user %>
+
+
+<%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

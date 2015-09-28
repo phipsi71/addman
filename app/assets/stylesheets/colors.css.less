@@ -37,24 +37,30 @@
 }
 
 thead {
-  background-color: #B6CAD5;
+  background-color: lighten(@brand-primary,38%);
   color: #000;
+  border-top: 3px solid @brand-primary;
   th {
       font-weight: normal;  
   }
 }
 
 
-.navbar-default .navbar-nav .active {
-  background-color: #fff;
-  border-top: 5px solid #e3002b;
-  border-bottom: 5px solid #fff;
-  z-index: 50;
-  color: #000;
-  .fa {
-      color: #e3002b;
+.navbar-default .navbar-nav {
+  .inactive {
+    border-top: 5px solid transparent ;
   }
-  &:hover{
+  .active {
     background-color: #fff;
+    border-top: 5px solid #e3002b;
+    border-bottom: 5px solid #fff;
+    z-index: 50;
+    color: #000;
+    .fa {
+        color: #e3002b;
+    }
+    &:hover{
+      background-color: #fff;
+    }
   }
 }

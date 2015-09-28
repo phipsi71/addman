@@ -1,29 +1,35 @@
 <%- model_class = List -%>
-<div class="page-header">
-  <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
+
+
+<div class="row page-header col-lg-3">
+  <h1>Lists</h1>
 </div>
-<table class="table table-striped fadeactions">
+
+
+<table class="table table-striped fadeactions col-lg-12">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th># Groups</th>
       <th># Users</th>
+      <th></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
 
-  <%= content_tag(:div, 'render @lists (_list.html.erb)' , class: 'iv col-lg-12') %>
-  <%= render @lists %>
-
+    <%= render @lists %>
 
   </tbody>
 </table>
 
-<%= link_to t('.new', default: t("helpers.links.new")),
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
             new_list_path,
-            class: 'btn btn-primary spacer-medium' if current_user %>
+            :class => 'btn btn-primary spacer-medium' if current_user
+%>
 
 
+<%= content_tag(:div, "partial lists/_list" , class: 'iv col-lg-12') %>
 <%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>
