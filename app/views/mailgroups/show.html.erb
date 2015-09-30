@@ -1,4 +1,6 @@
 <%- model_class = Mailgroup -%>
+<%= render partial: 'print' %>
+
 <div class="page-header col-lg-12">
   <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
   <h1><%= content_tag(:i, nil, class: 'fa fa-users') %>
@@ -6,6 +8,7 @@
   </h1>
 
 </div>
+
 
 <div class="panel panel-default panel-body col-lg-6">
     <dl class="dl-horizontal">
@@ -48,7 +51,7 @@
   else
     mailto: bbc all members in groups
 
-  from api doc: link_to_if(condition, name, options = {}, html_options = {}, &block)
+  see api doc: link_to_if(condition, name, options = {}, html_options = {}, &block)
 -->
       <%= link_to_if( @mailgroup.users.count > 50, 
                   content_tag(:i, '', class: "fa fa-envelope-o") + " Group email", 
@@ -56,20 +59,19 @@
                   remote: true,
                   class: "btn btn-default",
                   data: {toggle: "tooltip", title: "Mailgroup has more than 50 users", placement: 'top' }) do 
-                    mail_to (if current_user.nil? then "Please add email address" else current_user.login end), 
+                    mail_to (current_user.nil? ? "Add your email here" : current_user.login ), 
                     content_tag(:i, '', class: "fa fa-envelope-o") + " Group email", 
                     { bcc: @mailgroup.users.where('email is not null').map(&:email).join(", "), class: "btn btn-default close-modal" }
                   end
        %> 
 
-
       <%= link_to content_tag(:i, '', class: "fa fa-print") + "Print",
                   print_mailgroup_path(@mailgroup),
-                  target: "_blank",
+                  remote: true,
+                  #target: "_blank",
                   class: "btn btn-default"
 
       %>
-
 
       <%= link_to content_tag(:i, '', class: "fa fa-trash-o") + t('.destroy', default: t("helpers.links.destroy")),
                   mailgroup_path(@mailgroup),

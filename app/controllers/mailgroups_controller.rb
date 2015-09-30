@@ -174,7 +174,7 @@ class MailgroupsController < ApplicationController
 
   def print
     respond_to do |format|
-        format.html
+        #format.html
         format.js
     end    
   end

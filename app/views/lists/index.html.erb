@@ -1,10 +1,22 @@
 <%- model_class = List -%>
 
+<div class="row">
+  <div class="page-header col-lg-3">
+    <h1>Lists</h1>
+  </div>
 
-<div class="row page-header col-lg-3">
-  <h1>Lists</h1>
+  <div class="col-lg-3 spacer-button">
+      <%= link_to 'New List',
+                  new_list_path,
+                  class: 'btn btn-primary' if current_user
+       %>
+     <!-- %= link_to 'Pick one', 
+                  sample_user_path,
+                  data: {toggle: "tooltip", title: "Go to a randomly selected user", placement: 'top'},
+                  class: 'btn btn-primary' 
+       % -->
+  </div>
 </div>
-
 
 <table class="table table-striped fadeactions col-lg-12">
   <thead>
