@@ -18,29 +18,29 @@ module ApplicationHelper
   end
 
 
+  def sortable(column, title = nil)
+    logger.debug "controller = #{controller_name}"
+    title ||= column.titleize
+    css_class = (column == sort_column) ? "current #{sort_direction}" : nil
+    direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"
+    link_to title, {term: @term, sort: column, direction: direction}, {class: css_class}
+    # what link_to creates:
+    # <a class="current asc" href="/mailgroups?direction=desc&amp;sort=name">Name</a>
+    # <a href="/mailgroups?direction=asc&amp;sort=%23+Users"># Users</a>
+  end
+
+
+  def sortable_count(column, title = nil)
+    logger.debug "controller = #{controller_name}"
+    title ||= column.titleize
+    css_class = (sort_column == 'count') ? "current #{sort_direction}" : nil
+    direction = (sort_column == 'count' && sort_direction == "asc") ? "desc" : "asc"
+    link_to title, {term: @term, sort: column, direction: direction}, {class: css_class}
+    # what link_to creates:
+    # <a class="current asc" href="/mailgroups?direction=desc&amp;sort=name">Name</a>
+    # <a href="/mailgroups?direction=asc&amp;sort=%23+Users"># Users</a>
+  end
+
+
 end
 
-
-# def destroy_link_to(path, options)
-#   link_to t('.destroy'), path, 
-#     :method => :delete,
-#     :class => "btn",
-#     :confirm => t('.destroy_confirm.body', :item => options[:item]),
-#     "data-confirm-fade" => true,
-#     "data-confirm-title" => t('.destroy_confirm.title', :item => options[:item]),
-#     "data-confirm-cancel" => t('.destroy_confirm.cancel', :item => options[:item]),
-#     "data-confirm-cancel-class" => "btn-cancel",
-#     "data-confirm-proceed" => t('.destroy_confirm.proceed', :item => options[:item]),
-#     "data-confirm-proceed-class" => "btn-danger"
-# end
-
-
-
-# def active_page(path)
-#   path[0]=''  # cut first char¨of received path variable
-#   if request.fullpath.split(%r{[?/]})[1] == path 
-#     "active" 
-#   else
-#     "inactive"
-#   end
-# end

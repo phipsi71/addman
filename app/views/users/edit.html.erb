@@ -1,9 +1,9 @@
 <%- model_class = User -%>
 <div class="page-header">
-  <!-- h1><%= t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'] , :model => model_class.model_name.human.titleize %></h1 -->
-  <!--h1><%= "Edit #{@user.lastname} #{@user.firstname}" %></h1-->
-  <h1><%= if @user.lastname.nil?
-            " #{@user.company}"  					
+  <h1><%= if @user.id.nil?
+            " Copy User"
+          elsif @user.lastname.nil?
+            " #{@user.company}"            
   				else
             " #{@user.lastname} #{@user.firstname}"
   				end

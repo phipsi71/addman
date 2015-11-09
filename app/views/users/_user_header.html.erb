@@ -1,0 +1,13 @@
+<%- model_class = User -%>
+<thead class="grad">
+  <tr>
+    <th class="dim"><%= model_class.human_attribute_name(:id) %></th>
+    <th><%= sortable("firstname") %></th>
+    <th><%= sortable("lastname") %></th>
+    <th><%= sortable("function") %></th>
+    <th><%= sortable("company") %></th>
+    <th><%= sortable("appendix") %></th>
+    <th><%= sortable("city") %></th>
+    <th class="dim"><%=t '.actions', default: t("helpers.actions") %></th>
+  </tr>
+</thead>

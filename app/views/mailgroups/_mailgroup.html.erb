@@ -14,9 +14,9 @@
      %>
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-tag'), 
-          "http://sakkreports/reportserver?%2fSERVICES%2fADDRESSES%2fR+Mailgroup+Labels&rs:Command=Render&rs:Format=PDF&rc%3ALinkTarget=_blank&GroupId=#{mailgroup.id}",
+          "http://sakkreports/reportserver?%2fSERVICES%2fADDRESSES%2fR+GROUP+BADGES&rs:Command=Render&rs:Format=PDF&rc%3ALinkTarget=_blank&GroupID=#{mailgroup.id}",
           data: {toggle: "tooltip", title: "Print badges for group members", placement: 'top'},
-          target: '_blank' 
+          target: '_blank'
         )
      %>
 

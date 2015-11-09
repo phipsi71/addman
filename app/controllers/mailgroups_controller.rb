@@ -1,45 +1,42 @@
 class MailgroupsController < ApplicationController
   before_action :authenticate, except: [:index, :search_for, :show, :search, :mailto, :print]
   before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove]
+  before_action :set_term, only: [:index]
 
-  #include MailgroupsHelper
+  helper_method :sort_column, :sort_direction
+
 
   respond_to :html, :json, :js
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # GET /mailgroups
   # GET /mailgroups.json
   def index
-    if params[:term]
-      @mailgroups = Mailgroup.where("name ILIKE ?", "%#{params[:term]}%").first(10)
-      #@users = SearchIndex.search_for(params[:term])
+    if @term.present? && (sort_column == 'count')
+      if sort_direction == 'asc'
+        @mailgroups = Mailgroup.searched(@term).sort_by(&:user_count).paginate(page: params[:page])
+      else
+        @mailgroups = Mailgroup.searched(@term).sort_by(&:user_count).reverse!.paginate(page: params[:page])
+      end
+    elsif sort_column == 'count'
+      if sort_direction == 'asc'
+        @mailgroups = Mailgroup.all.sort_by(&:user_count).paginate(page: params[:page])
+      else
+        @mailgroups = Mailgroup.all.sort_by(&:user_count).reverse!.paginate(page: params[:page])
+      end
+    elsif @term.present?
+      @mailgroups = Mailgroup.searched(@term).order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
     else
-      @mailgroups = Mailgroup.order(:name).paginate(page: params[:page])
-      #@users = User.order(:lastname).paginate(page: params[:page])
+      @mailgroups = Mailgroup.order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
     end
-
-    # respond_to do |format|
-    #     format.html # will call index.html.erb
-    #     format.json { render json: @mailgroups}
-    #     format.js   # will call index.js.coffee
-    # end   
     respond_with (@mailgroups)
   end
 
 
-  def search_for
-    term = params[:term]
-    logger.debug("url parameters: #{term}")
-    @mailgroups = Mailgroup.where("name ILIKE ?", "%#{params[:term]}%").paginate(:page => params[:page])
-  end
-
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # GET /mailgroups/1
   # GET /mailgroups/1.json
   def show
   end
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # GET /mailgroups/new
   def new
     @mailgroup = Mailgroup.new
@@ -47,14 +44,10 @@ class MailgroupsController < ApplicationController
     @mailgroup.created_at = Time.now    
   end
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # GET /mailgroups/1/edit
   def edit
-    # @mailgroup.created_by = current_user.login
-    # @mailgroup.created_at = Time.now    
   end
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # POST /mailgroups
   # POST /mailgroups.json
   def create
@@ -72,7 +65,6 @@ class MailgroupsController < ApplicationController
     end
   end
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # PATCH/PUT /mailgroups/1
   # PATCH/PUT /mailgroups/1.json
   def update
@@ -89,7 +81,6 @@ class MailgroupsController < ApplicationController
     end
   end
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   # DELETE /mailgroups/1
   # DELETE /mailgroups/1.json
   def destroy
@@ -102,7 +93,6 @@ class MailgroupsController < ApplicationController
   end
 
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   def append
     @user      = User.find(params[:user_id])
     @mailgroup = Mailgroup.find(params[:mailgroup_id])
@@ -119,13 +109,10 @@ class MailgroupsController < ApplicationController
   end 
 
 
-
-
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   def remove
     # lets get the parameters from the url. we get them from the hash 'params'
 
-    @user      = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
     @user.mailgroups.delete(@mailgroup)
 
     respond_to do |format|
@@ -138,7 +125,6 @@ class MailgroupsController < ApplicationController
   end
 
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
   def remove_list
     # remove a mailgroup from list
     # lets get the parameters from the url. we get them from the hash 'params'
@@ -152,17 +138,6 @@ class MailgroupsController < ApplicationController
     end
   end
 
-
-
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-  def search
-    like_keyword = "%#{params[:term]}%"    
-    @mgs = Mailgroup.where("name LIKE ?", like_keyword)
-    respond_to do |format|
-      format.json { render json: @mgs.to_json }
-      format.html
-    end
-  end
 
 
   def mailto
@@ -179,6 +154,8 @@ class MailgroupsController < ApplicationController
     end    
   end
 
+
+
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
   private
@@ -189,10 +166,27 @@ class MailgroupsController < ApplicationController
       @mailgroup = Mailgroup.find(params[:id])
     end
 
+    def set_term
+      @term = params[:term]
+    end
 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mailgroup_params
       params.require(:mailgroup).permit(:name, :memo, :trialcode, :importance)
     end
+
+    def sort_column
+      if params[:sort] =~ /# */
+        "count"
+      else
+        Mailgroup.column_names.include?(params[:sort]) ? params[:sort] : "name"
+      end
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+
 end

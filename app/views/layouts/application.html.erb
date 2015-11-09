@@ -35,7 +35,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span  -->
       </button>
-      <%= content_tag(:a, nil, class: "navbar-brand") %>
+      <%= content_tag(:a, nil, class: "navbar-brand right") %>
+      <%= bootstrap_flash %>
 
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
@@ -44,15 +45,15 @@
           <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Groups", mailgroups_path, class: "#{params[:controller] == 'mailgroups' ? 'active' : 'inactive'} loaderlink" %></li>
           <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Lists",  lists_path, class: "#{params[:controller] == 'lists' ? 'active' : 'inactive'}  loaderlink" %></li>
         </ul>
-        <ul class="userInfo nav navbar-nav">
+        <ul class="userInfo nav navbar-nav right">
           <% if user_signed_in? %>
             <!-- li><%= content_tag(:i, current_user.login) %></li -->
-            <li><%= link_to content_tag(:i, '', class: 'fa fa-user') + ' ' + current_user.login %></li>
             <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Sign out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to content_tag(:i, '', class: 'fa fa-user') + ' ' + current_user.login %></li>
           <% else %>
-            <li><%= content_tag(:a, 'Not signed in') %></li>
             <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Sign in",
                 new_user_session_path, remote: true %></li>
+            <li><%= content_tag(:a, 'Not signed in') %></li>
           <% end %>
         </ul>
 
@@ -62,11 +63,7 @@
 
 
   <div class="container-main">
-
-    <div class="row">
-      <div id="flash" class="col-lg-offset-1 col-lg-3"><%= bootstrap_flash %></div>
-    </div>
-    
+     
     <%= yield %>
 
     <footer class="spacer-large col-lg-12">
@@ -77,3 +74,4 @@
 
   </body>
 </html>
+ 

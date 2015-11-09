@@ -1,5 +1,4 @@
 <!-- partial _userlist.html.erb 
-
     used ALSO to present SEARCH RESULTS  -->
 
 <%- model_class = User -%>
@@ -12,22 +11,11 @@
 
 <div class="row col-lg-12">
 <table class="table table-striped fadeactions">
-  <thead class="grad">
-    <tr>
-      <th class="dim"><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:lastname) %></th>
-      <th><%= model_class.human_attribute_name(:firstname) %></th>
-      <th><%= model_class.human_attribute_name(:function) %></th>
-      <th><%= model_class.human_attribute_name(:company) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-
-      <th class="dim"><%=t '.actions', default: t("helpers.actions") %></th>
-    </tr>
-  </thead>
+  <%= render partial: 'user_header' %>
   <tbody>
     
-      <!--  loop is created with content_tag_for in partial -->
-      <%= render @users.order(:lastname, :firstname), layout: false %>  
+  <!--  loop is created with content_tag_for in partial -->
+  <%= render @users, layout: false %>  
 
   </tbody>
 </table>
@@ -52,3 +40,4 @@
 
 
 <%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>
+

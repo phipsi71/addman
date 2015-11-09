@@ -13,21 +13,15 @@ class SessionsController < Devise::SessionsController
   end  
 
   def new
-    logger.debug "SessionsController.new , before super"
     super
-    logger.debug "SessionsController.new , after  super"
   end
 
   def create
-    logger.debug "SessionsController.create , before super"
     super
-    logger.debug "SessionsController.create , after  super"
   end
 
   def destroy
-    logger.debug "SessionsController.destroy , before super"
     super
-    logger.debug "SessionsController.destroy , after  super"
   end
 
   def failure

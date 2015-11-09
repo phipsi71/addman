@@ -4,6 +4,15 @@ class Mailgroup < ActiveRecord::Base
 
   validates :name, uniqueness: true
 
-  scope :oname, order("name desc")
-  
+  scope :searched, ->(term) { where("name ILIKE '%#{term}%'") if term.present? }
+
+
+  def user_count
+    users.count
+  end
+
+  def self.sort_by_user_count
+    sort_by(&:user_count)
+  end
+
 end

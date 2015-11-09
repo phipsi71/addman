@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826081850) do
+ActiveRecord::Schema.define(version: 20151105103504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150826081850) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email_id"
   end
 
   create_table "lists_mailgroups", id: false, force: true do |t|
@@ -48,6 +49,14 @@ ActiveRecord::Schema.define(version: 20150826081850) do
 
   add_index "mailgroups_users", ["user_id", "mailgroup_id"], name: "m_u", unique: true, using: :btree
 
+  create_table "salutations", force: true do |t|
+    t.string   "lang",       limit: 1
+    t.string   "gender",     limit: 1
+    t.string   "salutation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "salutation"
     t.string   "title"
@@ -66,7 +75,7 @@ ActiveRecord::Schema.define(version: 20150826081850) do
     t.string   "email"
     t.string   "email2"
     t.string   "gender"
-    t.string   "initials"
+    t.string   "sakkrole"
     t.string   "language"
     t.text     "memo"
     t.string   "prio"

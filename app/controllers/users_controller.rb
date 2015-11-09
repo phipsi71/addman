@@ -1,34 +1,29 @@
 class UsersController < ApplicationController
   #include UsersHelper
   before_action :authenticate, except: [:index, :search_for, :show, :sample, :print]
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :print, :remove]
+  before_action :set_user, only: [:show, :edit, :copy, :update, :destroy, :print, :remove]
+  before_action :set_term, only: [:index]
 
-
+  helper_method :sort_column, :sort_direction
 
   # GET /users
   # GET /users.json
+  # GET /users
+  # GET /users.json
   def index
-    #@users = User.all
-    #@users = User.first(50)
-    if params[:term]
-      @users = User.where("lastname ILIKE ? or company ILIKE ?", 
-                          "#{params[:term]}%", "#{params[:term]}%").first(10)  #.map{ |i| i.lastname+' '+i.firstname }
-    else
-      @users = User.order(:lastname).paginate(page: params[:page])
+    # @users = User.order(sort_column).order(sort_direction).paginate(page: params[:page])
+    # this is also used for searches !!!!
+    if @term.present?
+      @users = User.searched(@term).order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
+    else 
+      @users = User.order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
     end
 
     respond_to do |format|
         format.html # will call index.html.erb
-        format.json { render json: @users}
+        format.json { render json: @users }
         format.js   # will call index.js.coffee
     end
-  end
-
-
-  def search_for
-    term = "#{params[:term]}:*"
-    logger.debug("url parameters: #{term}")
-    @users = SearchIndex.search_for(term).paginate(:page => params[:page])
   end
 
 
@@ -45,8 +40,24 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.created_by = current_user.login
-    @user.created_at = Time.now    
+    @user.created_at = Time.now
   end
+
+
+  def copy
+    new_user = @user.dup
+    new_user.salutation = nil
+    new_user.title = nil
+    new_user.lastname = nil
+    new_user.firstname = nil
+    new_user.email = nil
+    new_user.gender = nil
+    new_user.created_by = current_user.login
+    new_user.created_at = Time.now
+    @user = new_user
+    render :edit
+  end
+
 
   # GET /users/1/edit
   def edit
@@ -154,14 +165,28 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def set_term
+      @term = params[:term]
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:salutation, :title, :firstname,
         :lastname, :function, :company, :appendix, :street, :city, :zip,
         :country, :fax, :phone, :phone2, :email, :email2, :gender, :initials, :language, :memo, :prio)
-      #params.require(:user).permit(:Firstname)
     end
+
+    def sort_column
+      User.column_names.include?(params[:sort]) ? params[:sort] : "lastname"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+    end
+
+
+
 end
 
 

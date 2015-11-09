@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lang: MyString
+  gender: MyString
+  salutation: MyString
+
+two:
+  lang: MyString
+  gender: MyString
+  salutation: MyString

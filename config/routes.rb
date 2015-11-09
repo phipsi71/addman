@@ -14,16 +14,19 @@ Rails.application.routes.draw do
 
   resources :users do
 
-        collection do
-          get   'search_for', to: 'users#search_for',  as: 'search'
+        # collection do
+        #   get   'search_for', to: 'users#search_for',  as: 'search'
+        # end
+
+        member do   # member is for passing :id instead of :user_id
+          get   'print' #,  to: 'users#print',  as: 'print'
+          get   'copy'  #,  to: 'users#edit',   as: 'copy'
         end
 
-        get   'print',  to: 'users#print',  as: 'print',  on: :member  # member is for passing :id instead of :user_id
-
         resources :mailgroups do      
-          patch 'append',  to: 'users#append',  on: :collection    # append a MAILGROUP to a user
+          patch 'append',    to: 'users#append',  on: :collection    # append a MAILGROUP to a user
           member do
-            delete 'remove',    to: 'mailgroups#remove'
+            delete 'remove', to: 'mailgroups#remove'
           end
         end
 
@@ -42,25 +45,21 @@ Rails.application.routes.draw do
       get   'search_for', to: 'mailgroups#search_for',  as: 'search'
     end
 
-
-
     resources :users do
-      patch 'append',  to: 'mailgroups#append', on: :collection   # append a USER to a mailgroup
+      patch 'append',     to: 'mailgroups#append', on: :collection   # append a USER to a mailgroup
       member do
-        delete 'remove',    to: 'users#remove'    # remove USER from a mailgroup
+        delete 'remove',  to: 'users#remove'    # remove USER from a mailgroup
       end
     end
 
   end
 
 
-
-
   resources :lists do
 
     resources :mailgroups do      
-      patch 'append',  to: 'lists#append',  on: :collection    # append a MAILGROUP to a user
-      member do
+      patch 'append',     to: 'lists#append',  on: :collection    # append a MAILGROUP to a user
+      member do  
         delete 'remove',  to: 'mailgroups#remove_list'
       end
     end

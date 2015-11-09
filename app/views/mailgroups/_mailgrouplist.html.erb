@@ -8,7 +8,7 @@
   <thead class="grad">
     <tr>
       <td class="dim"><%= model_class.human_attribute_name(:id) %></td>
-      <td><%= model_class.human_attribute_name(:name) %></td>
+      <td><%= sortable('name') %></td>
       <td><%= model_class.human_attribute_name(:trialcode) %></td>
       <td># Users</td>
       <td><%=t '.actions', default: t("helpers.actions") %></td>
@@ -29,7 +29,6 @@
   <%= link_to t('.back', default: t("helpers.links.back")),
               :back,
               class: 'btn btn-default' %>
-
 </div>
 
 

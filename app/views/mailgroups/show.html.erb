@@ -1,5 +1,4 @@
 <%- model_class = Mailgroup -%>
-<%= render partial: 'print' %>
 
 <div class="page-header col-lg-12">
   <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
@@ -85,5 +84,6 @@
 </div>
 
 <%= render partial: "users/mailgroup_users"%>
+<%= render partial: 'print' %>   <!-- MODAL -->
 
 <%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

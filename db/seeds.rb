@@ -6,13 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-List.create([
-  { name: 'Krebsbulletin'},
-  { name: 'HJV Einladungen'},
-  { name: 'Participants Report'},
-  { name: 'Jahresbericht'},
-  { name: 'Newsletter'},
-  { name: 'Safety Mailing'},
-  { name: 'Principal Investigators'},
-  { name: 'Alle Adressen'}
-  ])
+# List.create([
+#   { name: 'Krebsbulletin'},
+#   { name: 'HJV Einladungen'},
+#   { name: 'Participants Report'},
+#   { name: 'Jahresbericht'},
+#   { name: 'Newsletter'},
+#   { name: 'Safety Mailing'},
+#   { name: 'Principal Investigators'},
+#   { name: 'Alle Adressen'}
+#   ])
+
+Salutation.create( lang: 'D', gender: 'M', salutation: 'Sehr geehrter' )
+Salutation.create( lang: 'D', gender: 'F', salutation: 'Sehr geehrte' )
+Salutation.create( lang: 'F', gender: 'M', salutation: '' )
+Salutation.create( lang: 'F', gender: 'F', salutation: '' )
+Salutation.create( lang: 'E', gender: 'M', salutation: 'Dear' )
+Salutation.create( lang: 'E', gender: 'F', salutation: 'Dear' )

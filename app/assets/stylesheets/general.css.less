@@ -8,8 +8,16 @@
 @font-family-monospace:   Consolas, 'Courier New', monospace;
 @font-family-base:        @font-family-sans-serif;
 @font-family-header:      'francois_oneregular', Trebuchet, Arial;
-
 @font-size-base:          12px;
+
+
+ 
+.spacer-large  { margin-top: 100px; }
+.spacer-medium { margin-top: 60px; }
+.spacer-button { margin-top: 30px; }
+.spacer-small  { margin-top: 20px; }
+
+
 
 
 .control-group.row {
@@ -32,7 +40,7 @@
 }
 
 .page-header {
-  margin: 10px 15px;
+  margin: 10px 0px;
   border-bottom: none; //1px solid #ccc;
   h1, h2, h3, h4 {
     font-family: @font-family-header;
@@ -60,10 +68,16 @@
     width:  213px;
     height:  50px;
     background-repeat: no-repeat;
-    float: right;
     margin-top: 4px;
 }
 
+.navbar {
+  border-bottom: none;
+}
+
+.navbar-default {
+  background-color: #e6e6e6;
+}
 
 .well.sidebar-nav {
   position: fixed;
@@ -126,22 +140,15 @@ table.fadeactions tr:hover > td.fadeactions {
   margin-right: 20px;
 }
 
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
 
 .btn > i {
   padding-right: 6px;
 }
 
-#flash {
-  position: fixed;
-  z-index: 20;
-}
+// #flash {
+//   position: fixed;
+//   z-index: 20;
+// }
 
 #flashbottom {
   position: absolute;
@@ -150,11 +157,15 @@ table.fadeactions tr:hover > td.fadeactions {
 
 // design flash message with wildcards (alert-warning, alert-error, ...)
 div[class^="alert-"], div[class*="alert-"] {
-    margin-left: 0px;
-    padding: 6px 15px;
-    //background-color: #fff;
-    //border: none;
-    //float: left;
+  width: 20%;
+  margin-left: 300px;
+  padding: 6px 15px;
+  //background-color: #fff;
+  //border: none;
+  //float: left;
+  position: fixed;
+  top: 15px;
+  z-index: 100;
 }
 
 .modal-title {
@@ -167,9 +178,16 @@ a.btn.btn-primary.wide {
   padding-right: 80px;
 }
 
-i.fa.fa-trash-o:hover {
-    color: #dd1000;
+
+
+.left {
+  float: left;
 }
+
+.right {
+  float: right;
+}
+
 
 .debug(@var) {
   &:after {

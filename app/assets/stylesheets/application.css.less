@@ -16,14 +16,28 @@
  *= require font-awesome
  *= require twitter/bootstrap
  *= require bootstrap_and_overrides
- require_tree .
+ *= require lists
+ *= require general
+ *= require colors
+ *= require print
+ *= require loader
+ *= require tooltips
  *= require_self
  */
- 
 
-  
-.spacer-large  { margin-top: 100px; }
-.spacer-medium { margin-top: 60px; }
-.spacer-button { margin-top: 30px; }
-.spacer-small  { margin-top: 20px; }
 
+.input-group[class*="col-"] {
+  padding: 0 15px;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+
+// for HD screens (1920x1080)
+@media (min-width: 1800px) {
+  .container, .container-main {
+    width: 1600px;
+   }
+}

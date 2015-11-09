@@ -5,17 +5,7 @@
 </div>
 
 <table class="table table-striped fadeactions users">
-  <thead>
-    <tr>
-      <td class="dim"><%= model_class.human_attribute_name(:id) %></td>
-      <td><%= model_class.human_attribute_name(:lastname) %></td>
-      <td><%= model_class.human_attribute_name(:firstname) %></td>
-      <td><%= model_class.human_attribute_name(:function) %></td>
-      <td><%= model_class.human_attribute_name(:company) %></td>
-      <td><%= model_class.human_attribute_name(:email) %></td>
-      <td><%=t '.actions', :default => t("helpers.actions") %></td>
-    </tr>
-  </thead>
+  <%= render partial: 'users/user_header' %>
   <tbody>
       <%= render partial: 'users/user', collection: @mailgroup.users.order(:lastname, :firstname, :company), as: :user %> 
   </tbody>

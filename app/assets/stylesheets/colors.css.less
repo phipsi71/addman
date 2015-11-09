@@ -1,5 +1,3 @@
-
-
 @import "twitter/bootstrap/mixins";
 @import "twitter/bootstrap/variables";
 
@@ -36,15 +34,6 @@
   border-color: #bbb;
 }
 
-thead {
-  background-color: lighten(@brand-primary,38%);
-  color: #000;
-  border-top: 1px solid @brand-primary;
-  th {
-      font-weight: normal;  
-  }
-}
-
 
 .navbar-default .navbar-nav {
   .inactive {
@@ -63,4 +52,55 @@ thead {
       background-color: #fff;
     }
   }
+}
+
+i.fa.fa-trash-o:hover {
+    color: #dd1000;
+}
+
+
+thead {
+  background-color: lighten(@brand-primary,38%);
+  color: #000;
+  border-top: 1px solid @brand-primary;
+  th {
+      font-weight: normal;
+      a:hover {
+        text-decoration: none;
+      }
+  }
+}
+
+
+
+th .current {
+  //padding-right: 12px;
+}
+
+// th .asc:before {
+//     font-family: "Glyphicons Halflings";
+//     font-size: 11px;
+//     padding-right: 5px;
+//     content: "\e113";
+// }
+
+// th .desc:before {
+//     font-family: "Glyphicons Halflings";
+//     font-size: 11px;
+//     padding-right: 5px;
+//     content: "\e114";
+// }
+
+th .asc:after {
+    font-family: "FontAwesome";
+    font-size: 11px;
+    padding-left: 3px;
+    content: "\f106";
+}
+
+th .desc:after {
+    font-family: "FontAwesome";
+    font-size: 11px;
+    padding-left: 3px;
+    content: "\f107";
 }

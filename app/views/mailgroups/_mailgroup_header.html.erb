@@ -1,0 +1,11 @@
+<%- model_class = Mailgroup -%>
+<thead>
+  <tr>
+    <th class="dim"><%= model_class.human_attribute_name(:id) %></th>
+    <th class="loaderlink"><%= sortable("name") %></th>
+    <th><%= model_class.human_attribute_name(:trialcode) %></th>
+    <th class="loaderlink"><%= sortable_count("# Users") %></th>
+    <th><%=t '.actions', default: t("helpers.actions") %></th>
+  </tr>
+</thead>
+<tbody>

@@ -10,7 +10,7 @@
 
 <ul class="print-options">
 
-  <li>
+  <li> <!--   BADGE  -->
     <%= link_to(content_tag(:i, nil, class: 'fa fa-tag') + "Print badge", 
           "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+USER+BADGE&rs:Command=Render&rs:Format=PDF&UserID=#{@user.id}",
           data: {toggle: "tooltip", title: "Print single badge", placement: 'right'},
@@ -20,12 +20,23 @@
      %>
   </li>
   
-  <li>
+  <li> <!--   LABEL  -->
     <%= link_to content_tag(:i, nil, class: 'fa fa-print') + "Print label",
           "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+USER+LABEL&rs:Command=Render&rs:Format=PDF&UserID=#{@user.id}",
           data: {toggle: "tooltip", title: "Print single label", placement: 'right'},
           class: 'btn btn-default fixed-width'
      %>
   </li>
+
+  <li> <!--   USER DETAILS  -->
+    <%= link_to content_tag(:i, nil, class: 'fa fa-print') + "User details",
+          # "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+USER+OVERVIEW&rs:Command=Render&rs:Format=PDF&UserID=#{@user.id}",
+          "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+USER+DETAILS&rs:Command=Render&rs:Format=PDF&UserID=#{@user.id}",
+          data: {toggle: "tooltip", title: "User details and group memberships", placement: 'right'},
+          class: 'btn btn-default fixed-width'
+     %>
+  </li>
+
+
 
 </ul>

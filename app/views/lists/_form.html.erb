@@ -15,13 +15,35 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :name, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, class: 'form-control spacer-small' %>
+  <div class="control-group row">
+    <%= f.label :id, class: 'control-label col-lg-1 dim' %>
+    <div class="controls col-lg-4">
+      <%= f.text_field :id, class: 'form-control', readonly: true %>
+    </div>
+    <%= error_span(@list[:id]) %>
+  </div>
+
+  <div class="control-group row">
+    <%= f.label :name, class: 'control-label col-lg-1' %>
+    <div class="controls col-lg-4">
+      <%= f.text_field :name, class: 'form-control' %>
     </div>
     <%= error_span(@list[:name]) %>
   </div>
+
+  <div class="control-group row">
+    <%= f.label :email_id, class: 'control-label col-lg-1' %>
+    <div class="controls input-group col-lg-4">
+      <%= f.text_field :email_id, class: 'form-control addon' %>
+      <span class="input-group-addon" id="basic-addon2">@sakk.ch</span>
+    </div>
+    <%= error_span(@list[:email_id]) %>
+  </div>
+
+<!-- div class="input-group">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+  <span class="input-group-addon" id="basic-addon2">@example.com</span>
+</div -->
 
 
   <%= f.submit nil, class: 'btn btn-primary spacer-medium' %>

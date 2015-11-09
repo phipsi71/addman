@@ -18,8 +18,10 @@ class ApplicationController < ActionController::Base
   end
 
 
-  private
   #----------------------------------------------------
+
+  private
+
   def authenticate
  
 #    request.env.each {|k,v| Rails.logger.debug "ENV :: #{k} -> #{v}"}

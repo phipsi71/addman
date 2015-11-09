@@ -1,20 +1,16 @@
 <%- model_class = List -%>
 
-<div class="row">
-  <div class="page-header col-lg-3">
+<div class="col-lg-12 row">
+  <div class="page-header col-lg-2">
     <h1>Lists</h1>
   </div>
 
-  <div class="col-lg-3 spacer-button">
-      <%= link_to 'New List',
-                  new_list_path,
-                  class: 'btn btn-primary' if current_user
-       %>
-     <!-- %= link_to 'Pick one', 
-                  sample_user_path,
-                  data: {toggle: "tooltip", title: "Go to a randomly selected user", placement: 'top'},
-                  class: 'btn btn-primary' 
-       % -->
+
+  <div class="col-lg-2 spacer-button">
+    <%= link_to 'New List',
+                new_list_path,
+                class: 'btn btn-primary' if current_user
+     %>
   </div>
 </div>
 
@@ -37,10 +33,12 @@
 </table>
 
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_list_path,
-            :class => 'btn btn-primary spacer-medium' if current_user
-%>
+  <div class="col-lg-2 spacer-button">
+    <%= link_to 'New List',
+                new_list_path,
+                class: 'btn btn-primary' if current_user
+     %>
+  </div>
 
 
 <%= content_tag(:div, "partial lists/_list" , class: 'iv col-lg-12') %>

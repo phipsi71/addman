@@ -18,11 +18,17 @@
      %>
 
     <%= link_to_if list.id==1, content_tag(:i, nil, class: 'fa fa-table'),
-          "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST+KREBSBULLETIN&rs:Command=Render&rs:Format=Excel&ListID=#{list.id}",
+          "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST+KREBSBULLETIN&rs:Command=Render&rs:Format=CSV-semiq&ListID=#{list.id}",
           data: {toggle: "tooltip", title: "Excel List for Krebsbulletin", placement: 'top'} do
             #this is the else branch: don't show an icon at all
           end
      %>
+
+    <%= link_to( content_tag(:i, nil, class: 'fa fa-envelope-o'),
+          "mailto:#{list.email_id}@sakk.ch ?cc=#{current_user.login}&subject=<password> <your subject>&body=ATTENTION:The subject line is important! Mail is sent to all recipients of list.    Type your message here",
+          data: {toggle: "tooltip", title: "Email to", placement: 'top'}) if current_user  %> 
+
+
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
                 list_path(list),

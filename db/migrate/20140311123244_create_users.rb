@@ -20,7 +20,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :email2
       t.string :gender
-      t.string :initials
+      t.string :sakkrole
       t.string :language
       t.text   :memo
       t.string :prio

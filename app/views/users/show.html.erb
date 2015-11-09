@@ -1,4 +1,5 @@
 <%- model_class = User -%>
+
 <div class="page-header col-lg-12">
   <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
   <h1><%= content_tag(:i, nil, class: 'fa fa-user') %>
@@ -52,8 +53,8 @@
     <dd><%= mail_to(@user.email2) %></dd>
     <dt><strong><%= model_class.human_attribute_name(:gender) %>:</strong></dt>
     <dd><%= @user.gender %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:initials) %>:</strong></dt>
-    <dd><%= @user.initials %></dd>
+    <dt><strong>SAKK role:</strong></dt>
+    <dd><%= @user.sakkrole %></dd>
     <dt><strong><%= model_class.human_attribute_name(:language) %>:</strong></dt>
     <dd><%= @user.language %></dd>
     <dt><strong><%= model_class.human_attribute_name(:memo) %>:</strong></dt>
@@ -82,10 +83,30 @@
                 class: 'btn btn-default' if current_user
      %>
 
+    <%= link_to content_tag(:i, nil, class: "fa fa-copy") + 'Copy',
+                copy_user_path(@user),
+                data: {toggle: "tooltip", title: "Make a copy", placement: 'top'},
+                class: 'btn btn-default' if current_user
+     %>
+
+
     <%= link_to content_tag(:i, nil, class: "fa fa-envelope-o") + 'Email',
                 "mailto:#{@user.email}", 
                 data: {toggle: "tooltip", title: "Email to", placement: 'top'},
                 class: 'btn btn-default'
+     %>
+
+    <%= link_to content_tag(:i, nil, class: 'fa fa-print') + "Print", 
+                print_user_path(@user),
+                data: {toggle: "tooltip", title: "Print", placement: 'top'},
+                class:  'btn btn-default'
+     %>
+
+    <%= link_to content_tag(:i, nil, class: 'fa fa-print') + "User details",
+          # "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+USER+OVERVIEW&rs:Command=Render&rs:Format=PDF&UserID=#{@user.id}",
+          "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+USER+DETAILS&rs:Command=Render&rs:Format=PDF&UserID=#{@user.id}",
+          data: {toggle: "tooltip", title: "User details and group memberships", placement: 'top'},
+          class: 'btn btn-default'
      %>
 
     <%= link_to content_tag(:i, nil, class: 'fa fa-trash-o') + 'Delete',
@@ -101,8 +122,3 @@
 
 <%= render partial: "mailgroups/user_mailgroups" %>
 <%= content_tag :div, "#{__FILE__}", class: 'iv col-lg-12' %>
-<!-- 
-  EXAMPLE BUTTON
-link_to content_tag(:i, "", class: "icon-trash icon-white") + "Delete", path_to_stuff, method: :delete, class: "btn btn-danger remove_fields" 
-
--->
