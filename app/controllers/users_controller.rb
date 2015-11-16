@@ -124,7 +124,11 @@ class UsersController < ApplicationController
     end
   end
 
-
+  def print
+    respond_to do |format|
+      format.js
+    end
+  end
 
 
   # append a MAILGROUP to a user

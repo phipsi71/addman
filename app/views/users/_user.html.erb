@@ -14,12 +14,12 @@
           data: {toggle: "tooltip", title: "User details and assigned groups", placement: 'top'}) 
      %>
 
-    <%= link_to(content_tag(:i, nil, class: 'fa fa-print'), print_user_path(user),
-          data: {toggle: "tooltip", title: "Print options", placement: 'top'})
-     %>
+    <!-- %= link_to(content_tag(:i, nil, class: 'fa fa-print'), print_user_path(user),
+          data: {toggle: "tooltip", title: "Print label, badge or details", placement: 'top'})
+     % -->
 
     <%= link_to( content_tag(:i, nil, class: 'fa fa-envelope-o'), "mailto:#{user.email}",
-          data: {toggle: "tooltip", title: "Email to", placement: 'top'})
+          data: {toggle: "tooltip", title: "Email to", placement: 'top'}) if user.email?
      %>
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_user_path(user),
@@ -36,7 +36,8 @@
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
       user_path(user),
-      method: :delete, remote: true,
+      method: :delete,
+      remote: true,
       data: { confirm: "Sure to delete #{user.firstname} #{user.lastname}",
                toggle: "tooltip", title: "Delete user", placement: 'top'
         }) if !defined? @mailgroup and current_user

@@ -12,6 +12,7 @@
   </h1>
 </div>
 
+
 <div class="panel panel-default panel-body col-lg-12">
   <div class="row">
     <dl class="dl-horizontal col-lg-6">
@@ -98,6 +99,7 @@
 
     <%= link_to content_tag(:i, nil, class: 'fa fa-print') + "Print", 
                 print_user_path(@user),
+                remote: true,
                 data: {toggle: "tooltip", title: "Print", placement: 'top'},
                 class:  'btn btn-default'
      %>
@@ -121,4 +123,6 @@
 
 
 <%= render partial: "mailgroups/user_mailgroups" %>
+<%= render partial: 'users/print' %>   <!-- MODAL -->
+
 <%= content_tag :div, "#{__FILE__}", class: 'iv col-lg-12' %>

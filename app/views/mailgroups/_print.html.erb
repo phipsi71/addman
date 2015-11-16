@@ -8,64 +8,53 @@
         </button>
         <h2 class="modal-title"><i class="glyphicon glyphicon-print"></i>&nbsp Print</h2>
       </div>
+      <div class="modal-body">
+        <ul class="print-options">
+                <li>
+            <%= link_to(content_tag(:i, nil, class: 'fa fa-tag left') + "Print badges",
+                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+GROUP+BADGES&rs:Command=Render&rs:Format=PDF&GroupID=#{@mailgroup.id}",
+                  data: {toggle: "tooltip", title: "Print badges for group members", placement: 'right'},
+                  target: '_blank',
+                  class: 'btn btn-default fixed-width'
+                )
+             %>
+          </li>
 
-        <div class="modal-body">
+          <li>
+            <%= link_to content_tag(:i, nil, class: 'fa fa-print left') + "Print labels",
+                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+GROUP+LABELS&rs:Command=Render&rs:Format=PDF&GroupID=#{@mailgroup.id}",
+                  data: {toggle: "tooltip", title: "Print labels for group members", placement: 'right'},
+                  target: '_blank',
+                  class: 'btn btn-default fixed-width'
+             %>
+          </li>
 
+          <li>
+            <%= link_to content_tag(:i, nil, class: 'fa fa-file-text left') + "Attendance list",
+                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+ATTENDANCE+LIST&rs:Command=Render&GroupID=#{@mailgroup.id}",
+                  data: {toggle: "tooltip", title: "Attendance list (as Word)", placement: 'right'},
+                  target: '_blank',
+                  class: 'btn btn-default fixed-width'
+             %>
+          </li>
 
-          <ul class="print-options">
-                  <li>
-              <%= link_to(content_tag(:i, nil, class: 'fa fa-tag left') + "Print badges",
-                    "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+GROUP+BADGES&rs:Command=Render&rs:Format=PDF&GroupID=#{@mailgroup.id}",
-                    data: {toggle: "tooltip", title: "Print badges for group members", placement: 'right'},
-                    target: '_blank',
-                    class: 'btn btn-default fixed-width'
-                  )
-               %>
-            </li>
-
-            <li>
-              <%= link_to content_tag(:i, nil, class: 'fa fa-print left') + "Print labels",
-                    "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+GROUP+LABELS&rs:Command=Render&rs:Format=PDF&GroupID=#{@mailgroup.id}",
-                    data: {toggle: "tooltip", title: "Print labels for group members", placement: 'right'},
-                    target: '_blank',
-                    class: 'btn btn-default fixed-width'
-               %>
-            </li>
-
-            <li>
-              <%= link_to content_tag(:i, nil, class: 'fa fa-file-text left') + "Attendance list",
-                    "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+ATTENDANCE+LIST&rs:Command=Render&GroupID=#{@mailgroup.id}",
-                    data: {toggle: "tooltip", title: "Attendance list (as Word)", placement: 'right'},
-                    target: '_blank',
-                    class: 'btn btn-default fixed-width'
-               %>
-            </li>
-
-            <li>
-              <%= link_to content_tag(:i, nil, class: 'fa fa-table left') + "Excel list",
-                    "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST&rs:Command=Render&rs:Format=Excel&GroupID=#{@mailgroup.id}",
-                    data: {toggle: "tooltip", title: "General list (as Excel)", placement: 'right'},
-                    target: '_blank',
-                    class: 'btn btn-default fixed-width'
-               %>
-            </li>
-          </ul>
-
-        </div>     
-        <div class="modal-footer">
-
-          <!-- %= link_to content_tag(:i, '', class: "fa fa-ticket") + "Open ticket",
-                      "https://ticketing.sakk.ch/otrs/customer.pl",
-                      target: '_blank',
-                      class: 'btn btn-default close-modal' 
-          % -->
+          <li>
+            <%= link_to content_tag(:i, nil, class: 'fa fa-table left') + "Excel list",
+                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST&rs:Command=Render&rs:Format=Excel&GroupID=#{@mailgroup.id}",
+                  data: {toggle: "tooltip", title: "General list (as Excel)", placement: 'right'},
+                  target: '_blank',
+                  class: 'btn btn-default fixed-width'
+             %>
+          </li>
+        </ul>
+      </div>  <!-- /.modal-body --> 
+      <div class="modal-footer">
           <%= link_to content_tag(:i, '', class: "fa fa-close") + "Close",
                       "",
                       class: 'btn btn-default',
                       data: { dismiss: 'modal'}
           %>
-
-        </div><!-- /.modal-footer -->
+      </div><!-- /.modal-footer -->
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
