@@ -7,7 +7,7 @@
 <table class="table table-striped fadeactions users">
   <%= render partial: 'users/user_header' %>
   <tbody>
-      <%= render partial: 'users/user', collection: @mailgroup.users.order(:lastname, :firstname, :company), as: :user %> 
+      <%= render partial: 'users/user', collection: @mailgroup.users.order(@c + ' ' + @d), as: :user %> 
   </tbody>
 </table>
 

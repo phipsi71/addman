@@ -2,8 +2,9 @@ class MailgroupsController < ApplicationController
   before_action :authenticate, except: [:index, :search_for, :show, :search, :mailto, :print]
   before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove]
   before_action :set_term, only: [:index]
+  before_action :set_sort, only: [:index, :show]
 
-  helper_method :sort_column, :sort_direction
+  #helper_method :sort_column, :sort_direction
 
 
   respond_to :html, :json, :js
@@ -11,23 +12,8 @@ class MailgroupsController < ApplicationController
   # GET /mailgroups
   # GET /mailgroups.json
   def index
-    if @term.present? && (sort_column == 'count')
-      if sort_direction == 'asc'
-        @mailgroups = Mailgroup.searched(@term).sort_by(&:user_count).paginate(page: params[:page])
-      else
-        @mailgroups = Mailgroup.searched(@term).sort_by(&:user_count).reverse!.paginate(page: params[:page])
-      end
-    elsif sort_column == 'count'
-      if sort_direction == 'asc'
-        @mailgroups = Mailgroup.all.sort_by(&:user_count).paginate(page: params[:page])
-      else
-        @mailgroups = Mailgroup.all.sort_by(&:user_count).reverse!.paginate(page: params[:page])
-      end
-    elsif @term.present?
-      @mailgroups = Mailgroup.searched(@term).order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
-    else
-      @mailgroups = Mailgroup.order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
-    end
+    @c ||= 'name'
+    set_mailgroups
     respond_with (@mailgroups)
   end
 
@@ -35,6 +21,8 @@ class MailgroupsController < ApplicationController
   # GET /mailgroups/1
   # GET /mailgroups/1.json
   def show
+    @c ||= 'lastname'
+    set_mailgroups
   end
 
   # GET /mailgroups/new
@@ -161,6 +149,8 @@ class MailgroupsController < ApplicationController
   private
 
 
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_mailgroup
       @mailgroup = Mailgroup.find(params[:id])
@@ -170,23 +160,50 @@ class MailgroupsController < ApplicationController
       @term = params[:term]
     end
 
+    def set_sort
+      @c = sort_column
+      @d = sort_direction; @d ||= 'asc'
+    end
+
+
+    def set_mailgroups
+      if @term.present? && (@c == 'count')
+        if sort_direction == 'asc'
+          @mailgroups = Mailgroup.searched(@term).sort_by(&:user_count).paginate(page: params[:page])
+        else
+          @mailgroups = Mailgroup.searched(@term).sort_by(&:user_count).reverse!.paginate(page: params[:page])
+        end
+      elsif @c == 'count'
+        if sort_direction == 'asc'
+          @mailgroups = Mailgroup.all.sort_by(&:user_count).paginate(page: params[:page])
+        else
+          @mailgroups = Mailgroup.all.sort_by(&:user_count).reverse!.paginate(page: params[:page])
+        end
+      elsif @term.present?
+        @mailgroups = Mailgroup.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
+      else
+        @mailgroups = Mailgroup.order(@c + ' ' + @d).paginate(page: params[:page])
+      end      
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mailgroup_params
       params.require(:mailgroup).permit(:name, :memo, :trialcode, :importance)
     end
 
-    def sort_column
-      if params[:sort] =~ /# */
-        "count"
-      else
-        Mailgroup.column_names.include?(params[:sort]) ? params[:sort] : "name"
-      end
-    end
+    # def sort_column
+    #   if params[:sort] =~ /# */
+    #     "count"
+    #   else
+    #     Mailgroup.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    #     logger.debug "MAILGROUP params[:sort] = #{params[:sort]}"
+
+    #   end
+    # end
     
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
+    # def sort_direction
+    #   %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    # end
 
 
 end

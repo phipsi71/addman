@@ -4,7 +4,7 @@
   <td class="dim"><%= list.id %></td>
   <td><%= list.name %></td>
   <td><%= list.mailgroups.count %></td>
-  <td><%= list.mailgroups.map { |m| m.users.count }.sum %></td>
+  <td><%= list.mailgroups.map { |m| m.users.where.not('email' => nil ).count }.sum %></td>
   <td></td>
 
   <td class="fadeactions col-md-2">

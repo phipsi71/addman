@@ -17,7 +17,7 @@
   </thead>
   <tbody>
 
-    <%= render partial: 'mailgroups/mailgroup_append_list', collection: @list.mailgroups.order(:name), as: :mailgroup %>
+    <%= render partial: 'mailgroups/mailgroup_append_list', collection: @list.mailgroups, as: :mailgroup %>
 
   </tbody>
 </table>

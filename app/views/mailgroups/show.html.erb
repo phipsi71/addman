@@ -72,6 +72,14 @@
 
       %>
 
+      <%= link_to content_tag(:i, nil, class: 'fa fa-list') + "List",
+            "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST&rs:Command=Render&rs:Format=Excel&GroupID=#{@mailgroup.id}",
+            data: {toggle: "tooltip", title: "Members as Excel", placement: 'top'},
+            class: 'btn btn-default'
+       %>
+
+
+
       <%= link_to content_tag(:i, '', class: "fa fa-trash-o") + t('.destroy', default: t("helpers.links.destroy")),
                   mailgroup_path(@mailgroup),
                   method: :delete,
@@ -83,7 +91,7 @@
     </div>
 </div>
 
-<%= render partial: "users/mailgroup_users"%>
+<%= render partial: "users/mailgroup_users" %>
 <%= render partial: 'mailgroups/print' %>   <!-- MODAL -->
 
 <%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

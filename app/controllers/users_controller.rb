@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate, except: [:index, :search_for, :show, :sample, :print]
   before_action :set_user, only: [:show, :edit, :copy, :update, :destroy, :print, :remove]
   before_action :set_term, only: [:index]
+  before_action :set_sort, only: [:index, :show]
 
   helper_method :sort_column, :sort_direction
 
@@ -13,11 +14,14 @@ class UsersController < ApplicationController
   def index
     # @users = User.order(sort_column).order(sort_direction).paginate(page: params[:page])
     # this is also used for searches !!!!
+    @c ||= "lastname"
+
     if @term.present?
-      @users = User.searched(@term).order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
+      @users = User.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
     else 
-      @users = User.order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
+      @users = User.order(@c + ' ' + @d).paginate(page: params[:page])
     end
+
 
     respond_to do |format|
         format.html # will call index.html.erb
@@ -30,6 +34,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @c ||= "name"
+
+    if @term.present?
+      @users = User.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
+    else 
+      @users = User.order(@c + ' ' + @d).paginate(page: params[:page])
+    end
+
+    
     respond_to do |format|
       format.html
       format.json { render json: @user }
@@ -174,6 +187,13 @@ class UsersController < ApplicationController
     end
 
 
+    def set_sort
+      @c = sort_column
+      @d = sort_direction; @d ||= "asc"
+    end
+
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:salutation, :title, :firstname,
@@ -181,36 +201,15 @@ class UsersController < ApplicationController
         :country, :fax, :phone, :phone2, :email, :email2, :gender, :initials, :language, :memo, :prio)
     end
 
-    def sort_column
-      User.column_names.include?(params[:sort]) ? params[:sort] : "lastname"
-    end
+    # def sort_column
+    #   User.column_names.include?(params[:sort]) ? params[:sort] : "lastname"
+    #   logger.debug "USER params[:sort] = #{params[:sort]}"
+    # end
 
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
-    end
+    # def sort_direction
+    #   %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+    # end
 
 
 
 end
-
-
-
-
-  # TODO
-  #
-  # def print
-  #   @uattr = @user.attributes
-  #   logger.debug("in print : before file open")
-  #   File.open('/home/philippb/tmp/addman/label.txt','w') do |f1|
-  #     f1.puts @uattr['salutation'].to_s + ' ' + @uattr['title'].to_s
-  #     f1.puts @uattr['firstname'].to_s + ' ' + @uattr['lastname'].to_s
-  #     f1.puts @uattr['company'].to_s
-  #     f1.puts @uattr['appendix'].to_s
-  #     f1.puts @uattr['street'].to_s
-  #     f1.puts @uattr['zip'].to_s + ' ' + @uattr['city'].to_s
-  #     f1.print "\f"  # form feed
-  #     f1.close
-  #   end
-
-  #   #system("smbclient //sakkdc2008r2/BW-Color-2 -c 'print label.test'")
-  # end

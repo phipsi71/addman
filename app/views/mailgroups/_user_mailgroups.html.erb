@@ -9,7 +9,7 @@
 <table class="table table-striped fadeactions mailgroups">
   <%= render partial: 'mailgroups/mailgroup_header' %>
   <tbody>
-    <%= render partial: "mailgroups/mailgroup", collection: @user.mailgroups.order(:name), as: :mailgroup %>
+    <%= render partial: "mailgroups/mailgroup", collection: @user.mailgroups.order(@c +' '+ @d), as: :mailgroup %>
   </tbody>
 </table>
 
