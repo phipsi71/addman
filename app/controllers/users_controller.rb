@@ -22,7 +22,6 @@ class UsersController < ApplicationController
       @users = User.order(@c + ' ' + @d).paginate(page: params[:page])
     end
 
-
     respond_to do |format|
         format.html # will call index.html.erb
         format.json { render json: @users }
@@ -36,12 +35,11 @@ class UsersController < ApplicationController
   def show
     @c ||= "name"
 
-    if @term.present?
-      @users = User.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
-    else 
-      @users = User.order(@c + ' ' + @d).paginate(page: params[:page])
-    end
-
+    # if @term.present?
+    #   @users = User.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
+    # else 
+    #   @users = User.order(@c + ' ' + @d).paginate(page: params[:page])
+    # end
     
     respond_to do |format|
       format.html
@@ -132,7 +130,7 @@ class UsersController < ApplicationController
     allids = User.pluck(:id)
     @user  = User.find(allids.sample)
     respond_to do |format|
-      format.html { render :show } 
+      format.html { redirect_to(@user)  } 
       format.json { render json: @user }
     end
   end
@@ -182,6 +180,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+
     def set_term
       @term = params[:term]
     end
@@ -189,7 +188,7 @@ class UsersController < ApplicationController
 
     def set_sort
       @c = sort_column
-      @d = sort_direction; @d ||= "asc"
+      @d = sort_direction
     end
 
 
@@ -200,16 +199,6 @@ class UsersController < ApplicationController
         :lastname, :function, :company, :appendix, :street, :city, :zip,
         :country, :fax, :phone, :phone2, :email, :email2, :gender, :initials, :language, :memo, :prio)
     end
-
-    # def sort_column
-    #   User.column_names.include?(params[:sort]) ? params[:sort] : "lastname"
-    #   logger.debug "USER params[:sort] = #{params[:sort]}"
-    # end
-
-    # def sort_direction
-    #   %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
-    # end
-
 
 
 end

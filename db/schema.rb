@@ -11,22 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105103504) do
+ActiveRecord::Schema.define(version: 20151210122655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
+
+  create_table "groups_lists", id: false, force: true do |t|
+    t.integer "mailgroup_id"
+    t.integer "list_id"
+  end
+
+  create_table "groups_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "mailgroup_id"
+  end
+
+  add_index "groups_users", ["user_id", "mailgroup_id"], name: "m_u", unique: true, using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email_id"
-  end
-
-  create_table "lists_mailgroups", id: false, force: true do |t|
-    t.integer "mailgroup_id"
-    t.integer "list_id"
   end
 
   create_table "mailgroups", force: true do |t|
@@ -41,13 +48,6 @@ ActiveRecord::Schema.define(version: 20151105103504) do
   end
 
   add_index "mailgroups", ["id"], name: "index_mailgroups_on_groupid", using: :btree
-
-  create_table "mailgroups_users", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "mailgroup_id"
-  end
-
-  add_index "mailgroups_users", ["user_id", "mailgroup_id"], name: "m_u", unique: true, using: :btree
 
   create_table "salutations", force: true do |t|
     t.string   "lang",       limit: 1

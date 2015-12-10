@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :users do
 
+        
+
         # collection do
         #   get   'search_for', to: 'users#search_for',  as: 'search'
         # end
