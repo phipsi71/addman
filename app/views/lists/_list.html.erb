@@ -26,8 +26,8 @@
           end
      %>
 
-    <%= link_to( content_tag(:i, nil, class: 'fa fa-envelope-o'),
-          "mailto:#{list.email_id}@sakk.ch ?cc=#{current_user.login}&subject=<password> <your subject>&body=ATTENTION:The subject line is important! Mail is sent to all recipients of list.    Type your message here",
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-envelope-o'),
+          "mailto:#{list.email_id}@sakk.ch ?cc=#{current_user.login}&subject=<password> <your subject>&body=ATTENTION:The subject line is important! Mail is sent to all recipients of list. Type your message here",
           data: {toggle: "tooltip", title: "Email to", placement: 'top'}) if current_user  %> 
 
 

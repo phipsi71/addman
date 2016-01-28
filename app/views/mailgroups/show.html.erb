@@ -1,4 +1,5 @@
 <%- model_class = Mailgroup -%>
+<%= render partial: "mailgroups/print" %>   <!-- MODAL -->
 
 <div class="page-header col-lg-12">
   <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
@@ -57,6 +58,7 @@
                   mailto_mailgroup_path(@mailgroup.id),
                   remote: true,
                   class: "btn btn-default",
+                  data: {toggle: "modal", target: "#mailgroupwarn" },
                   data: {toggle: "tooltip", title: "Mailgroup has more than 50 users", placement: 'top' }) do 
                     mail_to (current_user.nil? ? "Add your email here" : current_user.login ), 
                     content_tag(:i, '', class: "fa fa-envelope-o") + " Group email", 
@@ -68,15 +70,16 @@
                   print_mailgroup_path(@mailgroup),
                   remote: true,
                   #target: "_blank",
+                  data: {toggle: "modal", target: "#modprint_group" },
                   class: "btn btn-default"
 
       %>
 
-      <%= link_to content_tag(:i, nil, class: 'fa fa-list') + "List",
+      <!-- %= link_to content_tag(:i, nil, class: 'fa fa-list') + "List",
             "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST&rs:Command=Render&rs:Format=Excel&GroupID=#{@mailgroup.id}",
             data: {toggle: "tooltip", title: "Members as Excel", placement: 'top'},
             class: 'btn btn-default'
-       %>
+       % -->
 
 
 
@@ -92,6 +95,5 @@
 </div>
 
 <%= render partial: "users/mailgroup_users" %>
-<%= render partial: 'mailgroups/print' %>   <!-- MODAL -->
 
 <%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

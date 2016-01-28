@@ -4,7 +4,7 @@
   <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
   <h1><%= content_tag(:i, nil, class: 'fa fa-user') %>
     <span class="dim"></span><%= unless @user.lastname.nil?
-            "#{@user.lastname} #{@user.firstname}"
+            "#{@user.firstname} #{@user.lastname}"
           else
             "#{@user.company}"
           end
@@ -46,7 +46,7 @@
     <dd><%= @user.fax %></dd>
     <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
     <dd><%= @user.phone %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:phone2) %>:</strong></dt>
+    <dt><strong><%= model_class.human_attribute_name(:mobile) %>:</strong></dt>
     <dd><%= @user.phone2 %></dd>
     <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
     <dd><%= mail_to(@user.email) %></dd>
@@ -101,15 +101,16 @@
                 print_user_path(@user),
                 remote: true,
                 data: {toggle: "tooltip", title: "Print", placement: 'top'},
+                data: {toggle: "modal", target: "#modprint_user" },
                 class:  'btn btn-default'
      %>
 
-    <%= link_to content_tag(:i, nil, class: 'fa fa-print') + "User details",
+    <!-- %= link_to content_tag(:i, nil, class: 'fa fa-print') + "User details",
           # "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+USER+OVERVIEW&rs:Command=Render&rs:Format=PDF&UserID=#{@user.id}",
           "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+USER+DETAILS&rs:Command=Render&rs:Format=PDF&UserID=#{@user.id}",
           data: {toggle: "tooltip", title: "User details and group memberships", placement: 'top'},
           class: 'btn btn-default'
-     %>
+     % -->
 
     <%= link_to content_tag(:i, nil, class: 'fa fa-trash-o') + 'Delete',
                 user_path(@user),
@@ -121,8 +122,7 @@
   </div>
 </div>
 
-
 <%= render partial: "mailgroups/user_mailgroups" %>
-<%= render partial: 'users/print' %>   <!-- MODAL -->
+<%= render partial: "users/print" %>   <!-- MODAL -->
 
 <%= content_tag :div, "#{__FILE__}", class: 'iv col-lg-12' %>

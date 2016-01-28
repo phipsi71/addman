@@ -1,5 +1,6 @@
 
-<div id="print"  class="modal fade">
+
+<div class="modal fade" id="modprint_group" tabindex="-1" role="dialog" aria-labelledby="PrintModalLabel">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,10 +10,18 @@
         <h2 class="modal-title"><i class="glyphicon glyphicon-print"></i>&nbsp Print</h2>
       </div>
       <div class="modal-body">
+
+        <div class="page-header col-lg-12">
+          <h1><%= content_tag(:i, nil, class: 'fa print') %>
+            <span class="dim"></span><%= "#{@mailgroup.name}" %>
+          </h1>
+        </div>
+
+
         <ul class="print-options">
-                <li>
+          <li>
             <%= link_to(content_tag(:i, nil, class: 'fa fa-tag left') + "Print badges",
-                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+GROUP+BADGES&rs:Command=Render&rs:Format=PDF&GroupID=#{@mailgroup.id}",
+                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+GROUP+BADGES&rs:Command=Render&rs:Format=Word&GroupID=#{@mailgroup.id}",
                   data: {toggle: "tooltip", title: "Print badges for group members", placement: 'right'},
                   target: '_blank',
                   class: 'btn btn-default fixed-width'
@@ -31,7 +40,7 @@
 
           <li>
             <%= link_to content_tag(:i, nil, class: 'fa fa-file-text left') + "Attendance list",
-                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+ATTENDANCE+LIST&rs:Command=Render&GroupID=#{@mailgroup.id}",
+                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+ATTENDANCE+LIST&rs:Command=Render&rs:Format=Word&GroupID=#{@mailgroup.id}",
                   data: {toggle: "tooltip", title: "Attendance list (as Word)", placement: 'right'},
                   target: '_blank',
                   class: 'btn btn-default fixed-width'
