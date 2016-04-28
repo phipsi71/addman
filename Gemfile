@@ -42,13 +42,13 @@ gem 'spring', group: :development
 
 gem 'pg'
 gem "twitter-bootstrap-rails"		# installs generators
-#gem 'bootstrap-sass'
+gem 'bootstrap-sass'
 gem 'less-rails'
 gem 'less-rails-bootstrap'
 gem 'less-rails-fontawesome'
 
-gem 'will_paginate', '~> 3.0'
-gem 'will_paginate-bootstrap', '~> 1.0.1'
+gem 'will_paginate' #, '~> 3.0'
+gem 'will_paginate-bootstrap' #, '~> 1.0.1'
 
 gem 'font-awesome-rails'
 
@@ -60,3 +60,4 @@ gem 'devise_ldap_authenticatable'
 
 gem 'local_time'
 gem 'twitter-bootstrap-rails-confirm'
+gem 'actionpack-page_caching'

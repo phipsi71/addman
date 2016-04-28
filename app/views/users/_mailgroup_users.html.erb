@@ -5,9 +5,10 @@
 </div>
 
 <table class="table table-striped fadeactions users">
-  <%= render partial: 'users/user_header' %>
+  <%= render partial: 'users/user_header', locals: {show_check: true} %>
   <tbody>
-      <%= render partial: 'users/user', collection: @mailgroup.users.order(@c + ' ' + @d), as: :user %> 
+      <%= render partial: 'users/user', collection: @mailgroup.users.order(@c + ' ' + @d), as: :user,
+      locals: {show_check: true} %> 
   </tbody>
 </table>
 

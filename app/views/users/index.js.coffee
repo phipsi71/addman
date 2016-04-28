@@ -1,2 +1,0 @@
-$('#numbo').html('<%= @users.count %>');
- 

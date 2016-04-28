@@ -8,9 +8,7 @@
   #   return
 
 jQuery ->
-#$( document ).ready( ->
-
- $('#autogroups').autocomplete
+  $('#autogroups').autocomplete
     minLength: 3
     source: (request, response) ->
       $.ajax
@@ -27,4 +25,7 @@ jQuery ->
     select: (event, ui) ->
       #log "Now chosen: " + ui.item.label + " / " + ui.item.id
       $("#mailgroup_id").val(ui.item.id)  # set the css id 'user_id' with id of user in hidden_field in html
-;
+  return
+return
+
+

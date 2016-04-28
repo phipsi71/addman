@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #include UsersHelper
+  #caches_page :index
   before_action :authenticate, except: [:index, :search_for, :show, :sample, :print]
   before_action :set_user, only: [:show, :edit, :copy, :update, :destroy, :print, :remove]
   before_action :set_term, only: [:index]
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     respond_to do |format|
         format.html # will call index.html.erb
         format.json { render json: @users }
-        format.js   # will call index.js.coffee
+        #format.js   # will call index.js.coffee
     end
   end
 
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
 
   def copy
-    new_user = @user.dup
+    new_user = @user.dup    #duplicate !
     new_user.salutation = nil
     new_user.title = nil
     new_user.lastname = nil

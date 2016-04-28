@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  #include UserList
+  caches_page :index
   before_action :authenticate, except: [:index, :show, :choose]
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 

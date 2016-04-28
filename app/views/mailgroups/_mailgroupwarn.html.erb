@@ -19,10 +19,16 @@
         </div>     
         <div class="modal-footer">
 
+          <%= link_to content_tag(:i, '', class: "fa fa-list") + "Go to lists",
+                      lists_path,
+                      class: 'btn btn-default close-modal'
+          %>
+
           <%= link_to content_tag(:i, '', class: "fa fa-ticket") + "Open ticket",
                       "https://ticketing.sakk.ch/otrs/customer.pl",
                       target: '_blank',
-                      class: 'btn btn-default close-modal' 
+                      class: 'btn btn-default close-modal',
+                      data: {toggle: "tooltip", title: "Let create a new mail group", placement: 'top' }
           %>
           
           <%= link_to content_tag(:i, '', class: "fa fa-close") + "Close",

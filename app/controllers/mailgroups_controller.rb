@@ -1,4 +1,5 @@
 class MailgroupsController < ApplicationController
+  #caches_page   :index
   before_action :authenticate, except: [:index, :search_for, :show, :search, :mailto, :print]
   before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove]
   before_action :set_term, only: [:index]

@@ -23,6 +23,7 @@
 //= require lists
 //= require bmodal
 //= require close-modal
+//= require mailtogroup
 //= require loader
 //= require bootstrap
-//= require ../../../vendor/assets/javascripts/oLoader
+//= require oLoader
