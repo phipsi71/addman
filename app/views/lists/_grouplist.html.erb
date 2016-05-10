@@ -1,0 +1,17 @@
+<!-- No loop is needed when rendering this partial -->
+
+<%= content_tag_for(:tr, list) do %>
+  <td class="dim"><%= list.id %></td>
+  <td><%= list.name %></td>
+  <td>
+
+    <!-- %= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_list_path(list),
+          data: {toggle: "tooltip", title: "Edit list", placement: 'top'}) if current_user
+     % -->
+
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-group loaderlink' ), list_path(list),
+          data: {toggle: "tooltip", title: "List details and assigned groups", placement: 'top'})
+     %>
+
+  </td>
+<% end %>

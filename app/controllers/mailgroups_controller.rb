@@ -23,7 +23,6 @@ class MailgroupsController < ApplicationController
   # GET /mailgroups/1.json
   def show
     @c ||= 'lastname'
-    set_mailgroups
   end
 
   # GET /mailgroups/new

@@ -2,14 +2,15 @@
 <%= render partial: "mailgroups/print" %>   <!-- MODAL -->
 
 <div class="page-header col-lg-12">
-  <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
   <h1><%= content_tag(:i, nil, class: 'fa fa-users') %>
     <span class="dim"></span><%= "#{@mailgroup.name}" %> 
   </h1>
 </div>
 
 
+
 <div class="panel panel-default panel-body col-lg-6">
+    <h3>Group details</h3>
     <dl class="dl-horizontal">
       <dt class="dim"><strong><%= model_class.human_attribute_name(:id) %>:</strong></dt>
       <dd class="dim"><%= @mailgroup.id %></dd>
@@ -78,6 +79,15 @@
 
     </div>
     <!-- textarea id="maila"></textarea -->
+</div>
+
+<div class="panel panel-default panel-body col-lg-offset-1 col-lg-5">
+  <h3>Lists assigned</h3>
+  <table class="table table-striped fadeactions lists">
+    <tbody>
+      <%= render partial: 'lists/grouplist', collection: @mailgroup.lists.order(:id), as: :list %>
+    </tbody>
+  </table>
 </div>
 
 <%= render partial: "users/mailgroup_users" %>

@@ -4,7 +4,8 @@ class Mailgroup < ActiveRecord::Base
   self.primary_key = "id"
 
 	has_and_belongs_to_many :users
-  has_and_belongs_to_many :lists
+  has_and_belongs_to_many :lists  #, join_table: 'groups_lists'
+
 
   validates :name, uniqueness: true
 
