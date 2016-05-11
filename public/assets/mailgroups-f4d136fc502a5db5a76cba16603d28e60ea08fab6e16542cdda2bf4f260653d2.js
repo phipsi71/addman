@@ -1,1 +1,0 @@
-(function(){jQuery(function(){$("#autogroups").autocomplete({minLength:3,source:function(t,e){return $.ajax({url:"../mailgroups",dataType:"json",data:{term:t.term},success:function(t){return e($.map(t,function(t){return{label:t.name,id:t.id}}))}})},select:function(t,e){return $("#mailgroup_id").val(e.item.id)}})})}).call(this);
