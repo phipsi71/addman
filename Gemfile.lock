@@ -30,12 +30,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (6.3.6)
-      execjs
     bcrypt (3.1.11)
-    bootstrap-sass (3.3.6)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (8.2.4)
     coffee-rails (4.0.1)
@@ -123,6 +118,12 @@ GEM
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     sass (3.4.22)
+    sass-rails (5.0.4)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -167,7 +168,6 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-page_caching
-  bootstrap-sass
   byebug
   coffee-rails (~> 4.0.0)
   devise
@@ -183,6 +183,7 @@ DEPENDENCIES
   local_time
   pg
   rails (= 4.1.5)
+  sass-rails
   sdoc (~> 0.4.0)
   spring
   sprockets-rails

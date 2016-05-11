@@ -6,13 +6,11 @@ gem 'rails', '4.1.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-# gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -40,24 +38,34 @@ gem 'spring', group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pg'
-gem "twitter-bootstrap-rails"		# installs generators
-gem 'bootstrap-sass'
-gem 'less-rails'
-gem 'less-rails-bootstrap'
-gem 'less-rails-fontawesome'
+gem 'sprockets-rails'
+gem "twitter-bootstrap-rails"    # installs generators
 
+gem 'devise'
+gem 'devise_ldap_authenticatable'
+
+
+gem 'pg'
 gem 'will_paginate' #, '~> 3.0'
 gem 'will_paginate-bootstrap' #, '~> 1.0.1'
+
+
+
+# gem 'bootstrap-sass'
+gem 'less-rails-bootstrap'
+gem 'less-rails'
+# # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
+gem 'less-rails-fontawesome'
+
+
 
 gem 'font-awesome-rails'
 
 gem 'byebug', group: :development
-gem 'sprockets-rails'
 #gem 'rails4-autocomplete'
-gem 'devise'
-gem 'devise_ldap_authenticatable'
 
 gem 'local_time'
 gem 'twitter-bootstrap-rails-confirm'
 gem 'actionpack-page_caching'
+# gem 'yui-compressor'
