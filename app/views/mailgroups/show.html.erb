@@ -34,7 +34,7 @@
     <%= render partial: 'mailgroupwarn' if @mailgroup.users.count > 50 %>
 
     <div class='panel-btn-group'>
-      <%= link_to content_tag(:i, '', class: "glyphicon glyphicon-chevron-left") + t('.back', default: t("helpers.links.back")),
+      <%= link_to content_tag(:i, '', class: "fa fa-chevron-left") + t('.back', default: t("helpers.links.back")),
                   :back,
                   class: 'btn btn-default' 
        %>
@@ -44,13 +44,8 @@
                   class: 'btn btn-default' if current_user
        %>
 
-      <%= link_to_if(@mailgroup.users.count < 50,
-                  content_tag(:i, '', class: "fa fa-envelope")  + "Group mail",
-                  '#',
-                  class: "btn btn-default", id: "jqcc") do
-                    link_to content_tag(:i, '', class: "fa fa-envelope")  + "Group mail", '#',
-                      class: "btn btn-default", data: {toggle: "modal", target: "#mailgroupwarn" }
-                  end 
+      <%= link_to content_tag(:i, '', class: "fa fa-envelope")  + "Group mail", '#',
+                  class: "btn btn-default", id: "jqcc"
        %>
 
       <%= link_to content_tag(:i, '', class: "fa fa-print") + "Print",
@@ -85,7 +80,11 @@
   <h3>Lists assigned</h3>
   <table class="table table-striped fadeactions lists">
     <tbody>
-      <%= render partial: 'lists/grouplist', collection: @mailgroup.lists.order(:id), as: :list %>
+      <% if @mailgroup.lists.any? %>
+        <%= render partial: 'lists/grouplist', collection: @mailgroup.lists.order(:id), as: :list %>
+      <% else %>
+        <%= render text: 'none' %>
+      <% end %>
     </tbody>
   </table>
 </div>

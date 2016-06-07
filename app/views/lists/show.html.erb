@@ -1,7 +1,7 @@
 <%- model_class = List -%>
 <div class="page-header col-lg-12">
   <!-- h1><%=t '.title', default: model_class.model_name.human.titleize %></h1 -->
-  <h1><%= content_tag(:i, nil, class: 'glyphicon glyphicon-list') %>
+  <h1><%= content_tag(:i, nil, class: 'fa fa-list') %>
     <span class="dim"></span><%= "#{@list.name}" %> 
   </h1>
 
@@ -13,6 +13,7 @@
 </dl -->
 
  <div class="panel panel-default panel-body col-lg-6">
+    <h3>List details</h3>
     <dl class="dl-horizontal">
       <dt class="dim"><strong ><%= model_class.human_attribute_name(:id) %>:</strong></dt>
       <dd class="dim"><%= @list.id %></dd>
@@ -30,7 +31,7 @@
     <div class='panel-btn-group row'>
 
 
-    <%= link_to content_tag(:i, nil, class: "glyphicon glyphicon-chevron-left") + 'Back',
+    <%= link_to content_tag(:i, nil, class: "fa fa-chevron-left") + 'Back',
                 :back, class: 'btn btn-default spacer-medium'
      %>
 
@@ -56,6 +57,22 @@
     </div>
 
   </div>
+
+
+  <% unless @list.mailgroup.nil? %>
+    <div class="panel panel-default panel-body col-lg-offset-1 col-lg-5">
+      <h3>Robinson group</h3>
+      <dl class="dl-horizontal">
+        <dt class="dim"><strong ><%= model_class.human_attribute_name(:id) %>:</strong></dt>
+        <dd class="dim"><%= @list.mailgroup.id %></dd>
+        <dt>Group name:</dt>
+        <dd><%= @list.mailgroup.name %></dd>
+      </dl>
+     <%= link_to content_tag(:i, nil, class: "fa fa-group left") + 'Group details',
+                mailgroup_path(@list.mailgroup), class: 'btn btn-default spacer-medium'
+      %>
+    </div>
+  <% end %>
 
 
 <%= render partial: "mailgroups/list_mailgroups" %>

@@ -11,23 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210122655) do
+ActiveRecord::Schema.define(version: 20160531133333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "tablefunc"
   enable_extension "unaccent"
-
-  create_table "groups_lists", id: false, force: true do |t|
-    t.integer "mailgroup_id"
-    t.integer "list_id"
-  end
-
-  create_table "groups_users", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "mailgroup_id"
-  end
-
-  add_index "groups_users", ["user_id", "mailgroup_id"], name: "m_u", unique: true, using: :btree
+  enable_extension "hstore"
+  enable_extension "dblink"
 
   create_table "lists", force: true do |t|
     t.string   "name"
@@ -36,25 +27,29 @@ ActiveRecord::Schema.define(version: 20151210122655) do
     t.string   "email_id"
   end
 
+  create_table "lists_mailgroups", id: false, force: true do |t|
+    t.integer "mailgroup_id"
+    t.integer "list_id"
+  end
+
   create_table "mailgroups", force: true do |t|
     t.string   "name"
     t.text     "memo"
     t.string   "trialcode"
-    t.string   "importance"
     t.string   "created_by"
     t.string   "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "robinson_id"
+    t.integer  "robinson_type"
   end
 
   add_index "mailgroups", ["id"], name: "index_mailgroups_on_groupid", using: :btree
+  add_index "mailgroups", ["robinson_id"], name: "index_mailgroups_on_robinson_id", using: :btree
 
-  create_table "salutations", force: true do |t|
-    t.string   "lang",       limit: 1
-    t.string   "gender",     limit: 1
-    t.string   "salutation"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "mailgroups_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "mailgroup_id"
   end
 
   create_table "users", force: true do |t|

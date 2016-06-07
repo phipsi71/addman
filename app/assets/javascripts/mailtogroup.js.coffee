@@ -11,8 +11,11 @@ $ ->
 		  email = $this.attr('href').replace('mailto:', '')
 		  emails.push email
 		  return
-		#$('#maila').val emails.join(';')
-		window.location.href = "mailto:?bcc=" + emails.join(';')
+		if emails.length > 50
+			$('#mailgroupwarn').modal 'show'
+		else
+			window.location.href = "mailto:?bcc=" + emails.join(';')
+		return
 
 
 # check / uncheck all

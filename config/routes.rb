@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   #devise_for :users
-  devise_for :users, :controllers => {sessions: 'sessions'}
+  #devise_for :users, :controllers => {sessions: 'sessions'}
+  devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}  
   
   root to: 'users#index'  
 
@@ -13,8 +14,6 @@ Rails.application.routes.draw do
   get 'sample_user', to: 'users#sample'     # it's not in resources since we don't have an id when selecting
 
   resources :users do
-
-        
 
         # collection do
         #   get   'search_for', to: 'users#search_for',  as: 'search'

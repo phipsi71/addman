@@ -1,33 +1,19 @@
 class SessionsController < Devise::SessionsController
 
-
   # skip_before_filter :store_last_attempted_location
   # skip_after_filter  :store_last_successful_location
   # after_filter       :set_csrf_header, only: [:new, :create]
 
-  respond_to :js
+  before_filter :log
 
+  skip_before_filter :verify_authenticity_token, :only => :create
+  respond_to :json, :js
 
-  def index
-    record_history
-  end  
 
   def new
-    super
+    ret = super
+    logger.debug "SessionsController > new > after super: ret = #{ret}"
   end
-
-  def create
-    super
-  end
-
-  def destroy
-    super
-  end
-
-  def failure
-    logger.debug "failure in SessionsController"
-  end
-
 
 protected
 
@@ -42,6 +28,9 @@ protected
     session[:history].pop
   end
 
+  def log
+    logger.debug "def in SessionsController"
+  end
 
   # def set_csrf_header
   #    response.headers['X-CSRF-Token'] = form_authenticity_token

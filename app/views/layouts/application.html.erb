@@ -11,21 +11,17 @@
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
     <![endif]-->
-
     <%= stylesheet_link_tag "application", media: "all" %>
-
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon' %>
-
     <%= javascript_include_tag "application" %>
-  </head>
+    <%= render partial: 'devise/sessions/signin' %> <!-- MODAL signin dialog , appears only when user wants to sign in -->
+    <%= render partial: 'layouts/loader' %>
+    </head>
   <body>
 
   <!-- render various modal dialogs as hidden -->
 
-  <%= render partial: 'devise/sessions/signin' %> <!-- MODAL signin dialog , appears only when user wants to sign in -->
-  <%= render partial: 'layouts/loader' %>
-  
   
     
   <div class="navbar navbar-default navbar-static-top col-lg-12">

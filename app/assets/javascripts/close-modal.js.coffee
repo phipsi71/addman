@@ -3,4 +3,3 @@ $ ->
     $('#mailgroupwarn').modal 'hide'
     return
   return
-

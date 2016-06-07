@@ -39,7 +39,9 @@ gem 'spring', group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'sprockets-rails'
-gem "twitter-bootstrap-rails"    # installs generators
+gem 'twitter-bootstrap-rails', '>= 3.2.0', '< 3.2.2'
+#gem "twitter-bootstrap-rails"    # installs generators
+#gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'master'
 
 gem 'devise'
 gem 'devise_ldap_authenticatable'
