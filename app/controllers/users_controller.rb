@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   #caches_page :index
-  before_action :authenticate, except: [:index, :search_for, :show, :sample, :print]
+  before_action :authenticate, except: [:index, :search_for, :show, :sample, :print, :get_by_ids]
   before_action :set_user, only: [:show, :edit, :copy, :update, :destroy, :print, :remove]
   before_action :set_term, only: [:index]
   before_action :set_sort, only: [:index, :show]
 
   helper_method :sort_column, :sort_direction
+
+  protect_from_forgery except: [:create]
 
   # GET /users
   # GET /users.json
@@ -69,6 +71,14 @@ class UsersController < ApplicationController
     render :edit
   end
 
+  def get_by_ids
+    ids = params['ids'].split(',').map{|id| id.to_i}
+    users = User.where("id IN (?)", ids)
+    respond_to do |format|
+      format.json { render json: users.as_json }
+    end
+  end
+
 
   # GET /users/1/edit
   def edit
@@ -85,7 +95,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.json { render json: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }

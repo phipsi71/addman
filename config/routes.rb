@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'sample_user', to: 'users#sample'     # it's not in resources since we don't have an id when selecting
 
+  get 'users/get_by_ids' => 'users#get_by_ids'
+
   resources :users do
 
         # collection do
