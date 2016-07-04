@@ -71,3 +71,4 @@ gem 'local_time'
 gem 'twitter-bootstrap-rails-confirm'
 gem 'actionpack-page_caching'
 # gem 'yui-compressor'
+
