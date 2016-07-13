@@ -13,12 +13,12 @@
           data: {toggle: "tooltip", title: "Group details and members", placement: 'top'})
      %>
 
-    <%= link_to(content_tag(:i, nil, class: 'fa fa-tag'), 
+    <!-- %= link_to(content_tag(:i, nil, class: 'fa fa-tag'), 
           "http://sakkreports/reportserver?%2fSERVICES%2fADDRESSES%2fR+GROUP+BADGES&rs:Command=Render&rs:Format=PDF&rc%3ALinkTarget=_blank&GroupID=#{mailgroup.id}",
           data: {toggle: "tooltip", title: "Print badges for group members", placement: 'top'},
           target: '_blank'
         )
-     %>
+     % -->
 
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_mailgroup_path(mailgroup),

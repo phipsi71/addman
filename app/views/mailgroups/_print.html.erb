@@ -21,7 +21,7 @@
         <ul class="print-options">
           <li>
             <%= link_to(content_tag(:i, nil, class: 'fa fa-tag left') + "Print badges",
-                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+GROUP+BADGES&rs:Command=Render&rs:Format=Word&GroupID=#{@mailgroup.id}",
+                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+GROUP+BADGES&rs:Command=Render&rs:Format=PDF&GroupID=#{@mailgroup.id}",
                   data: {toggle: "tooltip", title: "Print badges for group members", placement: 'right'},
                   target: '_blank',
                   class: 'btn btn-default fixed-width'

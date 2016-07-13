@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531133333) do
+ActiveRecord::Schema.define(version: 20160707140647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 20160531133333) do
     t.integer "user_id"
     t.integer "mailgroup_id"
   end
+
+  add_index "mailgroups_users", ["mailgroup_id", "user_id"], name: "index_mailgroups_users_on_mailgroup_id_and_user_id", unique: true, using: :btree
+  add_index "mailgroups_users", ["user_id", "mailgroup_id"], name: "index_mailgroups_users_on_user_id_and_mailgroup_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "salutation"

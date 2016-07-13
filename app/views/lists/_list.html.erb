@@ -11,10 +11,6 @@
 
   <td class="fadeactions col-md-2">
 
-    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_list_path(list),
-          data: {toggle: "tooltip", title: "Edit list", placement: 'top'}) if current_user
-     %>
-
     <%= link_to(content_tag(:i, nil, class: 'fa fa-group loaderlink' ), list_path(list),
           data: {toggle: "tooltip", title: "List details and assigned groups", placement: 'top'})
      %>
@@ -29,6 +25,11 @@
     <%= link_to(content_tag(:i, nil, class: 'fa fa-envelope-o'),
           "mailto:#{list.email_id}@sakk.ch ?cc=#{current_user.login}&subject=<password> <your subject>&body=ATTENTION:The subject line is important! Mail is sent to all recipients of list. Type your message here",
           data: {toggle: "tooltip", title: "Email to", placement: 'top'}) if current_user  %> 
+
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_list_path(list),
+          data: {toggle: "tooltip", title: "Edit list", placement: 'top'}) if current_user
+     %>
+
 
 
 

@@ -83,8 +83,8 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     #params.require(:user).permit(:updated_by, :updated_at)
-    # @user.updated_by = current_user.login
-    # @user.updated_at = Time.now  
+    @user.updated_by = current_user.login
+    @user.updated_at = Time.now  
   end
 
   # POST /users
@@ -106,10 +106,6 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    # params.require(:user).permit(:salutation, :title, :firstname,
-    #     :lastname, :function, :company, :appendix, :street, :city, :zip,
-    #     :country, :fax, :phone, :phone2, :email, :email2, :gender, :initials, :language, :memo, :prio,
-    #     :updated_by, :updated_at)
     @user.updated_by = current_user.login
     @user.updated_at = Time.now
     respond_to do |format|

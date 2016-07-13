@@ -168,13 +168,13 @@
     </div>
     <%= error_span(@user[:memo]) %>
   </div>
-  <div class="control-group row">
+  <!-- div class="control-group row">
     <%= f.label :prio, class: 'control-label col-lg-3' %>
     <div class="controls col-lg-6">
       <%= f.text_field :prio, class: 'form-control' %>
     </div>
     <%= error_span(@user[:prio]) %>
-  </div>
+  </div -->
   <!--div class="control-group">
     <%= f.label :mailgroups, class: 'control-label col-lg-3' %>
     <div class="controls col-lg-6">
@@ -209,7 +209,7 @@
       users_path, class: 'btn btn-default spacer-medium' %>
 
  
-  <%= link_to '<i class="fa fa-chevron-left"></i> Back'.html_safe,
+  <%= link_to '<i class="fa fa-ban"></i> Cancel'.html_safe,
       :back, class: 'btn btn-default  spacer-medium' %>
 
 </div>

@@ -16,12 +16,14 @@ class User < ActiveRecord::Base
     # logger.debug "search_term = #{term.split.join(':* | ') + ':*'}"
     # u = self.where("document @@ to_tsquery(?)", term.split.join(":* | ") + ":*" )
 
+    term.gsub!(/[^0-9A-Za-z\-+ ]/, '')
     t = term.split.join(":* & ") + ":*"  # pipe symbol means OR, & symbol means AND
 
     u = SearchIndex.connection.select_all("
         SELECT ts_rank_cd(document, query, 1) AS rank, si.id
         FROM search_indices si, to_tsquery(unaccent('#{t}')) query
         WHERE query @@ document
+        order by rank
     ")
 
     # now stuff the id's into an array

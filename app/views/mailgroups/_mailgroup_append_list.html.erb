@@ -14,14 +14,14 @@
   <td><%= mailgroup.users.count %></td>
   <td class="fadeactions col-md-2">
 
-    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_mailgroup_path(mailgroup),
-          data: {toggle: "tooltip", title: "Edit mailgroup", placement: 'top'}) if current_user
-     %>
-     
     <%= link_to(content_tag(:i, nil, class: 'fa fa-group' ), mailgroup_path(mailgroup),
           data: {toggle: "tooltip", title: "Users", placement: 'top'})
      %>
 
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_mailgroup_path(mailgroup),
+          data: {toggle: "tooltip", title: "Edit mailgroup", placement: 'top'}) if current_user
+     %>
+     
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-minus-square-o'),
         remove_list_mailgroup_path(@list, mailgroup),

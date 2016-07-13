@@ -67,8 +67,7 @@
       <%= link_to content_tag(:i, '', class: "fa fa-trash-o") + t('.destroy', default: t("helpers.links.destroy")),
                   mailgroup_path(@mailgroup),
                   method: :delete,
-                  remote: true,
-                  data: { confirm: "Sure to delete #{@mailgroup.name}?" },
+                  data: { confirm: "Sure to delete #{@mailgroup.name}? \nIMPORTANT: Assigned users won't be deleted" },
                   class: 'btn btn-mini btn-danger' if current_user
        %>
 
