@@ -18,7 +18,7 @@
 
 
 <div class="row col-lg-6">
-  <% if current_user %>
+  <!-- % if current_user % -->
     <!-- append  a MAILGROUP to the user -->
     <%= form_tag append_user_mailgroups_path(@user), method: :patch, remote: true do %>
       <div class="input-group append">
@@ -31,7 +31,7 @@
         </span>
       </div>
     <% end %>
-  <% end %>
+  <!-- % end %  --->
 </div>
 
 <%= content_tag(:div, "partial mailgroups/mailgroup" , class: 'iv col-lg-12') %>
