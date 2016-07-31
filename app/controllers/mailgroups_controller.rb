@@ -1,7 +1,7 @@
 class MailgroupsController < ApplicationController
   #caches_page   :index
   before_action :authenticate, except: [:index, :search_for, :show, :search, :mailto, :print]
-  before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove]
+  before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove, :remove_list]
   before_action :set_term, only: [:index]
   before_action :set_sort, only: [:index, :show]
 
@@ -120,8 +120,8 @@ class MailgroupsController < ApplicationController
     @list.mailgroups.delete(@mailgroup)
 
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Mailgroup was successfully removed from list.' }  #reload this page after deletion
-      format.json { head :no_content }
+      #format.html { redirect_to :back, notice: 'Mailgroup was successfully removed from list.' }  #reload this page after deletion
+      #format.json { head :no_content }
       format.js
     end
   end
