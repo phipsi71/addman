@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   #   request.referrer
   # end
 
+  $LOGINNAME = nil
+  logger.debug "set LOGINNAME empty. LOGINNAME = #{$LOGINNAME}"
 
   #----------------------------------------------------
 
@@ -24,6 +26,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate
  
+    logger.debug "entered authenticate"
 #    request.env.each {|k,v| Rails.logger.debug "ENV :: #{k} -> #{v}"}
 #    request.headers.each {|k,v| Rails.logger.debug "HEA :: #{k} -> #{v}"}
  
@@ -40,4 +43,3 @@ class ApplicationController < ActionController::Base
   end
 
 end
- 

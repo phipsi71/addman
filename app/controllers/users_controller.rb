@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #caches_page :index
-  before_action :authenticate, except: [:index, :search_for, :show, :sample, :print, :get_by_ids]
+  before_action :authenticate, except: [:index, :search_for, :show, :sample, :print, :get_by_ids, :append, :remove]
   before_action :set_user, only: [:show, :edit, :copy, :update, :destroy, :print, :remove]
   before_action :set_term, only: [:index]
   before_action :set_sort, only: [:index, :show]

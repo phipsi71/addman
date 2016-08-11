@@ -1,6 +1,6 @@
 class MailgroupsController < ApplicationController
   #caches_page   :index
-  before_action :authenticate, except: [:index, :search_for, :show, :search, :mailto, :print]
+  before_action :authenticate, except: [:index, :search_for, :show, :search, :mailto, :print, :append, :remove]
   before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove, :remove_list]
   before_action :set_term, only: [:index]
   before_action :set_sort, only: [:index, :show]
@@ -108,8 +108,6 @@ class MailgroupsController < ApplicationController
       format.json { head :no_content }
       format.js
     end
-
-
   end
 
 
@@ -172,20 +170,6 @@ class MailgroupsController < ApplicationController
     def mailgroup_params
       params.require(:mailgroup).permit(:name, :memo, :trialcode, :importance)
     end
-
-    # def sort_column
-    #   if params[:sort] =~ /# */
-    #     "count"
-    #   else
-    #     Mailgroup.column_names.include?(params[:sort]) ? params[:sort] : "name"
-    #     logger.debug "MAILGROUP params[:sort] = #{params[:sort]}"
-
-    #   end
-    # end
-    
-    # def sort_direction
-    #   %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    # end
 
 
 end

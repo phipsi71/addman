@@ -8,7 +8,6 @@ class List < ActiveRecord::Base
   has_one :mailgroup, as: :robinson
 
 
-
   # this no good
   #has_many :mailgroups
   #has_many :users, through: :mailgroups

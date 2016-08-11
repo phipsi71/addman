@@ -7,11 +7,20 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index
     @lists = List.all
+    @intellists = Intellist.all
+    if $LOGINNAME
+      @carboncopy="cc=#{$LOGINNAME}&"
+    end
   end
 
   # GET /lists/1
   # GET /lists/1.json
   def show
+    logger.debug "@lc = #{@lc}"
+    if $LOGINNAME
+      @carboncopy="cc=#{$LOGINNAME}&"
+    end
+    list_count
   end
 
   # GET /lists/new
@@ -99,4 +108,20 @@ class ListsController < ApplicationController
     def list_params
       params.require(:list).permit(:name, :email_id, :memo, :trialcode, :importance)
     end
+
+    def list_count
+      @lc = User.find_by_sql(["SELECT distinct u.id
+        FROM lists_mailgroups ml
+        JOIN mailgroups m ON ml.mailgroup_id = m.id
+        JOIN mailgroups_users mu ON m.id = mu.mailgroup_id
+        JOIN users u ON u.id = mu.user_id
+        WHERE ml.list_id = :lid AND u.email IS NOT NULL
+        EXCEPT
+        SELECT distinct u.id
+        FROM mailgroups_users mu
+        JOIN mailgroups m ON m.id = mu.mailgroup_id
+        JOIN users u ON u.id = mu.user_id
+        WHERE m.robinson_id = :lid AND u.email IS NOT NULL", {lid: @list.id}]).count
+    end
+
 end

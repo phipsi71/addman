@@ -22,7 +22,7 @@
       <dt><strong># Groups:</strong></dt>
       <dd><%= @list.mailgroups.count %></dd>
       <dt><strong># Users:</strong></dt>
-      <dd><%= @list.mailgroups.map { |m| m.users.count }.sum %></dd>
+      <dd><%= @lc %></dd>
       <dt class="dim"><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
       <dd class="dim"><%= @list.created_at.try(:to_formatted_s).try(:first,16) %></dd>
       <dt class="dim"><strong><%= model_class.human_attribute_name(:updated_at) %>:</strong></dt>
@@ -40,12 +40,19 @@
      %>
 
 
-      <%= link_to content_tag(:i, nil, class: 'fa fa-envelope-o') + "Mass mail",
-            "mailto:#{@list.email_id}@sakk.ch?cc=#{current_user.login}&subject=<password> <your subject>&body=ATTENTION:The subject line is important! Mail is sent to all recipients of list.      Type your message here",
-            data: {toggle: "tooltip", title: "Mass mail to all members of this list", placement: 'top'},
-            class: 'btn btn-default spacer-medium' if current_user
-       %>
+    <%= link_to content_tag(:i, nil, class: 'fa fa-envelope-o') + "Mass mail",
+          "mailto:#{@list.email_id}@sakk.ch?#{@carboncopy}subject=<password> <your subject>&body=ATTENTION:The subject line is important! Mail is sent to all recipients of list.      Type your message here",
+          data: {toggle: "tooltip", title: "Mass mail to all members of this list", placement: 'top'},
+          class: 'btn btn-default spacer-medium'
+     %>
 
+
+    <%= link_to_if @list.id==1, content_tag(:i, nil, class: 'fa fa-file-text') + "Addresslist",
+          "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST+KREBSBULLETIN&rs:Command=Render&rs:Format=CSV-semiq&ListID=#{@list.id}",
+          data: {toggle: "tooltip", title: "Excel List for Krebsbulletin", placement: 'top'},
+          class: 'btn btn-default spacer-medium' do
+          end
+     %>
 
     <%= link_to content_tag(:i, nil, class: 'fa fa-trash-o') + 'Delete',
             list_path(@list),

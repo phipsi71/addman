@@ -49,7 +49,7 @@
 
           <li>
             <%= link_to content_tag(:i, nil, class: 'fa fa-table left') + "Excel list",
-                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST&rs:Command=Render&rs:Format=Excel&GroupID=#{@mailgroup.id}",
+                  "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+GROUP+LIST&rs:Command=Render&rs:Format=Excel&GroupID=#{@mailgroup.id}",
                   data: {toggle: "tooltip", title: "General list (as Excel)", placement: 'right'},
                   target: '_blank',
                   class: 'btn btn-default fixed-width'

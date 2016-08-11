@@ -12,7 +12,8 @@
   </tbody>
 </table>
 
-<!-- % if current_user % -->
+
+
   <%= form_tag append_mailgroup_users_path(@mailgroup), method: :patch, remote: true do %>
     <div class="input-group append col-md-6">
 
@@ -24,7 +25,6 @@
       </span>
     </div>
   <% end %>
-<!-- % end %-->
 
 <%= content_tag(:div, "partial users/user" , class: 'iv col-lg-12') %>
 <%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

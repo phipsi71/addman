@@ -1,0 +1,2 @@
+class IntellistsController < ListsController
+end

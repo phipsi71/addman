@@ -10,13 +10,10 @@ class User < ActiveRecord::Base
 
   def self.searched(term)
     
-    #Rails::logger.debug("term = " + term)
+    Rails::logger.debug("entered self.searched, term = " + term)
 
-    # this gives us the ActiveRecord::Relation von SearchIndex.
-    # logger.debug "search_term = #{term.split.join(':* | ') + ':*'}"
-    # u = self.where("document @@ to_tsquery(?)", term.split.join(":* | ") + ":*" )
-
-    term.gsub!(/[^0-9A-Za-z\-+ ]/, '')
+    #term.gsub!(/[^0-9A-Za-z\-+ ]/, '')
+    term.gsub!(/[^[:alpha:] ]/, "")
     t = term.split.join(":* & ") + ":*"  # pipe symbol means OR, & symbol means AND
 
     u = SearchIndex.connection.select_all("

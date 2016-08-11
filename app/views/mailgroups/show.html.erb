@@ -31,7 +31,7 @@
     </dl>
 
     <!-- is rendered as hidden and show when confirmation is needed -->
-    <%= render partial: 'mailgroupwarn' if @mailgroup.users.count > 50 %>
+    <%= render partial: 'mailgroupwarn' if @mailgroup.users.count > 200 %>
 
     <div class='panel-btn-group'>
       <%= link_to content_tag(:i, '', class: "fa fa-chevron-left") + t('.back', default: t("helpers.links.back")),
@@ -48,20 +48,13 @@
                   class: "btn btn-default", id: "jqcc"
        %>
 
-      <%= link_to content_tag(:i, '', class: "fa fa-print") + "Print",
+      <%= link_to content_tag(:i, '', class: "fa fa-print") + "Print / Export",
                   print_mailgroup_path(@mailgroup),
                   remote: true,
                   #target: "_blank",
                   data: {toggle: "modal", target: "#modprint_group" },
                   class: "btn btn-default"
       %>
-
-      <!-- %= link_to content_tag(:i, nil, class: 'fa fa-list') + "List",
-            "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST&rs:Command=Render&rs:Format=Excel&GroupID=#{@mailgroup.id}",
-            data: {toggle: "tooltip", title: "Members as Excel", placement: 'top'},
-            class: 'btn btn-default'
-       % -->
-
 
 
       <%= link_to content_tag(:i, '', class: "fa fa-trash-o") + t('.destroy', default: t("helpers.links.destroy")),

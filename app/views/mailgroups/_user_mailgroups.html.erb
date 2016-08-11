@@ -18,20 +18,18 @@
 
 
 <div class="row col-lg-6">
-  <!-- % if current_user % -->
-    <!-- append  a MAILGROUP to the user -->
-    <%= form_tag append_user_mailgroups_path(@user), method: :patch, remote: true do %>
-      <div class="input-group append">
+  <!-- append  a MAILGROUP to the user -->
+  <%= form_tag append_user_mailgroups_path(@user), method: :patch, remote: true do %>
+    <div class="input-group append">
 
-        <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
-        <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
+      <%= text_field_tag 'autogroups', '', size: 75, class: 'form-control' %>
+      <%= hidden_field_tag 'mailgroup_id', 'dummy' %>
 
-        <span class="input-group-btn append">
-          <button class="btn btn-default" type="submit">Append</button>
-        </span>
-      </div>
-    <% end %>
-  <!-- % end %  --->
+      <span class="input-group-btn append">
+        <button class="btn btn-default" type="submit">Append</button>
+      </span>
+    </div>
+  <% end %>
 </div>
 
 <%= content_tag(:div, "partial mailgroups/mailgroup" , class: 'iv col-lg-12') %>

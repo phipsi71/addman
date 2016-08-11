@@ -20,15 +20,12 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:email_id) %></th>
-      <th># Groups</th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:query) %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-
     <%= render @lists.order("name") %>
-
   </tbody>
 </table>
 

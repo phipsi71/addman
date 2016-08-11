@@ -1,0 +1,2 @@
+class Intellist < List
+end

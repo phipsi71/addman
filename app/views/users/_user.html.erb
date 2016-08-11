@@ -29,7 +29,7 @@
                 method: :delete,
                 remote: true,
                 data: { confirm: "Sure to remove #{user.firstname} #{user.lastname} from #{@mailgroup.name} ?",
-                         toggle: "tooltip", title: "Remove user from group", placement: 'top'} if defined? @mailgroup and current_user
+                         toggle: "tooltip", title: "Remove user from group", placement: 'top'} if defined? @mailgroup
      %>
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
