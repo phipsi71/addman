@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   $LOGINNAME = nil
   logger.debug "set LOGINNAME empty. LOGINNAME = #{$LOGINNAME}"
+  logger.debug "Number of allowed mail bcc recipients: #{$NUM_MAIL_RECPS}"
 
   #----------------------------------------------------
 

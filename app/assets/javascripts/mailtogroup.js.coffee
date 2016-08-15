@@ -11,7 +11,7 @@ $ ->
 		  email = $this.attr('href').replace('mailto:', '')
 		  emails.push email
 		  return
-		if emails.length > 50
+		if emails.length > 200
 			$('#mailgroupwarn').modal 'show'
 		else
 			window.location.href = "mailto:?bcc=" + emails.join(';')

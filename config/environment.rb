@@ -8,3 +8,4 @@ APP_VERSION = `git describe --always` unless defined? APP_VERSION
 # Initialize the Rails application.
 Rails.application.initialize!
 
+$NUM_MAIL_RECPS=ENV["NUM_MAIL_RECPS"]
