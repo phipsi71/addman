@@ -6,7 +6,7 @@ authorizations: &AUTHORIZATIONS
   group_base: OU=02_User_Groups,OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
   ## Requires config.ldap_check_group_membership in devise.rb be true
   # Can have multiple values, must match all to be authorized
-  required_groups:
+  # required_groups:
     # If only a group name is given, membership will be checked against "uniqueMember"
     # - cn=admins,ou=groups,dc=test,dc=com
     # - cn=users,ou=groups,dc=test,dc=com
@@ -14,11 +14,12 @@ authorizations: &AUTHORIZATIONS
     # - ["moreMembers", "cn=users,ou=groups,dc=test,dc=com"]
 
     #CN=GS_SAKK_All,OU=02_User_Groups,OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
-    CN=GS_Addman_mutation,OU=02_User_Groups,OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
+    #CN=GS_Addman_mutation,OU=02_User_Groups,OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
 
   ## Requires config.ldap_check_attributes in devise.rb to be true
   ## Can have multiple attributes and values, must match all to be authorized
-  # require_attribute:
+  require_attribute:
+    memberOf: CN=GS_Addman_mutation,OU=02_User_Groups,OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
   #   objectClass: inetOrgPerson
   #   authorizationRole: postsAdmin
 
@@ -49,8 +50,6 @@ production:
   port: 389
   attribute: sAMAccountName
   base: OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
-#  admin_user: CN=ldaprails,OU=02_Services,OU=04_Administrative,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
-#  admin_password: DcSH1nymelke6ZFobGFK
   admin_user: CN=LDAPQuery,OU=02_Services,OU=04_Administrative,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch
   admin_password: Service4SAKK
   ssl: false

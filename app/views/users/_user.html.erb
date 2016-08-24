@@ -20,8 +20,7 @@
      %>
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_user_path(user),
-          data: {toggle: "tooltip", title: "Edit user", placement: 'top'})  if current_user
-
+          data: {toggle: "tooltip", title: "Edit user", placement: 'top'}) if mutation?
      %>
 
     <%= link_to content_tag(:i, nil, class: 'fa fa-minus-square-o'),
@@ -38,7 +37,7 @@
       remote: true,
       data: { confirm: "Sure to delete #{user.firstname} #{user.lastname}",
                toggle: "tooltip", title: "Delete user", placement: 'top'
-        }) if !defined? @mailgroup and current_user
+        }) if !defined? @mailgroup and mutation?
     %>
 
   </td>

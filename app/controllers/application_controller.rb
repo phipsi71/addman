@@ -19,28 +19,20 @@ class ApplicationController < ActionController::Base
 
   $LOGINNAME = nil
   logger.debug "set LOGINNAME empty. LOGINNAME = #{$LOGINNAME}"
-  logger.debug "Number of allowed mail bcc recipients: #{$NUM_MAIL_RECPS}"
+  
 
-  #----------------------------------------------------
+
+  def authenticate
+    authenticate_user!
+    unless current_user.nil?
+      session[:user] = current_user
+      #session[:roles] = get_roles(current_user.login) if session[:roles].nil?
+      session[:user_display_name] = current_user.get_ad_display_name if session[:user_display_name].nil?
+    end
+  end
+
 
   private
 
-  def authenticate
- 
-    logger.debug "entered authenticate"
-#    request.env.each {|k,v| Rails.logger.debug "ENV :: #{k} -> #{v}"}
-#    request.headers.each {|k,v| Rails.logger.debug "HEA :: #{k} -> #{v}"}
- 
-    username = request.headers['HTTP_X_FORWARDED_USER']
-    logger.debug "in authenticate : Username : #{username}"
- 
-    # authenticate_or_request_with_http_basic do |username, password|
-    #session[:user] = username
-    # end
-
-    ret = authenticate_user! #if !current_user.try(:login) # call authenticate_user! from devise
-    logger.debug "return val from authenticate_user: #{ret}"
-
-  end
 
 end

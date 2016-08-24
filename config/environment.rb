@@ -3,9 +3,12 @@ require File.expand_path('../application', __FILE__)
 
 
 # Set version from GIT
-APP_VERSION = `git describe --always` unless defined? APP_VERSION
+APP_VERSION = `git tag` unless defined? APP_VERSION
 
 # Initialize the Rails application.
 Rails.application.initialize!
 
-$NUM_MAIL_RECPS=ENV["NUM_MAIL_RECPS"]
+
+
+#MUTATION_GROUP = 'GS_Addman_mutation'
+MUTATION_GROUP = 'GS_Addman_mutation'

@@ -29,7 +29,7 @@
           remote: true,
           data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')),
             toggle: "tooltip", title: "Remove mailgroup from list", placement: 'top'
-          }) if current_user
+          }) if mutation?
      %>
 
   </td>

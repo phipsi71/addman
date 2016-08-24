@@ -81,13 +81,13 @@
 
     <%= link_to content_tag(:i, nil, class: "fa fa-pencil") + 'Edit',
                 edit_user_path(@user),
-                class: 'btn btn-default' if current_user
+                class: 'btn btn-default' if mutation?
      %>
 
     <%= link_to content_tag(:i, nil, class: "fa fa-copy") + 'Copy',
                 copy_user_path(@user),
                 data: {toggle: "tooltip", title: "Make a copy", placement: 'top'},
-                class: 'btn btn-default' if current_user
+                class: 'btn btn-default' if mutation?
      %>
 
 
@@ -116,7 +116,7 @@
                 user_path(@user),
                 method: 'delete',
                 data: { confirm: "Are you sure to delete #{@user.firstname} #{@user.lastname}?", toggle: "tooltip", title: "Really delete?" },
-                class: 'btn btn-danger' if current_user
+                class: 'btn btn-danger' if mutation?
      %>
 
   </div>

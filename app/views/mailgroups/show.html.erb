@@ -31,7 +31,8 @@
     </dl>
 
     <!-- is rendered as hidden and show when confirmation is needed -->
-    <%= render partial: 'mailgroupwarn' if @mailgroup.users.count > 200 %>
+    <%= render partial: 'mailgroupwarn' %>
+    <%= render partial: 'bccrecps' %>
 
     <div class='panel-btn-group'>
       <%= link_to content_tag(:i, '', class: "fa fa-chevron-left") + t('.back', default: t("helpers.links.back")),
@@ -41,7 +42,7 @@
 
       <%= link_to content_tag(:i, '', class: "fa fa-pencil")  + t('.edit', default: t("helpers.links.edit")),
                   edit_mailgroup_path(@mailgroup),
-                  class: 'btn btn-default' if current_user
+                  class: 'btn btn-default' if mutation?
        %>
 
       <%= link_to content_tag(:i, '', class: "fa fa-envelope")  + "Group mail", '#',
@@ -61,7 +62,7 @@
                   mailgroup_path(@mailgroup),
                   method: :delete,
                   data: { confirm: "Sure to delete #{@mailgroup.name}? \nIMPORTANT: Assigned users won't be deleted" },
-                  class: 'btn btn-mini btn-danger' if current_user
+                  class: 'btn btn-mini btn-danger' if mutation?
        %>
 
     </div>

@@ -1,0 +1,37 @@
+<div id="mailgroupmails"  class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h2 class="modal-title"><i class="fa fa-envelope"></i>&nbsp Emails of group <%= @mailgroup.name %></h2>Select all emails, copy to clipboard and paste into BCC field in Outlook.
+      </div>
+
+        <div class="modal-body">
+          <div id="modal-results" class="well">
+          </div>
+        
+        </div>
+
+        <div class="modal-footer">
+          
+        <!--  <%= link_to content_tag(:i, '', class: "fa fa-copy") + "Copy to clipboard",
+                      "",
+                      class: 'btn btn-default',
+                      id: "c2c"
+          %> -->
+
+
+          <%= link_to content_tag(:i, '', class: "fa fa-close") + "Close",
+                      "",
+                      class: 'btn btn-default',
+                      data: { dismiss: 'modal'}
+          %>
+
+
+        </div><!-- /.modal-footer -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

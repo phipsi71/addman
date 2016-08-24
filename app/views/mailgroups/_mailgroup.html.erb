@@ -15,7 +15,7 @@
 
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_mailgroup_path(mailgroup),
-          data: {toggle: "tooltip", title: "Edit mailgroup", placement: 'top'}) if current_user
+          data: {toggle: "tooltip", title: "Edit mailgroup", placement: 'top'}) if mutation?
      %>
 
     <%= link_to content_tag(:i, nil, class: 'fa fa-minus-square-o'),
@@ -32,7 +32,7 @@
           method: :delete, remote: true,
           data: { confirm: "Sure to delete #{mailgroup.name}?  \nIMPORTANT: Assigned users won't be deleted",
                    toggle: "tooltip", title: "Delete mailgroup", placement: 'top'
-        }) if !defined? @user and current_user
+        }) if !defined? @user and mutation?
     %>
   </td>
 <% end %>

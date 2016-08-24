@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   #has_and_belongs_to_many :lists, through: :mailgroups
 
 
+
+
   def self.searched(term)
     
     Rails::logger.debug("entered self.searched, term = " + term)
@@ -40,6 +42,18 @@ class User < ActiveRecord::Base
   end
 
 
+  def get_ad_display_name
+    display_names = Devise::LDAP::Adapter.get_ldap_param(self.login, "displayname")
+    (display_names.nil?) || display_names.empty? ? self.login : display_names.first
+  end
+
+  private
+
+  # def get_groups
+  #   Devise::LDAP::Adapter.get_ldap_param(self.login, "memberOf") || []
+  # end
+
+  
 end
 
 

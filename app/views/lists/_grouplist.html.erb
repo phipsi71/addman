@@ -6,7 +6,7 @@
   <td>
 
     <!-- %= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_list_path(list),
-          data: {toggle: "tooltip", title: "Edit list", placement: 'top'}) if current_user
+          data: {toggle: "tooltip", title: "Edit list", placement: 'top'}) if mutation?
      % -->
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-group loaderlink' ), list_path(list),

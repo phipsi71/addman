@@ -9,7 +9,7 @@
   <div class="col-lg-2 spacer-button">
     <%= link_to 'New List',
                 new_list_path,
-                class: 'btn btn-primary' if current_user
+                class: 'btn btn-primary' if mutation?
      %>
   </div>
 </div>
@@ -33,7 +33,7 @@
   <div class="col-lg-2 spacer-button">
     <%= link_to 'New List',
                 new_list_path,
-                class: 'btn btn-primary' if current_user
+                class: 'btn btn-primary' if mutation?
      %>
   </div>
 
