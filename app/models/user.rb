@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     Rails::logger.debug("entered self.searched, term = " + term)
 
     #term.gsub!(/[^0-9A-Za-z\-+ ]/, '')
-    term.gsub!(/[^[:alpha:] ]/, "")
+    term.gsub!(/[^[:alpha:] @.[0-9]]/, "")
     t = term.split.join(":* & ") + ":*"  # pipe symbol means OR, & symbol means AND
 
     u = SearchIndex.connection.select_all("

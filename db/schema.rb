@@ -11,14 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810111400) do
+ActiveRecord::Schema.define(version: 20160830130803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "tablefunc"
   enable_extension "unaccent"
-  enable_extension "hstore"
-  enable_extension "dblink"
 
   create_table "lists", force: true do |t|
     t.string   "name"
@@ -27,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160810111400) do
     t.string   "email_id"
     t.string   "type"
     t.text     "query"
+    t.string   "admin"
   end
 
   create_table "lists_mailgroups", id: false, force: true do |t|

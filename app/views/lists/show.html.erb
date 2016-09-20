@@ -36,7 +36,7 @@
      %>
 
     <%= link_to content_tag(:i, nil, class: "fa fa-pencil") + 'Edit',
-                edit_list_path(@list), class: 'btn btn-default spacer-medium' if mutation?
+                edit_list_path(@list), class: 'btn btn-default spacer-medium' if (mutation? == @list.admin)
      %>
 
 
@@ -58,7 +58,7 @@
             list_path(@list),
             method: 'delete',
             data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
-            class: 'btn btn-danger spacer-medium' if mutation?
+            class: 'btn btn-danger spacer-medium' if list_admin?(@list)
      %>
 
     </div>

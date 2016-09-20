@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   get 'users/get_by_ids' => 'users#get_by_ids'
 
+  get 'lists/own'
+
+
   resources :users do
 
         # collection do

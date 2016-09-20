@@ -1,22 +1,3 @@
-# $ ->
-# 	$("#jqcc").click ->
-# 	  alert ("gugus")
-# 	return
-
-# $ ->
-# 	$("#jqcc").click ->
-# 		emails = []
-# 		$('tr td:has(input:checkbox:checked) ~ td > a[href^="mailto"]').each ->
-# 		  $this = $(this)
-# 		  email = $this.attr('href').replace('mailto:', '')
-# 		  emails.push email
-# 		  return
-# 		if emails.length > 200
-# 			$('#mailgroupwarn').modal 'show'
-# 		else
-# 			window.location.href = "mailto:?bcc=" + emails.join(';')
-# 		return
-
 
 $ ->
 	$("#jqcc").click ->
@@ -40,17 +21,16 @@ $ ->
   $('input[id^="user_"]').prop 'checked', @checked
   return
 
-$ ->
-	textBox.onfocus = ->
-	  textBox.select()
-	  # Work around Chrome's little problem
+# $ ->
+# 	textBox.onfocus = ->
+# 	  textBox.select()
+# 	  # Work around Chrome's little problem
+# 	  textBox.onmouseup = ->
+# 	    # Prevent further mouseup intervention
+# 	    textBox.onmouseup = null
+# 	    false
 
-	  textBox.onmouseup = ->
-	    # Prevent further mouseup intervention
-	    textBox.onmouseup = null
-	    false
-
-	  return
+# 	  return
 
 
 # $ ->

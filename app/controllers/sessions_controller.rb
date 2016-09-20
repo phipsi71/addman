@@ -12,8 +12,13 @@ class SessionsController < Devise::SessionsController
 
   def create
     super
-    $LOGINNAME = current_user.login
-    logger.debug "set LOGINNAME = #{$LOGINNAME}"
+    unless current_user.nil?
+      session[:user] = current_user
+      $LOGINNAME = current_user.login
+      session[:user_display_name] = current_user.get_ad_display_name if session[:user_display_name].nil?
+      $LOGINNAME = current_user.login
+      logger.debug "set LOGINNAME = #{$LOGINNAME}"
+    end    
   end
 
   def new

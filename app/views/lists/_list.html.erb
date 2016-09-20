@@ -5,6 +5,7 @@
   <td class="dim"><%= list.id %></td>
   <td><%= list.name %></td>
   <td><%= list.email_id %></td>
+  <td><%= list.admin %></td>
   <td></td>
   <td class="fadeactions col-md-2">
 
@@ -25,7 +26,7 @@
 
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_list_path(list),
-          data: {toggle: "tooltip", title: "Edit list", placement: 'top'}) if mutation?
+          data: {toggle: "tooltip", title: "Edit list", placement: 'top'}) if list_admin?(list)
      %>
 
 
@@ -33,9 +34,9 @@
                 list_path(list),
                 method: :delete,
                 remote: true,
-                data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')),
+                data: { confirm: "Sure to delete #{list.name} ?",
                         toggle: "tooltip", title: "Delete list", placement: 'top'
-                  })  if mutation?
+                  })  if list_admin?(list)
     %> 
 
 
@@ -45,7 +46,7 @@
           remote: true,
           data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')),
             toggle: "tooltip", title: "Remove mailgroup from list", placement: 'top'
-          }) if defined? @list and mutation?
+          }) if defined? @list and list_admin?(list)
      %>
 
   </td>

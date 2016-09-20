@@ -26,10 +26,17 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = List.new
+    @list.admin = current_user.login
   end
+
+
+
 
   # GET /lists/1/edit
   def edit
+    unless list_admin?(@list)
+      redirect_to @list, alert: 'You are not the list admin.'
+    end
   end
 
   # POST /lists
@@ -95,7 +102,13 @@ class ListsController < ApplicationController
     end
   end
 
-
+  def own
+    @lists = List.own
+    # respond_to do |format|
+    #   format.json
+    # end
+    render :index
+  end
 
 
   private
@@ -106,7 +119,7 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:name, :email_id, :memo, :trialcode, :importance)
+      params.require(:list).permit(:name, :email_id, :memo, :admin)
     end
 
     def list_count
@@ -123,5 +136,6 @@ class ListsController < ApplicationController
         JOIN users u ON u.id = mu.user_id
         WHERE m.robinson_id = :lid AND u.email IS NOT NULL", {lid: @list.id}]).count
     end
+
 
 end

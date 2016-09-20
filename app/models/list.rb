@@ -7,6 +7,7 @@ class List < ActiveRecord::Base
 
   has_one :mailgroup, as: :robinson
 
+  scope :own, -> { where(admin: $LOGINNAME)}
 
   # this no good
   #has_many :mailgroups

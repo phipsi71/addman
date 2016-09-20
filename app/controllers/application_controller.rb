@@ -18,21 +18,14 @@ class ApplicationController < ActionController::Base
   # end
 
   $LOGINNAME = nil
-  logger.debug "set LOGINNAME empty. LOGINNAME = #{$LOGINNAME}"
   
 
 
   def authenticate
+    logger.debug "def authenticate , current_user.login = #{current_user.login}"
     authenticate_user!
-    unless current_user.nil?
-      session[:user] = current_user
-      #session[:roles] = get_roles(current_user.login) if session[:roles].nil?
-      session[:user_display_name] = current_user.get_ad_display_name if session[:user_display_name].nil?
-    end
   end
 
-
   private
-
 
 end
