@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     Rails::logger.debug("entered self.searched, term = " + term)
 
     #term.gsub!(/[^0-9A-Za-z\-+ ]/, '')
-    term.gsub!(/[^[:alpha:] @.[0-9]]/, "")
+    term.gsub!(/[^[:alpha:] @.[0-9]-\\']/, "")
     t = term.split.join(":* & ") + ":*"  # pipe symbol means OR, & symbol means AND
 
     u = SearchIndex.connection.select_all("
@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
     display_names = Devise::LDAP::Adapter.get_ldap_param(self.login, "displayname")
     (display_names.nil?) || display_names.empty? ? self.login : display_names.first
   end
+
 
   private
 

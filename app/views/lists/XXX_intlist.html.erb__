@@ -40,14 +40,14 @@
     %> 
 
 
-    <%= link_to(content_tag(:i, nil, class: 'fa fa-minus-square-o'),
+    <!-- %= link_to(content_tag(:i, nil, class: 'fa fa-minus-square-o'),
         remove_list_mailgroup_path(@list, mailgroup),
           method: :delete,
           remote: true,
           data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')),
             toggle: "tooltip", title: "Remove mailgroup from list", placement: 'top'
           }) if defined? @list and list_admin?(list)
-     %>
+     % -->
 
   </td>
 <% end %>

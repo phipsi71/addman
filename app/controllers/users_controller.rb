@@ -20,7 +20,10 @@ class UsersController < ApplicationController
 
     if @term.present?
       @users = User.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
-    else 
+    elsif params[:termphone].present?
+      phone = params[:termphone].gsub(/[\+\s+]/, "")
+      @users = User.where('replace(phone, \' \', \'\') ILIKE ?', '%' + phone + '%' ).order(@c + ' ' + @d).paginate(page: params[:page])
+    else
       @users = User.order(@c + ' ' + @d).paginate(page: params[:page])
     end
 
@@ -176,6 +179,7 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
 
 
   private

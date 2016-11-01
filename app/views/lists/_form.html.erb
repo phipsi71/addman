@@ -43,19 +43,29 @@
   <div class="control-group row">
     <%= f.label :admin, class: 'control-label col-lg-1' %>
     <div class="controls col-lg-4">
-      <%= f.text_field :admin, class: 'form-control', readonly: true %>
+      <%= f.text_field :admin, class: 'form-control' %>
     </div>
     <%= error_span(@list[:admin]) %>
   </div>
 
+  <div class="control-group row">
+    <%= f.label :query, class: 'control-label col-lg-1' %>
+    <div class="controls col-lg-4">
+      <%= f.text_field :query, class: 'form-control' %>
+    </div>
+    <%= error_span(@list[:query]) %>
+  </div>
 
-<!-- div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon2">@example.com</span>
-</div -->
+  <div class="control-group row">
+    <%= f.label :type, class: 'control-label col-lg-1' %>
+    <div class="controls col-lg-4">
+      <%= f.text_field :type, class: 'form-control' %>
+    </div>
+    <%= error_span(@list[:type]) %>
+  </div>
 
 
-  <%= f.submit nil, class: 'btn btn-primary spacer-medium' %>
+  <%= f.submit "Update list", class: 'btn btn-primary spacer-medium' %>
   <%= link_to t('.cancel', default: t("helpers.links.cancel")),
             :back, class: 'btn btn-default spacer-medium' %>
 

@@ -20,9 +20,15 @@
       <dt><strong>Email</strong></dt>
       <dd><%= "#{@list.email_id}@sakk.ch" %></dd>
       <dt><strong># Groups:</strong></dt>
-      <dd><%= @list.mailgroups.count %></dd>
+      <dd><%= @list.mailgroups.count unless @list.mailgroups.nil? %></dd>
       <dt><strong># Users:</strong></dt>
-      <dd><%= @lc %></dd>
+      <dd><%= @lc unless @list.mailgroups.nil? %></dd>
+      <dt><strong>Admin:</dt></strong>
+      <dd><%= @list.admin %></dd>
+      <dt><strong>Query:</dt></strong>
+      <dd><%= @list.query %></dd>
+      <!-- dt><strong>Type:</dt></strong>
+      <dd><%= @list.type if @list.query? %></dd -->
       <dt class="dim"><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
       <dd class="dim"><%= @list.created_at.try(:to_formatted_s).try(:first,16) %></dd>
       <dt class="dim"><strong><%= model_class.human_attribute_name(:updated_at) %>:</strong></dt>

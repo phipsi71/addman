@@ -73,7 +73,8 @@ Rails.application.routes.draw do
   end
 
 
-  
+#  resources :intlists, controller: :lists, type: 'List'
+  resources :intlists, path: :lists, controller: :list
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -26,7 +26,7 @@ authorizations: &AUTHORIZATIONS
 ## Environment
 
 development:
-  host: sakkadds01.siak.ch
+  host: 192.9.200.29
   port: 389
   attribute: sAMAccountName
   base: OU=01_SAKK_Users,OU=03_Users,OU=10_SAKK_CoordinationCenter,DC=siak,DC=ch

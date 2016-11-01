@@ -6,8 +6,9 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
-    @intellists = Intellist.all
+    @lists = List.regular
+    @intlists = Intlist.all
+    
     if $LOGINNAME
       @carboncopy="cc=#{$LOGINNAME}&"
     end
@@ -28,7 +29,6 @@ class ListsController < ApplicationController
     @list = List.new
     @list.admin = current_user.login
   end
-
 
 
 
@@ -119,22 +119,41 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:name, :email_id, :memo, :admin)
+      if params.has_key? :intlist
+        params[:list] = params.delete :intlist
+      end
+      params.require(:list).permit(:name, :email_id, :memo, :admin, :query)
     end
 
+
     def list_count
-      @lc = User.find_by_sql(["SELECT distinct u.id
-        FROM lists_mailgroups ml
-        JOIN mailgroups m ON ml.mailgroup_id = m.id
-        JOIN mailgroups_users mu ON m.id = mu.mailgroup_id
-        JOIN users u ON u.id = mu.user_id
-        WHERE ml.list_id = :lid AND u.email IS NOT NULL
-        EXCEPT
-        SELECT distinct u.id
-        FROM mailgroups_users mu
-        JOIN mailgroups m ON m.id = mu.mailgroup_id
-        JOIN users u ON u.id = mu.user_id
-        WHERE m.robinson_id = :lid AND u.email IS NOT NULL", {lid: @list.id}]).count
+      logger.debug ("in controller list, query = #{@list.query}")
+      if @list.type = 'Intlist' and @list.query?
+        @lc = User.find_by_sql(["select distinct u.id
+          from mailgroups m
+          inner join mailgroups_users mu on m.id = mu.mailgroup_id
+          inner join users u on mu.user_id = u.id
+          where m.#{@list.query}
+          EXCEPT
+          SELECT distinct u.id
+          FROM mailgroups_users mu
+          JOIN mailgroups m ON m.id = mu.mailgroup_id
+          JOIN users u ON u.id = mu.user_id
+          WHERE m.robinson_id = :lid AND u.email IS NOT NULL", {lid: @list.id}]).count
+      else
+        @lc = User.find_by_sql(["SELECT distinct u.id
+          FROM lists_mailgroups ml
+          JOIN mailgroups m ON ml.mailgroup_id = m.id
+          JOIN mailgroups_users mu ON m.id = mu.mailgroup_id
+          JOIN users u ON u.id = mu.user_id
+          WHERE ml.list_id = :lid AND u.email IS NOT NULL
+          EXCEPT
+          SELECT distinct u.id
+          FROM mailgroups_users mu
+          JOIN mailgroups m ON m.id = mu.mailgroup_id
+          JOIN users u ON u.id = mu.user_id
+          WHERE m.robinson_id = :lid AND u.email IS NOT NULL", {lid: @list.id}]).count
+      end
     end
 
 

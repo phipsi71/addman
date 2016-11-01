@@ -1,36 +1,37 @@
 <!-- No loop is needed when rendering this partial -->
 
-<%= content_tag_for(:tr, intellist) do %>
+<%= content_tag_for(:tr, intlist) do %>
 
-  <td class="dim"><%= intellist.id %></td>
-  <td><%= intellist.name %></td>
-  <td><%= intellist.email_id %></td>
-  <td><%= intellist.query %></td>
+  <td class="dim"><%= intlist.id %></td>
+  <td><%= intlist.name %></td>
+  <td><%= intlist.email_id %></td>
+  <td><%= intlist.admin %></td>
+  <td><%= intlist.query %></td>
   <td class="fadeactions col-md-2">
 
-    <%= link_to(content_tag(:i, nil, class: 'fa fa-group loaderlink' ), list_path(intellist),
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-group loaderlink' ), list_path(intlist),
           data: {toggle: "tooltip", title: "List details and assigned groups", placement: 'top'})
      %>
 
 
     <%= link_to content_tag(:i, nil, class: 'fa fa-table'),
-          "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST&rs:Command=Render&rs:Format=Excel&listname=#{intellist.email_id}",
+          "http://sakkreports.siak.ch/ReportServer/Pages/ReportViewer.aspx?%2fSERVICES%2fADDRESSES%2fR+LIST&rs:Command=Render&rs:Format=Excel&listname=#{intlist.email_id}",
           data: {toggle: "tooltip", title: "Excel list", placement: 'top'}
      %>
 
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-envelope-o'),
-          "mailto:#{intellist.email_id}@sakk.ch?#{@carboncopy}subject=<password> <your subject>&body=ATTENTION:The subject line is important! Mail is sent to all recipients of list. Type your message here",
+          "mailto:#{intlist.email_id}@sakk.ch?#{@carboncopy}subject=<password> <your subject>&body=ATTENTION:The subject line is important! Mail is sent to all recipients of list. Type your message here",
           data: {toggle: "tooltip", title: "Email to", placement: 'top'})  %>
 
 
-    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_list_path(intellist),
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_list_path(intlist),
           data: {toggle: "tooltip", title: "Edit list", placement: 'top'}) if mutation?
      %>
 
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
-                list_path(intellist),
+                list_path(intlist),
                 method: :delete,
                 remote: true,
                 data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')),

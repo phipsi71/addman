@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   def authenticate
     logger.debug "def authenticate , current_user.login = #{current_user.login}"
     authenticate_user!
+    $LOGINNAME = current_user.login
   end
 
   private

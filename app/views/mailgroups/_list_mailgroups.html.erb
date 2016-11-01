@@ -22,7 +22,7 @@
   </tbody>
 </table>
 
-<% if (mutation? == @list.admin) %>
+<% if (mutation? == @list.admin) and @list.query.nil? %>
   <!-- append  a MAILGROUP to the list -->
   <%= form_tag append_list_mailgroups_path(@list), method: :patch, remote: true do %>
     <div class="input-group append col-lg-6">

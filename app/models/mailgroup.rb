@@ -9,12 +9,6 @@ class Mailgroup < ActiveRecord::Base
   scope :is_robinson, -> { where('robinson_id is not NULL') }
 
 
-
-
-  # def user_count
-  #   users.count
-  # end
-
   # def self.sort_by_user_count
   #   sort_by(&:user_count)
   # end
