@@ -19,6 +19,7 @@
 <div class="col-lg-4 spacer-button">
 	<%= form_tag(users_path, method: "get") do %>
 	  <div class="input-group search">
+	    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-file-text-o"></i></span>
 	    <input type="text" class="form-control" placeholder="Search for term in all fields" name="term">
 	    <span class="input-group-btn">
 	      <button class="btn btn-default" type="submit">Go!</button>
@@ -27,7 +28,8 @@
 	<% end %>
 	<%= form_tag(users_path, method: "get") do %>
 	  <div class="input-group search-tel spacer-small">
-	    <input type="text" pattern="+[0-9 ]*" class="form-control" min="0" step="1" placeholder="Phone number" name="termphone">
+	  	<span class="input-group-addon" id="basic-addon2"><i class="fa fa-phone"></i></span>
+	    <input type="text" pattern="[+0-9]*" class="form-control" min="0" step="1" placeholder="Search phone number" name="termphone">
 	    <span class="input-group-btn">
 	      <button class="btn btn-default" type="submit">Go!</button>
 	    </span>
