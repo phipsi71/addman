@@ -39,6 +39,9 @@ gem 'spring', group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+gem 'sprockets', '3.6.3' 
+
 gem 'sprockets-rails'
 gem 'twitter-bootstrap-rails', '>= 3.2.0', '< 3.2.2'
 #gem "twitter-bootstrap-rails"    # installs generators
