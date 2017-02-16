@@ -15,7 +15,7 @@ Devise.setup do |config|
   # config.ldap_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{login}" }
   
   # ==> LDAP Configuration 
-  # config.ldap_logger = true
+  config.ldap_logger = true
   config.ldap_create_user = true
   config.ldap_update_password = false
   # config.ldap_config = "#{Rails.root}/config/ldap.yml"
@@ -82,7 +82,7 @@ Devise.setup do |config|
   # given strategies, for example, `config.http_authenticatable = [:database]` will
   # enable it only for database authentication. The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
-  # config.http_authenticatable = false
+  config.http_authenticatable = false
 
   # If http headers should be returned for AJAX requests. True by default.
   config.http_authenticatable_on_xhr = false

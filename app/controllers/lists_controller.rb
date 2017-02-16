@@ -104,6 +104,7 @@ class ListsController < ApplicationController
 
   def own
     @lists = List.own
+    @intlists = Intlist.own
     # respond_to do |format|
     #   format.json
     # end

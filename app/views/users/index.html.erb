@@ -29,7 +29,7 @@
 	<%= form_tag(users_path, method: "get") do %>
 	  <div class="input-group search-tel spacer-small">
 	  	<span class="input-group-addon" id="basic-addon2"><i class="fa fa-phone"></i></span>
-	    <input type="text" pattern="[+0-9]*" class="form-control" min="0" step="1" placeholder="Search phone number" name="termphone">
+	    <input type="text" pattern="[ +0-9]*" class="form-control" min="0" step="1" placeholder="Search phone number" name="termphone">
 	    <span class="input-group-btn">
 	      <button class="btn btn-default" type="submit">Go!</button>
 	    </span>

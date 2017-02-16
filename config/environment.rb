@@ -9,6 +9,6 @@ APP_VERSION = `git tag` unless defined? APP_VERSION
 Rails.application.initialize!
 
 
-
 #MUTATION_GROUP = 'GS_Addman_mutation'
 MUTATION_GROUP = 'GS_Addman_mutation'
+
