@@ -43,7 +43,24 @@
     </div>
     <%= error_span(@mailgroup[:trialcode]) %>
   </div>
- 
+
+  <div class="control-group row">
+    <%= f.label :query, class: 'control-label col-lg-1' %>
+    <div class="controls col-lg-4">
+      <%= f.text_field :query, class: 'form-control' %>
+    </div>
+    <%= error_span(@mailgroup[:query]) %>
+  </div>
+
+  <div class="control-group row">
+    <%= f.label :type, class: 'control-label col-lg-1' %>
+    <div class="controls col-lg-4">
+      <%= f.text_field :type, class: 'form-control' %>
+    </div>
+    <%= error_span(@mailgroup[:type]) %>
+  </div> 
+
+
   <div class="control-group row">
     <%= f.label :created_by, class: 'control-label col-lg-1' %>
     <div class="controls col-lg-6">

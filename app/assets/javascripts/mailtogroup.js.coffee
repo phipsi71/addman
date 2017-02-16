@@ -6,7 +6,7 @@ $ ->
 		  $this = $(this)
 		  email = $this.attr('href').replace('mailto:', '')
 		  emails.push email
-		if emails.length > 200
+		if emails.length > 100
 			$('#mailgroupwarn').modal 'show'
 		else
 			textBox = $('#modal-results')

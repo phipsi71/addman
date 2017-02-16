@@ -1,0 +1,38 @@
+<!-- No loop is needed when rendering this partial -->
+
+<%= content_tag_for(:tr, intmailgroup) do %>
+  <td class="dim"><%= intmailgroup.id %></td>
+  <td><%= intmailgroup.name %></td>
+  <!-- td><%= intmailgroup.memo %></td -->
+  <td><%= intmailgroup.trialcode %></users>
+  <td><%= intmailgroup.users.count %></td>
+  
+  <td class="fadeactions col-md-2">
+
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-group loaderlink' ), intmailgroup_path(intmailgroup),
+          data: {toggle: "tooltip", title: "Group details and members", placement: 'top'})
+     %>
+
+
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-pencil'), edit_intmailgroup_path(intmailgroup),
+          data: {toggle: "tooltip", title: "Edit intmailgroup", placement: 'top'}) if mutation?
+     %>
+
+    <%= link_to content_tag(:i, nil, class: 'fa fa-minus-square-o'),
+                remove_user_intmailgroup_path(@user, intmailgroup),
+                method: :delete, remote: true,
+                data: { confirm: "Sure to remove #{intmailgroup.name} from #{@user.firstname} #{@user.lastname}?",
+                          title: "Please confirm",
+                         toggle: "tooltip", title: "Remove group from user", placement: 'top'
+                      } if defined? @user
+     %>
+
+    <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),
+          intmailgroup_path(intmailgroup),
+          method: :delete, remote: true,
+          data: { confirm: "Sure to delete #{intmailgroup.name}?  \nIMPORTANT: Assigned users won't be deleted",
+                   toggle: "tooltip", title: "Delete intmailgroup", placement: 'top'
+        }) if !defined? @user and mutation?
+    %>
+  </td>
+<% end %>

@@ -24,7 +24,7 @@
         <button class="btn btn-default" type="submit">Find</button>
       </span>
     </div>
-  <% end %> 
+  <% end %>
 </div>
 
 
@@ -42,7 +42,10 @@
 <table class="table table-striped fadeactions mailgroups col-lg-12 fixed">
   <%= render partial: 'mailgroup_header' %>
   <tbody>
-    <%= render @mailgroups %>
+    <tr><td colspan="5"><h3>Regular groups</h3></td></tr>
+    <%= render partial: @mailgroups.order("name") %>
+    <tr><td colspan="5"><h3>Intelligent groups</h3></td></tr>
+    <%= render partial: @intmailgroups.order("name") %>
   </tbody>
 </table>
 
@@ -64,3 +67,5 @@
 
 <%= content_tag(:div, "see partial 'mailgroups/mailgroup'" , class: 'iv col-lg-12') %>
 <%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>
+
+

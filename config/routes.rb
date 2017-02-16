@@ -74,7 +74,8 @@ Rails.application.routes.draw do
 
 
 #  resources :intlists, controller: :lists, type: 'List'
-  resources :intlists, path: :lists, controller: :list
+  resources :intlists,      path: :lists,      controller: :list
+  resources :intmailgroups, path: :mailgroups, controller: :mailgroups
 
 
   # The priority is based upon order of creation: first created -> highest priority.

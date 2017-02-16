@@ -7,6 +7,7 @@ class Mailgroup < ActiveRecord::Base
 
   scope :searched,    -> (term) { where("name ILIKE '%#{term}%'") if term.present? }
   scope :is_robinson, -> { where('robinson_id is not NULL') }
+  scope :regular,     -> { where('query is NULL') }
 
 
   # def self.sort_by_user_count

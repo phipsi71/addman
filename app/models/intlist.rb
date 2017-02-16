@@ -1,12 +1,5 @@
 class Intlist < List
   
-  validates :name, uniqueness: true
-  validates :email_id, uniqueness: true
-
-  has_one   :mailgroup, as: :robinson
-
-  # scope :own, -> { where(admin: $LOGINNAME) }
-  # scope :intelligent, -> { where('query is not NULL') }
 
   def mailgroups
     query = self.query
@@ -17,7 +10,5 @@ class Intlist < List
       @mailgroups = nil
     end
   end 
-
-
 
 end

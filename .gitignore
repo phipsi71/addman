@@ -17,3 +17,5 @@
 /log/*.log
 /tmp
 /public/assets
+/vendor/assets
+/vendor/bundle

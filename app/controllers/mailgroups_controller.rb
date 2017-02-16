@@ -14,8 +14,10 @@ class MailgroupsController < ApplicationController
   # GET /mailgroups.json
   def index
     @c ||= 'name'
-    set_mailgroups
-    respond_with (@mailgroups)
+    @mailgroups    = Mailgroup.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
+    #@mailgroups    = Mailgroup.regular
+    @intmailgroups = Intmailgroup.all
+    #respond_with (@mailgroups)
   end
 
 
@@ -162,13 +164,9 @@ class MailgroupsController < ApplicationController
     end
 
 
-    def set_mailgroups
-      @mailgroups = Mailgroup.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def mailgroup_params
-      params.require(:mailgroup).permit(:name, :memo, :trialcode, :importance)
+      params.require(:mailgroup).permit(:name, :memo, :trialcode, :query, :type)
     end
 
 
