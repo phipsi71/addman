@@ -7,6 +7,8 @@ class Intmailgroup < Mailgroup
 
   # scope :own, -> { where(admin: $LOGINNAME) }
 
+  scope :searched, -> {null}
+
   def users
     query = self.query
     logger.debug ("in model intmailgroup, query = #{query}")

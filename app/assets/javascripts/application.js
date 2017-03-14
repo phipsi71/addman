@@ -18,13 +18,15 @@
 //= require bootstrap
 //= require turbolinks
 //= require twitter/bootstrap/rails/confirm
-//= require users
-//= require mailgroups
-//= require lists
-//= require bmodal
-//= require close-modal
-//= require mailtogroup
-//= require loader
-//= require oLoader
+//= require_self
+//= require_tree .
 
 
+//= ??  require users
+//= ??  require mailgroups
+//= ??  require lists
+//= ??  require bmodal
+//= ??  require close-modal
+//= ??  require mailtogroup
+//= ??  require loader
+//= ??  require oLoader
