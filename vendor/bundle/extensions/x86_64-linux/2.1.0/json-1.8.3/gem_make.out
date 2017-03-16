@@ -1,0 +1,14 @@
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/json-1.8.3/ext/json
+/usr/local/rvm/rubies/ruby-2.1.2/bin/ruby -r ./siteconf20161103-2022-1t5jtgm.rb extconf.rb
+creating Makefile
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/json-1.8.3/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/json-1.8.3/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/json-1.8.3/ext/json
+make "DESTDIR=" install
+installing default libraries

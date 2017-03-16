@@ -1,0 +1,39 @@
+/usr/local/rvm/rubies/ruby-2.2.2/bin/ruby -r ./siteconf20170215-28238-3kn96z.rb extconf.rb 
+checking for main() in -lpthread... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling v8.cc
+compiling function.cc
+compiling heap.cc
+compiling signature.cc
+compiling locker.cc
+compiling external.cc
+compiling value.cc
+compiling trycatch.cc
+compiling gc.cc
+compiling string.cc
+compiling backref.cc
+compiling invocation.cc
+compiling message.cc
+compiling date.cc
+compiling exception.cc
+compiling stack.cc
+compiling rr.cc
+compiling accessor.cc
+compiling script.cc
+compiling primitive.cc
+compiling array.cc
+compiling template.cc
+compiling init.cc
+compiling constants.cc
+compiling constraints.cc
+compiling object.cc
+compiling context.cc
+compiling handles.cc
+linking shared-object v8/init.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 init.so ./.gem.20170215-28238-1hf8ntf/v8

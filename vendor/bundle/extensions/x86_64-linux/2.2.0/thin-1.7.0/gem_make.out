@@ -1,0 +1,25 @@
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/thin-1.7.0/ext/thin_parser
+/usr/local/rvm/rubies/ruby-2.2.2/bin/ruby -r ./siteconf20170301-26766-1nkhkwt.rb extconf.rb
+checking for main() in -lc... yes
+creating Makefile
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/thin-1.7.0/ext/thin_parser
+make "DESTDIR=" clean
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/thin-1.7.0/ext/thin_parser
+make "DESTDIR="
+compiling parser.c
+compiling thin.c
+thin.c: In function ‘Thin_HttpParser_alloc’:
+thin.c:242: warning: implicit declaration of function ‘thin_http_parser_init’
+thin.c: In function ‘Thin_HttpParser_finish’:
+thin.c:294: warning: implicit declaration of function ‘thin_http_parser_finish’
+thin.c:296: warning: implicit declaration of function ‘thin_http_parser_is_finished’
+thin.c: In function ‘Thin_HttpParser_execute’:
+thin.c:334: warning: implicit declaration of function ‘thin_http_parser_execute’
+thin.c:338: warning: implicit declaration of function ‘thin_http_parser_has_error’
+linking shared-object thin_parser.so
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/thin-1.7.0/ext/thin_parser
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 thin_parser.so ./.gem.20170301-26766-sjcozm

@@ -1,0 +1,16 @@
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/eventmachine-1.2.3/ext/fastfilereader
+/usr/local/rvm/rubies/ruby-2.2.2/bin/ruby -r ./siteconf20170301-26766-afxp5s.rb extconf.rb
+creating Makefile
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/eventmachine-1.2.3/ext/fastfilereader
+make "DESTDIR=" clean
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/eventmachine-1.2.3/ext/fastfilereader
+make "DESTDIR="
+compiling rubymain.cpp
+compiling mapper.cpp
+linking shared-object fastfilereaderext.so
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/eventmachine-1.2.3/ext/fastfilereader
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 fastfilereaderext.so ./.gem.20170301-26766-1vocwv8

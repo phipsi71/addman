@@ -1,0 +1,32 @@
+/usr/local/rvm/rubies/ruby-2.2.2/bin/ruby -r ./siteconf20170215-28238-1bgb22i.rb extconf.rb 
+checking for sqlite3.h... yes
+checking for pthread_create() in -lpthread... yes
+checking for sqlite3_libversion_number() in -lsqlite3... yes
+checking for rb_proc_arity()... yes
+checking for rb_integer_pack()... yes
+checking for sqlite3_initialize()... yes
+checking for sqlite3_backup_init()... yes
+checking for sqlite3_column_database_name()... yes
+checking for sqlite3_enable_load_extension()... yes
+checking for sqlite3_load_extension()... yes
+checking for sqlite3_open_v2()... yes
+checking for sqlite3_prepare_v2()... yes
+checking for sqlite3_int64 in sqlite3.h... yes
+checking for sqlite3_uint64 in sqlite3.h... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling backup.c
+compiling sqlite3.c
+compiling exception.c
+compiling database.c
+database.c: In function ‘db_filename’:
+database.c:837: warning: implicit declaration of function ‘sqlite3_db_filename’
+database.c:837: warning: assignment makes pointer from integer without a cast
+compiling statement.c
+linking shared-object sqlite3/sqlite3_native.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 sqlite3_native.so ./.gem.20170215-28238-17wtria/sqlite3

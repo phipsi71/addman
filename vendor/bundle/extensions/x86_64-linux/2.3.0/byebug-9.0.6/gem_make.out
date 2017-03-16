@@ -1,0 +1,26 @@
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+/usr/local/rvm/rubies/ruby-2.3.3/bin/ruby -r ./siteconf20170216-11792-1rehql6.rb extconf.rb 
+Ignoring nokogiri-1.7.0.1 because its extensions are not built.  Try: gem pristine nokogiri --version 1.7.0.1
+Ignoring nokogiri-1.6.8.1 because its extensions are not built.  Try: gem pristine nokogiri --version 1.6.8.1
+Ignoring pg-0.19.0 because its extensions are not built.  Try: gem pristine pg --version 0.19.0
+Ignoring sqlite3-1.3.13 because its extensions are not built.  Try: gem pristine sqlite3 --version 1.3.13
+Ignoring sqlite3-1.3.12 because its extensions are not built.  Try: gem pristine sqlite3 --version 1.3.12
+Ignoring therubyracer-0.12.3 because its extensions are not built.  Try: gem pristine therubyracer --version 0.12.3
+Ignoring therubyracer-0.12.2 because its extensions are not built.  Try: gem pristine therubyracer --version 0.12.2
+creating Makefile
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling threads.c
+compiling context.c
+compiling breakpoint.c
+compiling locker.c
+compiling byebug.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20170216-11792-cmb2td/byebug

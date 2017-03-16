@@ -1,0 +1,27 @@
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/bcrypt-3.1.11/ext/mri
+/usr/local/rvm/rubies/ruby-2.3.3/bin/ruby -r ./siteconf20170216-11792-19ivt85.rb extconf.rb 
+Ignoring byebug-9.0.6 because its extensions are not built.  Try: gem pristine byebug --version 9.0.6
+Ignoring nokogiri-1.7.0.1 because its extensions are not built.  Try: gem pristine nokogiri --version 1.7.0.1
+Ignoring nokogiri-1.6.8.1 because its extensions are not built.  Try: gem pristine nokogiri --version 1.6.8.1
+Ignoring pg-0.19.0 because its extensions are not built.  Try: gem pristine pg --version 0.19.0
+Ignoring sqlite3-1.3.13 because its extensions are not built.  Try: gem pristine sqlite3 --version 1.3.13
+Ignoring sqlite3-1.3.12 because its extensions are not built.  Try: gem pristine sqlite3 --version 1.3.12
+Ignoring therubyracer-0.12.3 because its extensions are not built.  Try: gem pristine therubyracer --version 0.12.3
+Ignoring therubyracer-0.12.2 because its extensions are not built.  Try: gem pristine therubyracer --version 0.12.2
+creating Makefile
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" clean
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR="
+compiling crypt_gensalt.c
+compiling wrapper.c
+compiling bcrypt_ext.c
+compiling crypt_blowfish.c
+compiling crypt.c
+linking shared-object bcrypt_ext.so
+
+current directory: /home/philippb/railsapps/addman.20161103/vendor/bundle/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20170216-11792-1ub2np9
