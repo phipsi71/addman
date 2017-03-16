@@ -44,6 +44,6 @@ Rails.application.configure do
 
   config.log_level = :debug
   
-  
+  config.serve_static_assets = true
 
 end

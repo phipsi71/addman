@@ -3,6 +3,7 @@
 
 <%- model_class = User -%>
 
+<% javascript_include_tag 'toggle.js' %>
 
 <div class="row col-lg-12">
 <%= will_paginate @user, renderer: BootstrapPagination::Rails %>

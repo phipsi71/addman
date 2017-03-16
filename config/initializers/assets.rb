@@ -7,4 +7,12 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.precompile += ['.svg', '*.eot', '*.woff', '*.woff2', '*.ttf', '*.otf', '*.js', '*.css']
+
+config.assets.precompile += ['.svg', '*.eot', '*.woff', '*.woff2', '*.ttf', '*.otf', '*.js', '*.css']
+# config.assets.precompile += %w( print.js )
+# config.assets.precompile += %w( toggle.js )
+
+config.assets.paths << Rails.root.join('app', 'assets', 'javascripts')  
+config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets') 
+config.assets.paths << Rails.root.join('app', 'assets', 'fonts')      # /app/assets/fonts/francois_one
+        

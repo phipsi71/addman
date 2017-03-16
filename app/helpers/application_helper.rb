@@ -49,5 +49,6 @@ module ApplicationHelper
     mutation? == list.admin unless list.admin.nil?
   end
 
+
 end
 

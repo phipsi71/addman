@@ -16,17 +16,19 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require bootstrap
-//= require turbolinks
 //= require twitter/bootstrap/rails/confirm
+
+//= require bootstrap
+//= require users
+//= require mailgroups
+//= require bmodal
+//= require close-modal
+//= require mailtogroup
+//= require loader
+//= require oLoader
+//= require toggle
+
 //= require_self
-//= require_tree .
 
 
-//= ??  require users
-//= ??  require mailgroups
-//= ??  require lists
-//= ??  require bmodal
-//= ??  require close-modal
-//= ??  require mailtogroup
-//= ??  require loader
-//= ??  require oLoader
+// ?? = require_tree .

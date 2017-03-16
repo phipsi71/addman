@@ -84,7 +84,5 @@ Rails.application.configure do
   config.relative_url_root = '/addman'
   config.action_controller.relative_url_root = '/addman'
 
-  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')  # /app/assets/fonts/francois_one
-  config.assets.paths << Rails.root.join('app', 'views')            # /app/views/append.js.coffee
 
 end
