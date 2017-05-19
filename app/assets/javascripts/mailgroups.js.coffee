@@ -2,11 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http:#coffeescript.org/
 
-  # log = (message) ->
-  #   $('<div>').text(message).prependTo '#log'
-  #   $('#log').scrollTop 0
-  #   return
-
 jQuery ->
   $('#autogroups').autocomplete
     minLength: 3
@@ -26,6 +21,10 @@ jQuery ->
       #log "Now chosen: " + ui.item.label + " / " + ui.item.id
       $("#mailgroup_id").val(ui.item.id)  # set the css id 'user_id' with id of user in hidden_field in html
   return
-return
 
 
+
+  # log = (message) ->
+  #   $('<div>').text(message).prependTo '#log'
+  #   $('#log').scrollTop 0
+  #   return

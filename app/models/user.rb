@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   #has_and_belongs_to_many :lists, through: :mailgroups
 
 
+  scope :companies,  -> { where("firstname is NULL and lastname is NULL") }
+
+  def lastname
+    self[:lastname] || self[:company]
+  end
 
 
   def self.searched(term)

@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  #caches_page :index
+  require 'application_helper'
   before_action :authenticate, except: [:index, :show, :choose]
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
@@ -58,6 +58,14 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1
   # PATCH/PUT /lists/1.json
   def update
+    @query = get_query(params) # helpers/application_helper.rb
+    logger.debug "in def update, query=#{@query}"
+    if @query.present?
+      @list = @list.becomes!(Intlist)
+      @list.query = @query
+    else
+      @list = @list.becomes!(List)
+    end
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
@@ -112,6 +120,9 @@ class ListsController < ApplicationController
   end
 
 
+  def sync_list
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
@@ -128,34 +139,13 @@ class ListsController < ApplicationController
 
 
     def list_count
+      @lc = 0
       logger.debug ("in controller list, query = #{@list.query}")
-      if @list.type = 'Intlist' and @list.query?
-        @lc = User.find_by_sql(["select distinct u.id
-          from mailgroups m
-          inner join mailgroups_users mu on m.id = mu.mailgroup_id
-          inner join users u on mu.user_id = u.id
-          where m.#{@list.query}
-          EXCEPT
-          SELECT distinct u.id
-          FROM mailgroups_users mu
-          JOIN mailgroups m ON m.id = mu.mailgroup_id
-          JOIN users u ON u.id = mu.user_id
-          WHERE m.robinson_id = :lid AND u.email IS NOT NULL", {lid: @list.id}]).count
-      else
-        @lc = User.find_by_sql(["SELECT distinct u.id
-          FROM lists_mailgroups ml
-          JOIN mailgroups m ON ml.mailgroup_id = m.id
-          JOIN mailgroups_users mu ON m.id = mu.mailgroup_id
-          JOIN users u ON u.id = mu.user_id
-          WHERE ml.list_id = :lid AND u.email IS NOT NULL
-          EXCEPT
-          SELECT distinct u.id
-          FROM mailgroups_users mu
-          JOIN mailgroups m ON m.id = mu.mailgroup_id
-          JOIN users u ON u.id = mu.user_id
-          WHERE m.robinson_id = :lid AND u.email IS NOT NULL", {lid: @list.id}]).count
+      @list.mailgroups.each do |m|
+        @lc += m.users.count
       end
     end
 
 
 end
+

@@ -3,8 +3,10 @@
 <%= content_tag_for(:tr, intmailgroup) do %>
   <td class="dim"><%= intmailgroup.id %></td>
   <td><%= intmailgroup.name %></td>
-  <!-- td><%= intmailgroup.memo %></td -->
-  <td><%= intmailgroup.trialcode %></users>
+  <td><%= content_tag(:i, '', class: "fa fa-gear", data: {toggle: "tooltip", title: "This is an intelligent group", placement: 'top'}) %></td>
+  <td><%= intmailgroup.trialcode %></td>
+  <td><%= intmailgroup.role %></td>
+  <td><%= intmailgroup.country %></td>
   <td><%= intmailgroup.users.count %></td>
   
   <td class="fadeactions col-md-2">
@@ -36,3 +38,4 @@
     %>
   </td>
 <% end %>
+ 

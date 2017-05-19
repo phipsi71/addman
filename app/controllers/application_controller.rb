@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
     $LOGINNAME = current_user.login
   end
 
+
   private
 
 end

@@ -1,1 +1,0 @@
-(function(){$(function(){return $("#print").modal("show")})}).call(this);

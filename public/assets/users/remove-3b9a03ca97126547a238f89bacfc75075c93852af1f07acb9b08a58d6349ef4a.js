@@ -1,1 +1,0 @@
-(function(){$("#<%= dom_id(@user) %>").fadeOut(800)}).call(this);

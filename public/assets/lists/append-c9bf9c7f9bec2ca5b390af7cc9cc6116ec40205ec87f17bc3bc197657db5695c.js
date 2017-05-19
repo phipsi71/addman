@@ -1,1 +1,0 @@
-(function(){$("table.mailgroups > tbody:last").append('<%= j render partial: "mailgroups/mailgroup_append_list", locals: {mailgroup: @mailgroup} %>'),$("#<%= dom_id(@mailgroup) %>").effect("highlight",{},2e3),$("#autogroups").val("")}).call(this);

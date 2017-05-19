@@ -23,12 +23,14 @@
           data: {toggle: "tooltip", title: "Edit user", placement: 'top'}) if mutation?
      %>
 
-    <%= link_to content_tag(:i, nil, class: 'fa fa-minus-square-o'),
-                remove_mailgroup_user_path(@mailgroup, user),
-                method: :delete,
-                remote: true,
-                data: { confirm: "Sure to remove #{user.firstname} #{user.lastname} from #{@mailgroup.name} ?",
-                         toggle: "tooltip", title: "Remove user from group", placement: 'top'} if defined? @mailgroup
+    <%= unless @mailgroup.nil?
+          link_to content_tag(:i, nil, class: 'fa fa-minus-square-o'),
+                  remove_mailgroup_user_path(@mailgroup, user),
+                  method: :delete,
+                  remote: true,
+                  data: { confirm: "Sure to remove #{user.firstname} #{user.lastname} from #{@mailgroup.name} ?",
+                           toggle: "tooltip", title: "Remove user from group", placement: 'top'} if @mailgroup.query.nil?
+        end
      %>
 
     <%= link_to(content_tag(:i, nil, class: 'fa fa-trash-o'),

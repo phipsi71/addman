@@ -73,7 +73,6 @@ Rails.application.routes.draw do
   end
 
 
-#  resources :intlists, controller: :lists, type: 'List'
   resources :intlists,      path: :lists,      controller: :list
   resources :intmailgroups, path: :mailgroups, controller: :mailgroups
 

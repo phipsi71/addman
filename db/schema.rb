@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116115335) do
+ActiveRecord::Schema.define(version: 20170429145927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20170116115335) do
     t.integer  "robinson_type"
     t.string   "type"
     t.text     "query"
+    t.string   "country"
+    t.string   "role"
   end
 
   add_index "mailgroups", ["id"], name: "index_mailgroups_on_groupid", using: :btree
@@ -58,6 +60,36 @@ ActiveRecord::Schema.define(version: 20170116115335) do
 
   add_index "mailgroups_users", ["mailgroup_id", "user_id"], name: "index_mailgroups_users_on_mailgroup_id_and_user_id", unique: true, using: :btree
   add_index "mailgroups_users", ["user_id", "mailgroup_id"], name: "index_mailgroups_users_on_user_id_and_mailgroup_id", unique: true, using: :btree
+
+  create_table "temp_OPS", id: false, force: :cascade do |t|
+    t.text "anrede"
+    t.text "akadtitel"
+    t.text "vorname"
+    t.text "nachname"
+    t.text "zweitname"
+    t.text "adresszusatz"
+    t.text "strasse"
+    t.text "postfach"
+    t.text "plz"
+    t.text "ort"
+    t.text "landkrz"
+  end
+
+  create_table "temp_SGMO", id: false, force: :cascade do |t|
+    t.text "titel"
+    t.text "name"
+    t.text "vorname"
+    t.text "institution"
+    t.text "abteilung"
+    t.text "strasse"
+    t.text "land"
+    t.text "plz"
+    t.text "ort"
+    t.text "email"
+    t.text "webseite"
+    t.text "geschlecht"
+    t.text "korrespondenzsprache"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "salutation",          limit: 255

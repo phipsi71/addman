@@ -8,11 +8,11 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 
-config.assets.precompile += ['.svg', '*.eot', '*.woff', '*.woff2', '*.ttf', '*.otf', '*.js', '*.css']
+Rails.application.config.assets.precompile += ['.svg', '*.eot', '*.woff', '*.woff2', '*.ttf', '*.otf', '*.js', '*.css', '*.ico', '*.png']
 # config.assets.precompile += %w( print.js )
 # config.assets.precompile += %w( toggle.js )
 
-config.assets.paths << Rails.root.join('app', 'assets', 'javascripts')  
-config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets') 
-config.assets.paths << Rails.root.join('app', 'assets', 'fonts')      # /app/assets/fonts/francois_one
-        
+Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'javascripts')
+Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets')
+Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'images')
+Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')

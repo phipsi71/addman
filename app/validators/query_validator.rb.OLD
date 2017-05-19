@@ -1,0 +1,40 @@
+class QueryValidator < ActiveModel::EachValidator
+
+  @cols = Array.new
+  q = Array.new
+
+  def validate_each(record, attribute, value)
+  Rails.logger.debug "validate_each entered"
+    #first check if we have key=value for all attributes
+    if value.present?
+      Rails.logger.debug "value present"
+    	q = value.split.map{ |s| s.split("=") }
+      q.each do |e|
+        Rails.logger.debug "e=#{e}, length=#{e.length}"
+      	if e.length != 2
+          Rails.logger.debug "Pah, length is not 2!"
+      		record.errors[attribute] << (options[:message] || "syntax error")
+          return
+          #raise ArgumentError, "Query syntax error"
+        end
+      end
+
+      # then check if the keys corresponds to a column
+      @cols = TrialContacts.column_names
+      qkeys = q.to_h.keys
+      if (qkeys-@cols).present?
+        record.errors[attribute] << (options[:message] || "unknown column")
+      end
+
+    end  #value.present?
+
+  end #def
+
+
+end #class
+
+# q = q.to_h
+
+# unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+#   record.errors[attribute] << (options[:message] || "is not an email")
+# end

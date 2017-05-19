@@ -1,5 +1,10 @@
 class MailgroupsController < ApplicationController
+
+  require 'mailgroups_helper'
   #caches_page   :index
+  # rescue_from ActionController::ParameterMissing, with: :param_missing
+
+
   before_action :authenticate, except: [:index, :search_for, :show, :search, :mailto, :print, :append, :remove]
   before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove, :remove_list]
   before_action :set_term, only: [:index]
@@ -7,17 +12,19 @@ class MailgroupsController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
-
   respond_to :html, :json, :js
 
   # GET /mailgroups
   # GET /mailgroups.json
   def index
     @c ||= 'name'
-    @mailgroups    = Mailgroup.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
-    #@mailgroups    = Mailgroup.regular
-    @intmailgroups = Intmailgroup.all
+    @mailgroups  = Mailgroup.searched(@term).order(@c + ' ' + @d).paginate(page: params[:page])
     #respond_with (@mailgroups)
+    respond_to do |format|
+        format.html # will call index.html.erb
+        format.json { render json: @mailgroups }
+        #format.js   # will call index.js.coffee
+    end    
   end
 
 
@@ -31,7 +38,7 @@ class MailgroupsController < ApplicationController
   def new
     @mailgroup = Mailgroup.new
     @mailgroup.created_by = current_user.login
-    @mailgroup.created_at = Time.now    
+    @mailgroup.created_at = Time.now
   end
 
   # GET /mailgroups/1/edit
@@ -41,9 +48,9 @@ class MailgroupsController < ApplicationController
   # POST /mailgroups
   # POST /mailgroups.json
   def create
-    @mailgroup = Mailgroup.new(mailgroup_params)
+    
     @mailgroup.created_by = current_user.login
-    @mailgroup.created_at = Time.now    
+    @mailgroup.created_at = Time.now
     respond_to do |format|
       if @mailgroup.save
         format.html { redirect_to @mailgroup, notice: 'Mailgroup was successfully created.' }
@@ -58,17 +65,38 @@ class MailgroupsController < ApplicationController
   # PATCH/PUT /mailgroups/1
   # PATCH/PUT /mailgroups/1.json
   def update
-    @mailgroup.updated_by = current_user.login
-    @mailgroup.updated_at = Time.now        
-    respond_to do |format|
-      if @mailgroup.update(mailgroup_params)
-        format.html { redirect_to @mailgroup, notice: 'Mailgroup was successfully updated.' }
-        format.json { render :show, status: :ok, location: @mailgroup }
-      else
-        format.html { render :edit }
-        format.json { render json: @mailgroup.errors, status: :unprocessable_entity }
-      end
+    # @mailgroup.updated_by = current_user.login
+    # @mailgroup.updated_at = Time.now
+    # @query = get_query(params)
+    # logger.debug "in def update, query=#{@query}"
+    logger.debug "UPDATE intmailgroup, intparams : #{@mailgroup.trialcode} #{@mailgroup.role} #{@mailgroup.country}"
+    if ("#{@mailgroup.trialcode} #{@mailgroup.role} #{@mailgroup.country}").present?
+      # @mailgroup.users.delete_all
+      # @mailgroup.type = mailgroup_params[:type]
+      @mailgroup = @mailgroup.becomes!(Intmailgroup)
+      logger.debug "UPDATE after becomes! mailgroup.type = #{@mailgroup.type}"
+      # @mailgroup.query = @query
+    else
+      logger.debug "UPDATE else (query not present), mailgroup_params = #{mailgroup_params}"
+      @mailgroup = @mailgroup.becomes!(Mailgroup)
     end
+    respond_to do |format|
+    if @mailgroup.update(mailgroup_params)
+      format.html { redirect_to @mailgroup, notice: 'Mailgroup was successfully updated.' }
+      format.json { render :show, status: :ok, location: @mailgroup }
+    else
+      format.html { render :edit }
+      format.json { render json: @mailgroup.errors, status: :unprocessable_entity }
+    end
+    end
+
+    # rescue ActiveRecord::StatementInvalid => error
+    # respond_to do |format|
+    #   format.html { render :edit, notice: 'Mailgroup was successfully updated.'  }
+    #   format.json { render json: @mailgroup.errors, status: :unprocessable_entity }
+    # end
+    logger.debug "in mailgroups_controller, mailgroup_params= #{mailgroup_params}. \n update exit"
+
   end
 
   # DELETE /mailgroups/1
@@ -98,7 +126,7 @@ class MailgroupsController < ApplicationController
     end
   end 
 
-
+  # remove a USER from a mailgroup
   def remove
     # lets get the parameters from the url. we get them from the hash 'params'
 
@@ -146,6 +174,22 @@ class MailgroupsController < ApplicationController
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+  protected
+
+
+      # Never trust parameters from the scary internet, only allow the white list through.
+    def mailgroup_params
+      if params["mailgroup"].present?
+        params.require(:mailgroup).permit(:name, :memo, :trialcode, :query, :country, :role, :type)
+      elsif params["intmailgroup"].present?
+        params.require(:intmailgroup).permit(:name, :memo, :trialcode, :query, :country, :role, :type)
+      else
+        nil
+      end
+    end
+
+  
+
   private
 
 
@@ -162,12 +206,5 @@ class MailgroupsController < ApplicationController
       @c = sort_column
       @d = sort_direction; @d ||= 'asc'
     end
-
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def mailgroup_params
-      params.require(:mailgroup).permit(:name, :memo, :trialcode, :query, :type)
-    end
-
 
 end

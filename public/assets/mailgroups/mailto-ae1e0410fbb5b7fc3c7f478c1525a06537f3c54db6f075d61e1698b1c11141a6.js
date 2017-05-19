@@ -1,1 +1,0 @@
-(function(){$(function(){return $("#mailgroupwarn").modal("show")})}).call(this);

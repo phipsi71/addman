@@ -3,8 +3,10 @@
 <%= content_tag_for(:tr, mailgroup) do %>
   <td class="dim"><%= mailgroup.id %></td>
   <td><%= mailgroup.name %></td>
-  <!-- td><%= mailgroup.memo %></td -->
-  <td><%= mailgroup.trialcode %></users>
+  <td><!-- in intmailgroup the zahnrad is rendered here --></td>
+  <td><%= mailgroup.trialcode %></td>
+  <td><%= mailgroup.role %></td>
+  <td><%= mailgroup.country %></td>
   <td><%= mailgroup.users.count %></td>
   
   <td class="fadeactions col-md-2">

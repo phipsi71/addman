@@ -49,6 +49,19 @@ module ApplicationHelper
     mutation? == list.admin unless list.admin.nil?
   end
 
+  def get_query(params)
+    val = nil
+    params.each do | k,v |
+      if k == "query"
+        val = v
+      elsif v.is_a?(Hash)
+        val = self.get_query(v)
+      else
+        val
+      end
+    end
+    return val
+  end
 
 end
 

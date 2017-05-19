@@ -1,4 +1,6 @@
 <%- model_class = Mailgroup -%>
+<% javascript_include_tag 'append.js' %>
+
 <div class="page-header col-lg-12">
   <span class="dim"></span>
   <h2><%= content_tag(:i, nil, class: 'fa fa-users') + " #{@user.mailgroups.count}" %>

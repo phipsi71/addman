@@ -1,8 +1,9 @@
 <%- model_class = User -%>
+<% javascript_include_tag "append.js" %>
 
 <div class="page-header col-lg-12">
   <span class="dim"></span><h2><%= content_tag(:i, nil, class: 'fa fa-user') + "  #{@mailgroup.users.count}"  %>
-  Assigned users</h2>
+  Assigned user(s)</h2>
 </div>
 
 <table class="table table-striped fadeactions users">
@@ -12,7 +13,6 @@
       locals: {show_check: true} %> 
   </tbody>
 </table>
-
 
 
   <%= form_tag append_mailgroup_users_path(@mailgroup), method: :patch, remote: true do %>

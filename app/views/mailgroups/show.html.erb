@@ -3,7 +3,7 @@
 
 <div class="page-header col-lg-12">
   <h1><%= content_tag(:i, nil, class: 'fa fa-users') %>
-    <span class="dim"></span><%= "#{@mailgroup.name}" %> 
+    <span class="dim"></span><%= "#{@mailgroup.name}" %> <%= content_tag(:i, '', class: "fa fa-gear", data: {toggle: "tooltip", title: "This is an intelligent group", placement: 'top'}) if @mailgroup.is_a?(Intmailgroup) %>
   </h1>
 </div>
 
@@ -16,14 +16,18 @@
       <dd class="dim"><%= @mailgroup.id %></dd>
       <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
       <dd><%= @mailgroup.name %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:memo) %>:</strong></dt>
-      <dd><%= @mailgroup.memo %></dd>
       <dt><strong><%= model_class.human_attribute_name(:trialcode) %>:</strong></dt>
       <dd><%= @mailgroup.trialcode %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:role) %>:</strong></dt>
+      <dd><%= @mailgroup.role %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
+      <dd><%= @mailgroup.country %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:memo) %>:</strong></dt>
+      <dd><%= @mailgroup.memo %></dd>
       <dt><strong><%= model_class.human_attribute_name(:query) %>:</strong></dt>
       <dd><%= @mailgroup.query %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
-      <dd><%= @mailgroup.type %></dd>
+      <!-- dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
+      <dd><%= @mailgroup.type %></dd -->
       <dt><strong>Users count:</strong></dt>
       <dd><%= @mailgroup.users.count %></dd>
       <dt><strong><%= model_class.human_attribute_name(:created_by) %>:</strong></dt>
@@ -49,11 +53,11 @@
                   class: 'btn btn-default' if mutation?
        %>
 
-      <% if @mailgroup.type != 'Intmailgroup' %>
+      <!-- % if @mailgroup.type != 'Intmailgroup' % -->
         <%= link_to content_tag(:i, '', class: "fa fa-envelope")  + "Group mail", '#',
                     class: "btn btn-default", id: "jqcc"
          %>
-      <% end %>
+      <!-- % end % -->
 
       <%= link_to content_tag(:i, '', class: "fa fa-print") + "Print / Export",
                   print_mailgroup_path(@mailgroup),

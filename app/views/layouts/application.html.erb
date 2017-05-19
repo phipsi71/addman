@@ -39,11 +39,23 @@
 
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
+          <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Users",
+                  users_path, class: "#{params[:controller] == 'users' ? 'active' : 'inactive'} loaderlink" %></li>
 
-          <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Users",  users_path, class: "#{params[:controller] == 'users' ? 'active' : 'inactive'} loaderlink" %></li>
-          <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Groups", mailgroups_path, class: "#{params[:controller] == 'mailgroups' ? 'active' : 'inactive'} loaderlink" %></li>
-          <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Lists",  lists_path, class: "#{params[:controller] == 'lists' ? 'active' : 'inactive'}  loaderlink" %></li>
+           <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Groups",
+                  mailgroups_path, class: "#{params[:controller] == 'mailgroups' ? 'active' : 'inactive'} loaderlink" %></li>
+
+
+          <li><%= link_to content_tag(:i, '', class: "fa fa-chevron-right") + " Lists",
+                  lists_path, class: "#{params[:controller] == 'lists' ? 'active' : 'inactive'}  loaderlink" %></li>
+
+          <li id="TT">TEST</li>
+
+
         </ul>
+
+
+
         <ul class="userInfo nav navbar-nav right">
           <% if user_signed_in? %>
             <!-- li><%= content_tag(:i, current_user.login) %></li -->
