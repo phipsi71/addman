@@ -12,18 +12,14 @@ Rails.application.routes.draw do
   # }
 
   get 'sample_user', to: 'users#sample'     # it's not in resources since we don't have an id when selecting
-
   get 'users/get_by_ids' => 'users#get_by_ids'
-
   get 'lists/own'
-
 
   resources :users do
 
         # collection do
         #   get   'search_for', to: 'users#search_for',  as: 'search'
         # end
-
         member do   # member is for passing :id instead of :user_id
           get   'print' #,  to: 'users#print',  as: 'print'
           get   'copy'  #,  to: 'users#edit',   as: 'copy'

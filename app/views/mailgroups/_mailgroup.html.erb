@@ -7,7 +7,7 @@
   <td><%= mailgroup.trialcode %></td>
   <td><%= mailgroup.role %></td>
   <td><%= mailgroup.country %></td>
-  <td><%= mailgroup.users.count %></td>
+  <td><%= mailgroup.users.count(:id) %></td>
   
   <td class="fadeactions col-md-2">
 

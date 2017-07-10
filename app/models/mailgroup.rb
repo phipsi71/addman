@@ -12,4 +12,6 @@ class Mailgroup < ActiveRecord::Base
   scope :is_robinson, -> { where('robinson_id is not NULL') }
   # scope :regular,     -> { where('query is NULL') }
 
+
+
 end

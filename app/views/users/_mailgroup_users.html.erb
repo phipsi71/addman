@@ -2,7 +2,7 @@
 <% javascript_include_tag "append.js" %>
 
 <div class="page-header col-lg-12">
-  <span class="dim"></span><h2><%= content_tag(:i, nil, class: 'fa fa-user') + "  #{@mailgroup.users.count}"  %>
+  <span class="dim"></span><h2><%= content_tag(:i, nil, class: 'fa fa-user') + "  #{@mailgroup.users.count(:id)}"  %>
   Assigned user(s)</h2>
 </div>
 
@@ -14,7 +14,7 @@
   </tbody>
 </table>
 
-
+<% if @mailgroup.class.name == 'Mailgroup' %> <!-- ONLY SHOW APPEND WHEN NOT INTMAILGROUP  -->
   <%= form_tag append_mailgroup_users_path(@mailgroup), method: :patch, remote: true do %>
     <div class="input-group append col-md-6">
 
@@ -22,10 +22,11 @@
       <%= hidden_field_tag 'user_id', 'dummy' %>
 
       <span class="input-group-btn append">
-          <button class="btn btn-default" type="submit">Append</button>
+        <button class="btn btn-default" type="submit">Append</button>
       </span>
     </div>
   <% end %>
+<% end %>
 
 <%= content_tag(:div, "partial users/user" , class: 'iv col-lg-12') %>
 <%= content_tag(:div, "#{__FILE__}" , class: 'iv col-lg-12') %>

@@ -81,8 +81,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
     
-  config.relative_url_root = '/addman'
-  config.action_controller.relative_url_root = '/addman'
+  # config.relative_url_root = '/addman'
+  # config.action_controller.relative_url_root = '/addman'
 
 
 end

@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   scope :companies,  -> { where("firstname is NULL and lastname is NULL") }
 
   def lastname
-    self[:lastname] || self[:company]
+    # self[:lastname] || self[:company]
+    self[:lastname].present? ? self[:lastname] : self[:company]
   end
 
 

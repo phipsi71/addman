@@ -142,7 +142,7 @@ class ListsController < ApplicationController
       @lc = 0
       logger.debug ("in controller list, query = #{@list.query}")
       @list.mailgroups.each do |m|
-        @lc += m.users.count
+        @lc += m.users.count(:id)
       end
     end
 

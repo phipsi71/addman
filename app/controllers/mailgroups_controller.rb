@@ -6,7 +6,7 @@ class MailgroupsController < ApplicationController
 
 
   before_action :authenticate, except: [:index, :search_for, :show, :search, :mailto, :print, :append, :remove]
-  before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove, :remove_list]
+  before_action :set_mailgroup, only:  [:show, :edit, :update, :destroy, :mailto, :print, :remove, :remove_list, :count]
   before_action :set_term, only: [:index]
   before_action :set_sort, only: [:index, :show]
 
@@ -48,7 +48,6 @@ class MailgroupsController < ApplicationController
   # POST /mailgroups
   # POST /mailgroups.json
   def create
-    
     @mailgroup.created_by = current_user.login
     @mailgroup.created_at = Time.now
     respond_to do |format|
@@ -69,8 +68,9 @@ class MailgroupsController < ApplicationController
     # @mailgroup.updated_at = Time.now
     # @query = get_query(params)
     # logger.debug "in def update, query=#{@query}"
-    logger.debug "UPDATE intmailgroup, intparams : #{@mailgroup.trialcode} #{@mailgroup.role} #{@mailgroup.country}"
-    if ("#{@mailgroup.trialcode} #{@mailgroup.role} #{@mailgroup.country}").present?
+    mp = mailgroup_params.fetch_values('trialcode', 'role', 'country')
+    logger.debug "UPDATE intmailgroup, intparams : #{mp}"
+    if mp.present?
       # @mailgroup.users.delete_all
       # @mailgroup.type = mailgroup_params[:type]
       @mailgroup = @mailgroup.becomes!(Intmailgroup)
@@ -195,7 +195,10 @@ class MailgroupsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_mailgroup
+      logger.debug "mailgroups_controller set_mailgroup enter"
       @mailgroup = Mailgroup.find(params[:id])
+      logger.debug "mailgroups_controller set_mailgroup mailgroup=#{@mailgroup.name}"
+      logger.debug "mailgroups_controller set_mailgroup exit"      
     end
 
     def set_term

@@ -29,7 +29,7 @@
       <!-- dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
       <dd><%= @mailgroup.type %></dd -->
       <dt><strong>Users count:</strong></dt>
-      <dd><%= @mailgroup.users.count %></dd>
+      <dd><%= @mailgroup.users.count(:id) %></dd>
       <dt><strong><%= model_class.human_attribute_name(:created_by) %>:</strong></dt>
       <dd><%= @mailgroup.created_by %></dd>
       <dt><strong><%= model_class.human_attribute_name(:updated_by) %>:</strong></dt>

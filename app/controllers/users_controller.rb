@@ -11,8 +11,6 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
-  # GET /users
-  # GET /users.json
   def index
     # @users = User.order(sort_column).order(sort_direction).paginate(page: params[:page])
     # this is also used for searches !!!!
